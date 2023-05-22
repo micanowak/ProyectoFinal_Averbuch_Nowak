@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {StyleSheet, View, Text, Image, useWindowDimensions } from 'react-native';
 import ArgTeamLogo from '../../../assets/images/ArgTeamLogo.png';
 
@@ -6,10 +6,10 @@ const LogInScreen = () => {
     const {height} = useWindowDimensions();
     return (
         <View style={styles.root}>
-            <Text>Hoasdasdasdasdasda!!</Text>
+            <Text>Log In Screen</Text>
             <Image 
                 source={ArgTeamLogo}
-                style={[styles.logo, {height : height * 0.3}]} 
+                style={[styles.argTeam_Logo, {height : height * 0.3}]} 
                 resizeMode="contain"
             />
         </View>
@@ -21,9 +21,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 20,
     },
-    logo: {
+    argTeam_Logo: {
         width: '70%',
-        maxWidth:300,
+        maxWidth: 300,
         maxHeight: 200,
     },
 });
