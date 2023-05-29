@@ -4,6 +4,7 @@ import ArgTeamLogo from '../../../assets/images/ArgTeamLogo.png';
 import logoFirex from '../../../assets/images/LogoFirex.png';
 import CustomInputTop from '../../components/CustomInputTop'; 
 import CustomInputBottom from '../../components/CustomInputBottom'; 
+import CustomButton  from '../../components/CustomButton';
 
 const LogInScreen = () => {
     const [username, setUsername] = useState('');
@@ -40,6 +41,7 @@ const LogInScreen = () => {
                 secureTextEntry={true}
             />
 
+            <CustomButton/>
         </View>
     );
 };
