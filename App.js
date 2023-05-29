@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import LogInScreen from './src/screens/LogInScreen';
+import PF_ArgTeam from './assets/Database/PF_ArgTeam.sql';
 
 export default function App() {
   return (
