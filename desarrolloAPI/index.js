@@ -11,6 +11,6 @@ app.listen(port, () => {
 })
 
 app.get('/Usuario', async (req, res) => {
-    const user = await PF_ArgTeam_Services.getAll(req.params.id)
+    const user = await PF_ArgTeam_Services.logInFunction(req.params.usuario)
     res.status(200).send(user)
 })
