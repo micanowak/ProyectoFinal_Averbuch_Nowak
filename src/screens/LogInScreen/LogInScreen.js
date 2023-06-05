@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import {StyleSheet, View, Text, Image, useWindowDimensions } from 'react-native';
 import ArgTeamLogo from '../../../assets/images/ArgTeamLogo.png';
 import logoFirex from '../../../assets/images/LogoFirex.png';
-import CustomInputTop from '../../components/CustomInputTop'; 
-import CustomInputBottom from '../../components/CustomInputBottom'; 
-import CustomButton  from '../../components/CustomButton';
+import CustomInputTop from '../../components/CustomInputTop/CustomInputTop'; 
+import CustomInputBottom from '../../components/CustomInputBottom/CustomInputBottom'; 
+import CustomButton  from '../../components/CustomButton/CustomButton';
 
 const LogInScreen = () => {
     const [username, setUsername] = useState('');

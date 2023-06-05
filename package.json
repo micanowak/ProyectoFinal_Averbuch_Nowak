@@ -11,7 +11,7 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "expo": "~48.0.15",
-    "expo-cli": "^6.3.7",
+    "expo-cli": "^6.3.8",
     "expo-status-bar": "~1.4.4",
     "mssql": "^9.1.1",
     "mysql": "^2.18.1",
@@ -24,5 +24,16 @@
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
-  "private": true
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micanowak/ProyectoFinal_Averbuch_Nowak.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/micanowak/ProyectoFinal_Averbuch_Nowak/issues"
+  },
+  "homepage": "https://github.com/micanowak/ProyectoFinal_Averbuch_Nowak#readme",
+  "description": ""
 }

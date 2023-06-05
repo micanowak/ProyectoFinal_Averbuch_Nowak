@@ -1,8 +1,7 @@
 import React from 'react';
-import {StyleSheet, View, TextInput} from 'react-native';
-import CustomButton from '.';
+import {StyleSheet, View, TextInput, Text} from 'react-native';
 
-const CustomInputBottom = ({value, setValue, placeholder, secureTextEntry}) => {
+const CustomButton = ({value, setValue, placeholder, secureTextEntry}) => {
     return (
         <View style = {styles.container}>
            <Text style = {styles.text}>Button</Text>
@@ -26,4 +25,4 @@ const styles = StyleSheet.create({
         color: 'white',
     }
 });
-export default CustomButton
+export default CustomButton;
