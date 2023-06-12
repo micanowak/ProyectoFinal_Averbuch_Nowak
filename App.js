@@ -17,17 +17,12 @@ export default function App() {
     setPassword(con);
   }
 
-  axios.post('/logInUsuario', {
+  axios.post('localhost:3000/logInUsuario', {
     username: usuario,
     password: password
   })
   .then((response) => {
-    console.log(response);
-    if(response.status === 200){
-
-    } else {
-      
-    }
+    console.log(response.status);
   }, (error) => {
     console.log(error);
   });
