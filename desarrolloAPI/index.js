@@ -5,7 +5,6 @@ import { PF_ArgTeam_Services } from "./services/services.js";
 
 const port = 3000;
 
-let dev = 200;
 
 app.use(express.json())
 
@@ -24,7 +23,6 @@ app.post('/logInUsuario', async (req, res) => {
             res.status(200).json({ message: 'Usuario Verificado' });
         } else {
             res.status(500).json({ error: 'Nombre de usuario y/o contraseña incorrecta' });
-            dev = 500;
         }
         
     } catch (error) {
@@ -33,5 +31,3 @@ app.post('/logInUsuario', async (req, res) => {
     }
     console.log(username, password);
 })
-
-export default dev;
