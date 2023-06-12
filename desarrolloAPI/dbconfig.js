@@ -12,3 +12,18 @@ const config = {
 }
 
 export default config;
+
+/*USE [master]
+GO
+CREATE LOGIN [argteam] WITH PASSWORD=N'adminArgTeam2020', DEFAULT_DATABASE=[PF_ArgTeam], CHECK_EXPIRATION=OFF,
+CHECK_POLICY=OFF
+GO
+
+USE [PF_ArgTeam]
+GO
+CREATE USER [argteam] FOR LOGIN [argteam]
+GO
+USE [PF_ArgTeam]
+GO
+ALTER ROLE [db_owner] ADD MEMBER [argteam]
+GO*/
