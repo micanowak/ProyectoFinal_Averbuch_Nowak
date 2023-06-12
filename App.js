@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import LogInScreen from './src/screens/LogInScreen';
-import PF_ArgTeam from './assets/Database/PF_ArgTeam.sql';
+import LogInScreen from './src/screens/LogInScreen/LogInScreen';
 
 export default function App() {
+  
+  //axios.get('localhost:3000/logInUsuario')
+  
   return (
     <View style={styles.root}>
       <LogInScreen/>

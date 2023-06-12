@@ -2,16 +2,20 @@ import React, { useState } from 'react';
 import {StyleSheet, View, Text, Image, useWindowDimensions } from 'react-native';
 import ArgTeamLogo from '../../../assets/images/ArgTeamLogo.png';
 import logoFirex from '../../../assets/images/LogoFirex.png';
-import CustomInputTop from '../../components/CustomInputTop'; 
-import CustomInputBottom from '../../components/CustomInputBottom'; 
-import CustomButton  from '../../components/CustomButton';
+import CustomInputTop from '../../components/CustomInputTop/CustomInputTop'; 
+import CustomInputBottom from '../../components/CustomInputBottom/CustomInputBottom'; 
+import CustomButton  from '../../components/CustomButton/CustomButton';
 
-const LogInScreen = () => {
+const LogInScreen = (sendUsername, sendPassword) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const {height} = useWindowDimensions();
 
+
+    const inicioSesion = (usuario) => {
+        
+    }
 
     return (
         <View style={styles.root}>
@@ -41,7 +45,7 @@ const LogInScreen = () => {
                 secureTextEntry={true}
             />
 
-            <CustomButton/>
+            <CustomButton usuarioEnv={username} passwordEnv={password} verificarUsuario={inicioSesion}/>
         </View>
     );
 };

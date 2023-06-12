@@ -1,11 +1,26 @@
 import React from 'react';
-import {StyleSheet, View, TextInput} from 'react-native';
-import CustomButton from '.';
+import { useState } from 'react';
+import {StyleSheet, View, TextInput, Text, Button} from 'react-native';
 
-const CustomInputBottom = ({value, setValue, placeholder, secureTextEntry}) => {
+const CustomButton = (usuarioEnv, passwordEnv, verificarUsuario) => {
+    const [usuario, setUsuario] = useState('');
+    const [password, setPassword] = useState('');
+
+    const buttonOnsubmitHandler = (e) => {
+        setPassword(passwordEnv);
+        setUsuario(usuarioEnv);
+        const agregar = {
+            nombre: usuario,
+            contrasenia: password, 
+        }
+
+        verificarUsuario(agregar);
+
+    } 
+    
     return (
         <View style = {styles.container}>
-           <Text style = {styles.text}>Button</Text>
+           <Button style = {styles.text} onPress={buttonOnsubmitHandler}>Iniciar Sesión</Button>
         </View>
     );
 };
@@ -26,4 +41,4 @@ const styles = StyleSheet.create({
         color: 'white',
     }
 });
-export default CustomButton
+export default CustomButton;
