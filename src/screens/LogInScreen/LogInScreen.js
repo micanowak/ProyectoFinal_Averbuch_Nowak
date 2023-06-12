@@ -5,8 +5,6 @@ import logoFirex from '../../../assets/images/LogoFirex.png';
 import CustomInputTop from '../../components/CustomInputTop/CustomInputTop'; 
 import CustomInputBottom from '../../components/CustomInputBottom/CustomInputBottom'; 
 import CustomButton  from '../../components/CustomButton/CustomButton';
-import axios from 'axios';
-import { response } from 'express';
 
 const LogInScreen = (sendUsername, sendPassword) => {
     const [username, setUsername] = useState('');
@@ -15,15 +13,8 @@ const LogInScreen = (sendUsername, sendPassword) => {
     const {height} = useWindowDimensions();
 
     const inicioSesion = (usuario) => {
-        const nombre = usuario.username;
-        const contra = usuario.password
-        axios.post("localhost:3000/logInUsuario", {
-              username: nombre,
-              password: contra
-            })
-            .then((response) => {
-                console.log(response);
-            });
+        sendUsername(usuario.nombre);
+        sendPassword(usuario.contrasenia);
     }
 
     return (
