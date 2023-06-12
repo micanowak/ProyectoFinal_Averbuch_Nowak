@@ -6,6 +6,9 @@ import CustomInputTop from '../../components/CustomInputTop/CustomInputTop';
 import CustomInputBottom from '../../components/CustomInputBottom/CustomInputBottom'; 
 import CustomButton  from '../../components/CustomButton/CustomButton';
 
+
+
+
 const LogInScreen = (sendUsername, sendPassword) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');

@@ -20,7 +20,7 @@ const CustomButton = (usuarioEnv, passwordEnv, verificarUsuario) => {
     
     return (
         <View style = {styles.container}>
-           <Button style = {styles.text} onPress={buttonOnsubmitHandler}>Iniciar Sesión</Button>
+            <Button title='Iniciar Sesión' style = {styles.text} onPress={buttonOnsubmitHandler}></Button>
         </View>
     );
 };
