@@ -12,9 +12,9 @@ const LogInScreen = (sendUsername, sendPassword) => {
 
     const {height} = useWindowDimensions();
 
-
     const inicioSesion = (usuario) => {
-        
+        sendUsername(usuario.nombre);
+        sendPassword(usuario.contrasenia);
     }
 
     return (
