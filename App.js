@@ -7,8 +7,7 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native'; 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
-
-import Home from './src/screens/Home/HomeScreen';
+import HomeScreen from './src/screens/Home/HomeScreen.js';
 
 export default function App() {
   
@@ -33,13 +32,38 @@ export default function App() {
     console.log(error);
   });
   
+  const LogInScreen = ({navigation}) => {
+    return (
+      <Button
+        title="Iniciar Sesion"
+        onPress={() =>
+          navigation.navigate('Home', {name: 'Home'})
+        }
+      />
+    );
+  };
+
   return (
-    
-    <View style={styles.root}>
+    <NavigationContainer>
+      <Stack.Navigator>
+      <Stack.Screen
+        name="LogIn"
+        component={LogInScreen}
+        style={styles.root}
+        options={{title: 'InicioDeSesion'}}
+      />
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{title: 'Home'}}
+      />
+      </Stack.Navigator>
+    </NavigationContainer>
+    /*<View style={styles.root}>
       <Home/>
       <LogInScreen sendUsername={nombreUsuario} sendPassword={constrasenia} />
       <StatusBar style="auto" />
-    </View>
+    </View>*/
   );
 }
 

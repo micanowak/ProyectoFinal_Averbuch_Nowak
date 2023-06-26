@@ -7,7 +7,7 @@ import CustomInputBottom from '../../components/CustomInputBottom/CustomInputBot
 import CustomButton  from '../../components/CustomButton/CustomButton';
 
 
-const Home = (sendUsername, sendPassword) => {
+const HomeScreen = (sendUsername, sendPassword) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
         display:'flex',
     },
 });
-export default Home;
+export default HomeScreen;
