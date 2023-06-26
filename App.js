@@ -3,6 +3,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import LogInScreen from './src/screens/LogInScreen/LogInScreen';
 import axios from 'axios';
 import { response } from 'express';
+import * as React from 'react';
+import {NavigationContainer} from '@react-navigation/native'; 
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   
@@ -28,6 +32,7 @@ export default function App() {
   });
   
   return (
+    
     <View style={styles.root}>
       <LogInScreen sendUsername={nombreUsuario} sendPassword={constrasenia} />
       <StatusBar style="auto" />
