@@ -8,6 +8,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
+import Home from './src/screens/Home/HomeScreen';
+
 export default function App() {
   
   //axios.get('localhost:3000/logInUsuario')
@@ -34,6 +36,7 @@ export default function App() {
   return (
     
     <View style={styles.root}>
+      <Home/>
       <LogInScreen sendUsername={nombreUsuario} sendPassword={constrasenia} />
       <StatusBar style="auto" />
     </View>
@@ -46,3 +49,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#1A4B8E',
   },
 });
+
+//https://reactnative.dev/docs/navigation para conectar las screens pero primero hago todas las pantallas y despues las conecto 

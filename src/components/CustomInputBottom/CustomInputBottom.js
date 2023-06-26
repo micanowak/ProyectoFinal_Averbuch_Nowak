@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
         borderColor: '#AE9DD9',
         borderWidth:1,
         alignItems: 'center',  
-        borderBottomLeftRadius: '15%',
-        borderBottomRightRadius: '15%',
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
     },
 });
 
