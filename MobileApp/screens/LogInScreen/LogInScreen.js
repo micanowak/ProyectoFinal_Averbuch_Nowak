@@ -1,51 +1,54 @@
-import React, { useState } from 'react';
-import {StyleSheet, View, Text, Image, useWindowDimensions } from 'react-native';
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  useWindowDimensions,
+} from "react-native";
 /*import ArgTeamLogo from '../../../assets/images/ArgTeamLogo.png';
 import logoFirex from '../../../assets/images/LogoFirex.png';*/
-import CustomInputTop from '../../components/CustomInputTop/CustomInputTop'; 
-import CustomInputBottom from '../../components/CustomInputBottom/CustomInputBottom'; 
-import CustomButton  from '../../components/CustomButton/CustomButton';
-
-
+import CustomInputTop from "../../components/CustomInputTop/CustomInputTop";
+import CustomInputBottom from "../../components/CustomInputBottom/CustomInputBottom";
+import CustomButton from "../../components/CustomButton/CustomButton";
 
 const LogInScreen = (sendUsername, sendPassword) => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-    const buttonOnsubmitHandler = () => {
-        sendPassword(password);
-        sendUsername(username);
-    }
+  const buttonOnsubmitHandler = () => {
+    sendPassword(password);
+    sendUsername(username);
 
-    const {height} = useWindowDimensions();
+    <Text>Sí funciona</Text>
+    
+  };
 
-    const inicioSesion = (usuario) => {
-        sendUsername(usuario.nombre);
-        sendPassword(usuario.contrasenia);
-    }
+  const { height } = useWindowDimensions();
 
-    return (
-        <View style={styles.root}>
-            
+  return (
+    <View style={styles.root}>
+      <CustomInputTop
+        value={username}
+        setValue={setUsername}
+        esTop={true}
+        placeholder="Usuario"
+        secureTextEntry={false}
+      />
+      <CustomInputBottom
+        value={password}
+        setValue={setPassword}
+        esTop={false}
+        placeholder="Contraseña"
+        secureTextEntry={true}
+      />
 
-            <CustomInputTop 
-                value={username} 
-                setValue={setUsername} 
-                esTop={true} 
-                placeholder="Usuario"
-                secureTextEntry={false}
-            />
-            <CustomInputBottom 
-                value={password} 
-                setValue={setPassword} 
-                esTop={false} 
-                placeholder="Contraseña"
-                secureTextEntry={true}
-            />
-
-            <CustomButton name="Iniciar sesión" click ={buttonOnsubmitHandler}></CustomButton>
-        </View>
-    );
+      <CustomButton
+        name="Iniciar sesión"
+        onClick={buttonOnsubmitHandler}
+      ></CustomButton>
+    </View>
+  );
 };
 
 /*
@@ -64,19 +67,19 @@ const LogInScreen = (sendUsername, sendPassword) => {
 */
 
 const styles = StyleSheet.create({
-    root: {
-        alignItems: 'center',
-        padding: 20,
-    },
-    logoFirexStyle: {
-        marginTop: '15%',
-        maxWidth: 100,
-        maxHeight: 75,
-    },
-    argTeam_Logo: {
-        maxWidth: 300,
-        maxHeight: 200,
-    },
+  root: {
+    alignItems: "center",
+    padding: 20,
+  },
+  logoFirexStyle: {
+    marginTop: "15%",
+    maxWidth: 100,
+    maxHeight: 75,
+  },
+  argTeam_Logo: {
+    maxWidth: 300,
+    maxHeight: 200,
+  },
 });
 
 export default LogInScreen;

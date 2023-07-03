@@ -2,8 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import {StyleSheet, View, TextInput, Text, TouchableOpacity} from 'react-native';
 
-const CustomButton = (usuarioEnv, passwordEnv, verificarUsuario) => {
-    const [usuario, setUsuario] = useState('');
+const CustomButton = () => {
+    /*const [usuario, setUsuario] = useState('');
     const [password, setPassword] = useState('');
 
     const buttonOnsubmitHandler = (e) => {
@@ -16,12 +16,13 @@ const CustomButton = (usuarioEnv, passwordEnv, verificarUsuario) => {
 
         verificarUsuario(agregar);
 
-    } 
+    } */
     
     return (
-        <TouchableOpacity onPress={() => props.click}>
+        <TouchableOpacity>
             <View style = {styles.button}>
-                <Text style = {styles.text}>{usuario} {password}
+                <Text style = {styles.text}>
+                    submit
                 </Text>
             </View>
         </TouchableOpacity>
