@@ -22,7 +22,7 @@ const CustomButton = () => {
         <TouchableOpacity>
             <View style = {styles.button}>
                 <Text style = {styles.text}>
-                    submit
+                    Iniciar Sesión
                 </Text>
             </View>
         </TouchableOpacity>
@@ -51,9 +51,11 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: "#E741EB",
-        padding: 15,
+        padding: 10,
         alignItems:"center",
-        width:"50%"
+        width:"100%",
+        flex:"contain",
+        margin:10
     }
 });
 export default CustomButton;
