@@ -33,15 +33,6 @@ export default function App() {
     console.log(error);
   });
   
-  const LogInScreen = ({navigation}) => {
-    return (
-      <View>
-        <CustomInputTop></CustomInputTop>
-        <CustomInputTop></CustomInputTop>
-        <CustomButton></CustomButton>
-      </View>
-    );
-  };
 /*<Button
         title="Iniciar Sesion"
         onPress={() =>

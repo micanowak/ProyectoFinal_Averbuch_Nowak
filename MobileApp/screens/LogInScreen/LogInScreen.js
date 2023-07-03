@@ -8,10 +8,14 @@ import CustomButton  from '../../components/CustomButton/CustomButton';
 
 
 
-
 const LogInScreen = (sendUsername, sendPassword) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
+    const buttonOnsubmitHandler = () => {
+        sendPassword(password);
+        sendUsername(username);
+    }
 
     const {height} = useWindowDimensions();
 
