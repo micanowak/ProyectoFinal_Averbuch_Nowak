@@ -7,11 +7,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 import HomeScreen from "./screens/Home/HomeScreen.js";
-import CustomInputTop from "./components/CustomInputTop/CustomInputTop";
-import CustomButton from "./components/CustomButton/CustomButton";
 
 export default function App() {
-  //axios.get('localhost:3000/logInUsuario')
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
 
@@ -23,7 +20,7 @@ export default function App() {
   };
 
   axios
-    .post("localhost:3000/logInUsuario", {
+    .post("/logInUsuario", {
       username: usuario,
       password: password,
     })
