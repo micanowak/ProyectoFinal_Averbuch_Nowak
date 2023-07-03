@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import LogInScreen from './screens/LogInScreen/LogInScreen';
 import axios from 'axios';
 import { useState } from 'react';
@@ -7,6 +7,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 import HomeScreen from './screens/Home/HomeScreen.js';
+import CustomInputTop from './components/CustomInputTop/CustomInputTop';
+import CustomButton from './components/CustomButton/CustomButton';
 
 export default function App() {
   
@@ -33,15 +35,19 @@ export default function App() {
   
   const LogInScreen = ({navigation}) => {
     return (
-      <Button
+      <View>
+        <CustomInputTop></CustomInputTop>
+        <CustomInputTop></CustomInputTop>
+        <CustomButton></CustomButton>
+      </View>
+    );
+  };
+/*<Button
         title="Iniciar Sesion"
         onPress={() =>
           navigation.navigate('Home', {name: 'Home'})
         }
-      />
-    );
-  };
-
+      />*/
   return (
     <NavigationContainer>
       <Stack.Navigator>

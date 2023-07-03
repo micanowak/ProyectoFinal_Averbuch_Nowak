@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import {StyleSheet, View, TextInput, Text, Button} from 'react-native';
+import {StyleSheet, View, TextInput, Text, TouchableOpacity} from 'react-native';
 
 const CustomButton = (usuarioEnv, passwordEnv, verificarUsuario) => {
     const [usuario, setUsuario] = useState('');
@@ -19,11 +19,18 @@ const CustomButton = (usuarioEnv, passwordEnv, verificarUsuario) => {
     } 
     
     return (
-        <View style = {styles.container}>
-            <Button title='Iniciar Sesión' style = {styles.text} onPress={buttonOnsubmitHandler}></Button>
-        </View>
+        <TouchableOpacity onPress={() => props.click}>
+            <View style = {styles.button}>
+                <Text style = {styles.text}>{usuario} {password}
+                </Text>
+            </View>
+        </TouchableOpacity>
     );
 };
+/* <View style = {styles.container}>
+            <Text> Button </Text>
+            <Button title='Iniciar Sesión' style = {styles.text} onPress={buttonOnsubmitHandler}></Button>
+        </View>*/
 
 //minuto 25:13 del video
 
@@ -39,6 +46,13 @@ const styles = StyleSheet.create({
     text : {
         fontWeight: 'bold',
         color: 'white',
+        fontSize:20
+    },
+    button: {
+        backgroundColor: "#E741EB",
+        padding: 15,
+        alignItems:"center",
+        width:"50%"
     }
 });
 export default CustomButton;

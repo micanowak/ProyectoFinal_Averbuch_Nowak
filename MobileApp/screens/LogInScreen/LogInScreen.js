@@ -39,7 +39,7 @@ const LogInScreen = (sendUsername, sendPassword) => {
                 secureTextEntry={true}
             />
 
-            <CustomButton usuarioEnv={username} passwordEnv={password} verificarUsuario={inicioSesion}/>
+            <CustomButton name="Iniciar sesión" click ={buttonOnsubmitHandler}></CustomButton>
         </View>
     );
 };
