@@ -11,6 +11,7 @@ import HomeScreen from "./screens/Home/HomeScreen.js";
 export default function App() {
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
+  const [buttonPushed, setButtonPushed] = useState (false);
 
   const nombreUsuario = (nom) => {
     setUsuario(nom);
@@ -19,19 +20,27 @@ export default function App() {
     setPassword(con);
   };
 
-  axios
-    .post("/logInUsuario", {
-      username: usuario,
-      password: password,
-    })
-    .then(
-      (response) => {
-        console.log(response.status);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+  const buttonPushedHandler = (bool) => {
+    setButtonPushed(bool);
+
+    if (bool) {
+      axios
+      .post("http://localhost:3000/logInUsuario", {
+        username: usuario,
+        password: password,
+      })
+      .then(
+        (response) => {
+          console.log(response.status);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+    
+  }
+
 
   /*<Button
         title="Iniciar Sesion"
@@ -56,7 +65,8 @@ export default function App() {
       </Stack.Navigator>
     </NavigationContainer>*/
     <View style={styles.root}>
-      <LogInScreen sendUsername={nombreUsuario} sendPassword={constrasenia} />
+      <LogInScreen sendUsername={nombreUsuario} sendPassword={constrasenia} buttonPushed={buttonPushedHandler}/>
+      {buttonPushed ? <Text>Se apreto el boton</Text> : <Text>Nada</Text>}
     </View>
   );
 }
