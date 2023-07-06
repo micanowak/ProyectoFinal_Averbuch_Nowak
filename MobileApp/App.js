@@ -24,8 +24,7 @@ export default function App() {
     setButtonPushed(bool);
 
     if (bool) {
-      axios
-      .post("http://localhost:3000/logInUsuario", {
+      axios.post("http://localhost:3000/logInUsuario", {
         username: usuario,
         password: password,
       })

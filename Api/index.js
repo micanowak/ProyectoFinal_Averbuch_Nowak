@@ -16,6 +16,7 @@ app.listen(port, () => {
 
 app.post('/logInUsuario', async (req, res) => {
     console.log("en post, req:", req)
+    console.log(req.body);
     let username = req.body.username;
 	let password = req.body.password;
     try {
