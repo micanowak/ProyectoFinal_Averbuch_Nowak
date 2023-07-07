@@ -12,6 +12,7 @@ export default function App() {
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
   const [buttonPushed, setButtonPushed] = useState (false);
+  const [esUsuario, setEsUsuario] = useState(false);
 
   const nombreUsuario = (nom) => {
     setUsuario(nom);
@@ -30,7 +31,10 @@ export default function App() {
       })
       .then(
         (response) => {
-          console.log(response.status);
+          if(response.status === 200){
+            setEsUsuario(true);
+            console.log(response.data);
+          }
         },
         (error) => {
           console.log(error);
@@ -65,7 +69,8 @@ export default function App() {
     </NavigationContainer>*/
     <View style={styles.root}>
       <LogInScreen sendUsername={nombreUsuario} sendPassword={constrasenia} buttonPushed={buttonPushedHandler}/>
-      {buttonPushed ? <Text>Se apreto el boton</Text> : <Text>Nada</Text>}
+      {buttonPushed ? esUsuario ? <p>Usuario Correcto</p> : <p>Usuario incorrecto</p> : <p></p>}
+      {/* NO ME FUNCIONA LA PRIMERA VEZ QUE SE INGRESA EL FORM, YA DESPUÉS SI || PUEDE LLEGAR A SERVIR FORM DATA */}
     </View>
   );
 }
