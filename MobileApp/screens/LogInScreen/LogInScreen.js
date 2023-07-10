@@ -6,6 +6,7 @@ import {
   Image,
   useWindowDimensions,
   Button,
+  Pressable
 } from "react-native";
 
 import LogoFirex from "../../assets/images/LogoFirex.png";
@@ -15,29 +16,21 @@ import CustomInputTop from "../../components/CustomInputTop/CustomInputTop";
 import CustomInputBottom from "../../components/CustomInputBottom/CustomInputBottom";
 import axios from "axios";
 
-const LogInScreen = ({ sendUsername, sendPassword, buttonPushed, esUsuario }) => {
+const LogInScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const buttonOnsubmitHandler = () => {
-    sendPassword = password;
-    sendUsername = username;
-    buttonPushed = true;
-    console.log("funciona");
-  };
-    
-    useEffect(() => { 
-      if(username != "" && password != "" && "mica" != "wachaaa!!!"){
-        console.log("wachaaaa!!!")
-      axios
+    axios
       .post("http://localhost:3000/logInUsuario", {
-        username: usuario,
+        username: username,
         password: password,
       })
       .then(
         (response) => {
           if (response.status === 200) {
-            esUsuario= true;
+            //esUsuario = true;
+            navigation.navigate("Home");
             console.log(response);
           }
         },
@@ -45,10 +38,12 @@ const LogInScreen = ({ sendUsername, sendPassword, buttonPushed, esUsuario }) =>
           console.log(error);
         }
       );
+  };
+
+  /*useEffect(() => { 
+      
       }
-    }, [buttonPushed]);
-
-
+    });*/
 
   const { height } = useWindowDimensions();
 
@@ -106,7 +101,7 @@ const styles = StyleSheet.create({
     height: 100,
     margin: 30,
   },
-  button: {
+  /*button: {
     color: "#E741EB",
     padding: 10,
     textAlign: "center",
@@ -114,11 +109,27 @@ const styles = StyleSheet.create({
     flex: "contain",
     margin: 10,
     borderRadius: 5,
-    
+
     // esto estaba en text
     fontWeight: "bold",
     color: "white",
     fontSize: 20,
+  },*/
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    elevation: 3,
+    backgroundColor: 'black',
+  },
+  text: {
+    fontSize: 16,
+    lineHeight: 21,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
   },
 });
 

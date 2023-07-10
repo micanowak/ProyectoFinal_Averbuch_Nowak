@@ -3,50 +3,30 @@ import { StyleSheet, Text, View, TextInput } from "react-native";
 import LogInScreen from "./screens/LogInScreen/LogInScreen";
 import axios from "axios";
 import { useState } from "react";
-import { NavigationContainer, StackRouter } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  StackRouter,
+  DefaultTheme,
+} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 import HomeScreen from "./screens/Home/HomeScreen.js";
 
 export default function App() {
-  const [usuario, setUsuario] = useState("");
-  const [password, setPassword] = useState("");
-  const [buttonPushed, setButtonPushed] = useState(false);
   const [esUsuario, setEsUsuario] = useState(false);
 
-  const nombreUsuario = (nom) => {
-    setUsuario(nom);
-  };
-  const constrasenia = (con) => {
-    setPassword(con);
-  };
 
-  const buttonPushedHandler = (bool) => {
-    setButtonPushed(bool);
-
-    if (bool) { 
-      axios
-        .post("http://localhost:3000/logInUsuario", {
-          username: usuario,
-          password: password,
-        })
-        .then(
-          (response) => {
-            if (response.status === 200) {
-              setEsUsuario(true);
-              console.log(response);
-            }
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-    }
+  const navTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: "#1A4B8E",
+    },
   };
 
-  if (esUsuario === true && buttonPushed === true) {
-    navigation.navigate("Home");
-  }
+  //if (esUsuario === true && buttonPushed === true) {
+  //  navigation.navigate("Home");
+  //}
 
   /*<Button
         title="Iniciar Sesion"
@@ -55,14 +35,18 @@ export default function App() {
         }
       />*/
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
+    <NavigationContainer theme={navTheme}>
+      <Stack.Navigator
+        screenOptions={{
+          animationEnabled: false,
+          headerShown: false,
+        }}
+      >
         <Stack.Screen
           name="LogIn"
           component={LogInScreen}
           style={styles.root}
-          options={{ title: "InicioDeSesion" }}
-          buttonPushed={buttonPushedHandler}
+          options={{ title: "Inicio De Sesion" }}
         />
         <Stack.Screen
           name="Home"

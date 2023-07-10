@@ -15,7 +15,7 @@ const HomeScreen = (sendUsername, sendPassword) => {
 
     return  (
         <View>
-            
+            <Text>Home Screen</Text>
         </View>
     );
 };
