@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput } from "react-native";
 import LogInScreen from "./screens/LogInScreen/LogInScreen";
 import axios from "axios";
 import { useState } from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, StackRouter } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 import HomeScreen from "./screens/Home/HomeScreen.js";
@@ -11,7 +11,7 @@ import HomeScreen from "./screens/Home/HomeScreen.js";
 export default function App() {
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
-  const [buttonPushed, setButtonPushed] = useState (false);
+  const [buttonPushed, setButtonPushed] = useState(false);
   const [esUsuario, setEsUsuario] = useState(false);
 
   const nombreUsuario = (nom) => {
@@ -24,26 +24,29 @@ export default function App() {
   const buttonPushedHandler = (bool) => {
     setButtonPushed(bool);
 
-    if (bool) {
-      axios.post("http://localhost:3000/logInUsuario", {
-        username: usuario,
-        password: password,
-      })
-      .then(
-        (response) => {
-          if(response.status === 200){
-            setEsUsuario(true);
-            console.log(response.data);
+    if (bool) { 
+      axios
+        .post("http://localhost:3000/logInUsuario", {
+          username: usuario,
+          password: password,
+        })
+        .then(
+          (response) => {
+            if (response.status === 200) {
+              setEsUsuario(true);
+              console.log(response);
+            }
+          },
+          (error) => {
+            console.log(error);
           }
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+        );
     }
-    
-  }
+  };
 
+  if (esUsuario === true && buttonPushed === true) {
+    navigation.navigate("Home");
+  }
 
   /*<Button
         title="Iniciar Sesion"
@@ -52,6 +55,22 @@ export default function App() {
         }
       />*/
   return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="LogIn"
+          component={LogInScreen}
+          style={styles.root}
+          options={{ title: "InicioDeSesion" }}
+          buttonPushed={buttonPushedHandler}
+        />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: "Home" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
     /*<NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
@@ -66,12 +85,11 @@ export default function App() {
         options={{title: 'Home'}}
       />
       </Stack.Navigator>
-    </NavigationContainer>*/
+    </NavigationContainer>
     <View style={styles.root}>
       <LogInScreen sendUsername={nombreUsuario} sendPassword={constrasenia} buttonPushed={buttonPushedHandler}/>
-      {buttonPushed ? esUsuario ? <p>Usuario Correcto</p> : <p>Usuario incorrecto</p> : <p></p>}
-      {/* NO ME FUNCIONA LA PRIMERA VEZ QUE SE INGRESA EL FORM, YA DESPUÉS SI || PUEDE LLEGAR A SERVIR FORM DATA */}
-    </View>
+      NO ME FUNCIONA LA PRIMERA VEZ QUE SE INGRESA EL FORM, YA DESPUÉS SI || PUEDE LLEGAR A SERVIR FORM DATA 
+    </View>*/
   );
 }
 

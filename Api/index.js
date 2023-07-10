@@ -6,7 +6,6 @@ import { PF_ArgTeam_Services } from "./services/services.js";
 
 const port = 3000;
 
-
 app.use(express.json())
 app.use(cors());
 
@@ -24,6 +23,7 @@ app.post('/logInUsuario', async (req, res) => {
         const results = await PF_ArgTeam_Services.logInFunction(username, password);
         if(results != undefined) {
             res.status(200).json({ message: 'Usuario Verificado' });
+            console.log(results);
         } else {
             res.status(500).json({ error: 'Nombre de usuario y/o contraseña incorrecta' });
         }
