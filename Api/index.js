@@ -21,16 +21,16 @@ app.post('/logInUsuario', async (req, res) => {
     try {
         console.log(req);
         const results = await PF_ArgTeam_Services.logInFunction(username, password);
-        if(results != undefined) {
+        console.log("results", results);
+        if(results) {
             res.status(200).json({ message: 'Usuario Verificado' });
             console.log(results);
         } else {
-            res.status(500).json({ error: 'Nombre de usuario y/o contraseña incorrecta' });
+            console.log("No encontrado");
+            res.status(401).json('Nombre de usuario y/o contraseña incorrecta');
         }
         
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Nombre de usuario y/o contraseña incorrecta' });
+        console.error("error", error);
     }
-    console.log(username, password);
 })

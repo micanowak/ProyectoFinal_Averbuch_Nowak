@@ -19,6 +19,7 @@ import axios from "axios";
 const LogInScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const buttonOnsubmitHandler = () => {
     axios
@@ -34,8 +35,8 @@ const LogInScreen = ({ navigation }) => {
             console.log(response);
           }
         },
-        (error) => {
-          console.log(error);
+        (res) => {
+          setError(res.response.data);
         }
       );
   };
@@ -80,6 +81,7 @@ const LogInScreen = ({ navigation }) => {
         style={styles.button}
         onPress={buttonOnsubmitHandler}
       ></Button>
+      {error}
     </View>
   );
 };
