@@ -1,6 +1,6 @@
 import react from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import icon from '../../assets/simboloMayor.png';
+//import icon from '../../assets/simboloMayor.png';
 
 const Card = () => {
     return (
@@ -8,19 +8,19 @@ const Card = () => {
             <Text style={styles.titleCard}>Nombre del evento</Text>
             <Text style={styles.textStyle}>23/06/23</Text>
             <Text style={styles.textStyle}>de 15 a 18 hs</Text>
-            <Image source={require( '../../assets/simboloMayor.png')} style={styles.iconStyle} ></Image>
 
         </View>
     );
 };
-
+/*            <Image source={require( '../../assets/simboloMayor.png')} style={styles.iconStyle} ></Image>
+*/
 const styles = StyleSheet.create({
     container: {
         borderColor: '#E741EB',
         borderBottomWidth:2,
         borderRightWidth:2,
         width:'80%',
-        height:'10%',
+        height:'20%',
        // alignItems: 'center',
         borderRadius:15,
         marginTop:20,
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     },
     titleCard: {
         width:'90%',
+        height:'50%',
         textAlign:'left',
         rowGap:1,
         fontWeight: 'bold',
@@ -42,11 +43,12 @@ const styles = StyleSheet.create({
 
     },
     textStyle:{
-        
+        height:'25%',
         width:'50%',
         color: '#1A4B8E',
         fontSize:12,
         paddingLeft:10,
+
     },
 });
 
