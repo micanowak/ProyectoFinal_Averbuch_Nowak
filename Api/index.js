@@ -13,6 +13,11 @@ app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 })
 
+app.get('/getEvents', async (req, res) => {
+    const Evento = await PF_ArgTeam_Services.getEvents()
+    res.status(200).send(Evento)
+})
+
 app.post('/logInUsuario', async (req, res) => {
     console.log("en post, req:", req)
     console.log(req.body);

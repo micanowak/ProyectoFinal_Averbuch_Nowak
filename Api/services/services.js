@@ -20,4 +20,18 @@ export class PF_ArgTeam_Services {
         return returnEntity;
     }
 
+    static getEvents = async () => {
+        let returnEntity = null;
+        console.log('Estoy en: PF_ArgTeam_Services.getEvents()');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .query('SELECT * FROM Evento');
+            returnEntity = result.recordsets[0];
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
+
 }
