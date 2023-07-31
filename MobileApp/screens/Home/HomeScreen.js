@@ -15,6 +15,7 @@ import axios from "axios";
 
 const HomeScreen = () => {
     const { height } = useWindowDimensions();
+
     const [listaEventos, setListaEventos] = useState([{}]); 
     const baseURL = "http://localhost:3000/getEvents";
 
@@ -27,7 +28,6 @@ const HomeScreen = () => {
             console.log(listaEventos);
         });
     }, []);
-
     return (
         <View style={styles.container}>
             <Image
