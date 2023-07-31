@@ -15,13 +15,14 @@ import axios from "axios";
 
 const HomeScreen = () => {
     const { height } = useWindowDimensions();
-    const [listaEventos, setListaEventos] = useState([{}]);
+    const [listaEventos, setListaEventos] = useState([{}]); 
     const baseURL = "http://localhost:3000/getEvents";
 
     useEffect(() => {
         axios.get(baseURL).then((response) => {
             response.data.forEach(element => {
-                setListaEventos((listaEventos) => [...listaEventos, element])
+                console.log(element);
+                setListaEventos([...listaEventos, element])  
             });
             console.log(listaEventos);
         });
