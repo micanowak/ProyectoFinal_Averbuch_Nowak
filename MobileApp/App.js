@@ -24,16 +24,6 @@ export default function App() {
     },
   };
 
-  //if (esUsuario === true && buttonPushed === true) {
-  //  navigation.navigate("Home");
-  //}
-
-  /*<Button
-        title="Iniciar Sesion"
-        onPress={() =>
-          navigation.navigate('Home', {name: 'Home'})
-        }
-      />*/
   return (
     <NavigationContainer theme={navTheme}>
       <Stack.Navigator
@@ -55,25 +45,6 @@ export default function App() {
         />
       </Stack.Navigator>
     </NavigationContainer>
-    /*<NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="LogIn"
-          component={LogInScreen}
-          style={styles.root}
-          options={{ title: "InicioDeSesion" }}
-        />
-        <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{title: 'Home'}}
-      />
-      </Stack.Navigator>
-    </NavigationContainer>
-    <View style={styles.root}>
-      <LogInScreen sendUsername={nombreUsuario} sendPassword={constrasenia} buttonPushed={buttonPushedHandler}/>
-      NO ME FUNCIONA LA PRIMERA VEZ QUE SE INGRESA EL FORM, YA DESPUÉS SI || PUEDE LLEGAR A SERVIR FORM DATA 
-    </View>*/
   );
 }
 
