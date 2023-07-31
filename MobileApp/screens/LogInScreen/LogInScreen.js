@@ -41,11 +41,6 @@ const LogInScreen = ({ navigation }) => {
       );
   };
 
-  /*useEffect(() => { 
-      
-      }
-    });*/
-
   const { height } = useWindowDimensions();
 
   return (

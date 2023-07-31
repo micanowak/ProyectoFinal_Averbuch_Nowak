@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     StyleSheet,
     View,
@@ -11,9 +11,21 @@ import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 //import logoFirex from '../../assets/images/LogoFirex.png';
 import Card from "../../components/Card/Card.js";
 import NavBar from "../../components/NavBar/NavBar.js";
+import axios from "axios";
 
 const HomeScreen = () => {
     const { height } = useWindowDimensions();
+    const [listaEventos, setListaEventos] = useState([{}]);
+    const baseURL = "http://localhost:3000/getEvents";
+
+    useEffect(() => {
+        axios.get(baseURL).then((response) => {
+            response.data.forEach(element => {
+                setListaEventos((listaEventos) => [...listaEventos, element])
+            });
+            console.log(listaEventos);
+        });
+    }, []);
 
     return (
         <View style={styles.container}>
@@ -30,8 +42,8 @@ const HomeScreen = () => {
                 name="Agregar evento"
                 style={styles.buttonStyle}
             ></Button>
-            <NavBar/>
-    </View>
+            <NavBar />
+        </View>
     );
 };
 
@@ -43,10 +55,10 @@ const styles = StyleSheet.create({
         flex: 6,
     },
     buttonStyle: {
-        width:'70%',
-        height:'10%',
-        backgroundColor:'#E741EB',
-        color:'#1A4B8E',
+        width: '70%',
+        height: '10%',
+        backgroundColor: '#E741EB',
+        color: '#1A4B8E',
     },
     imgStyle: {
         marginTop: 30,
