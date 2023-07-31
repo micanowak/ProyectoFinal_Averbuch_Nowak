@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
        // alignItems: 'center',
         borderRadius:15,
         marginTop:20,
+        backgroundColor:'white',
     },
     iconStyle: {
         resizeMode: 'contain',

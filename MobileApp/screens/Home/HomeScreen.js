@@ -14,7 +14,7 @@ import NavBar from "../../components/NavBar/NavBar.js";
 
 const HomeScreen = () => {
     const { height } = useWindowDimensions();
-
+    
     return (
         <View style={styles.container}>
             <Image
@@ -30,7 +30,7 @@ const HomeScreen = () => {
                 name="Agregar evento"
                 style={styles.buttonStyle}
             ></Button>
-            <NavBar/>
+            <NavBar/> 
     </View>
     );
 };
