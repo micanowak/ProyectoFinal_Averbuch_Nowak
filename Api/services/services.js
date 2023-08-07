@@ -34,4 +34,23 @@ export class PF_ArgTeam_Services {
         return returnEntity;
     }
 
+    static insertEvento = async (Evento) => {
+        let returnEntity = null;
+        console.log('Estoy en: PF_ArgTeam_Services.insertEvento(Evento)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pNom', Evento.nombre)
+                .input('pLug', Evento.lugar)
+                .input('pFechIn', Evento.fechIn)
+                .input('pFechFin', Evento.fechFin)
+                .input('pDesc', Evento.descripcion)
+                .query('INSERT INTO Evento (nombre, lugar, fechaInicio, fechaFin, descripcion) VALUES (@pNom, @pLug, @pFechIn, @pFechFin, @pDesc)');
+            returnEntity = result.recordsets[0];
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
+
 }

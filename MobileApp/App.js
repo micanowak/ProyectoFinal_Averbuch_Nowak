@@ -12,9 +12,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 import HomeScreen from "./screens/Home/HomeScreen.js";
 import SpecificEvent from "./screens/SpecificEvent/SpecificEvent";
+import AgregarEvento from "./screens/AgregarEvento/AgregarEvento";
 
 export default function App() {
-  const [esUsuario, setEsUsuario] = useState(false);
+  // const [esUsuario, setEsUsuario] = useState(false);
 
 
   const navTheme = {
@@ -38,6 +39,11 @@ export default function App() {
           component={SpecificEvent}
           options={{ title: "Detalle evento específico" }}
         />  
+        <Stack.Screen
+          name="AgregarEvento"
+          component={AgregarEvento}
+          options={{ title: "Agregar Evento" }}
+        /> 
         <Stack.Screen
           name="LogIn"
           component={LogInScreen}
