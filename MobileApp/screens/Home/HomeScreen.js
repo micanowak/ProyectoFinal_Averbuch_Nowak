@@ -14,6 +14,10 @@ import Card from "../../components/Card/Card.js";
 import NavBar from "../../components/NavBar/NavBar.js";
 import axios from "axios";
 
+
+//buscar SWITCH para la flechita
+
+
 const HomeScreen = () => {
     const { height } = useWindowDimensions();
 
@@ -53,8 +57,8 @@ const HomeScreen = () => {
                 name="Agregar evento"
                 style={styles.buttonStyle}
             ></Button>
-            <NavBar />
-        </View>
+            {/*<NavBar />*/}
+        </View> 
     );
 };
 

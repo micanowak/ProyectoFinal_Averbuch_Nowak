@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import DataEvent from "../../components/DataEvent/DataEvent.js";
+import Contacts from "../../components/Contacts/Contacts.js"
 
 
 const SpecificEvent = () => {
@@ -26,6 +27,7 @@ const SpecificEvent = () => {
                 <DataEvent style={styles.dataEventLeft}></DataEvent> 
                 <DataEvent style={styles.dataEventRight}></DataEvent>
             </View>
+            <Contacts></Contacts>
         </View>
     );
 };

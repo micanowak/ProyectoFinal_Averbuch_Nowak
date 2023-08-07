@@ -32,7 +32,12 @@ export default function App() {
           animationEnabled: false,
           headerShown: false,
         }}
-      >
+      > 
+      <Stack.Screen
+          name="SpecificEvent"
+          component={SpecificEvent}
+          options={{ title: "Detalle evento específico" }}
+        />  
         <Stack.Screen
           name="LogIn"
           component={LogInScreen}
@@ -44,11 +49,7 @@ export default function App() {
           component={HomeScreen}
           options={{ title: "Home" }}
         />
-        <Stack.Screen
-          name="SpecificEvent"
-          component={SpecificEvent}
-          options={{ title: "Detalle evento específico" }}
-        />        
+              
         
 
       </Stack.Navigator>
