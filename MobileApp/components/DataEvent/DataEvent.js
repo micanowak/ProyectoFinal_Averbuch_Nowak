@@ -14,29 +14,28 @@ const DataEvent = () => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor:'white',
-        borderColor:'gray',
+        borderColor:'#1A4B8E',
         borderWidth:2,
-        width:'20%',
-        height:'10%',
+        width:'70%',
+        height:'40%',
         borderRadius:15,
-        marginLeft:'20%',
+        margin:10,flex:'center',alignItems:'center'
     },
     titleCard: {
         width:'80%',
-        height:'50%',
+        height:'40%',
         textAlign:'center',
         rowGap:1,
         fontWeight: 'bold',
         color: '#E742EB',
         fontSize:15,
-        padding:10,
-
+        paddingTop:8
     },
     textStyle:{
         height:'25%',
         width:'80%',
         color: '#1A4B8E',
-        fontSize:8,
+        fontSize:13,
         padding:4,
     },
 });

@@ -15,7 +15,7 @@ app.listen(port, () => {
 
 app.get('/getEvents', async (req, res) => {
     const Evento = await PF_ArgTeam_Services.getEvents()
-    res.status(200).send(Evento)
+    res.status(200).send(Evento);
 })
 
 app.post('/logInUsuario', async (req, res) => {

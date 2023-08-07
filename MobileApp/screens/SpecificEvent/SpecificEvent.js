@@ -15,19 +15,51 @@ const SpecificEvent = () => {
     const { height } = useWindowDimensions();
 
     return(
-        <View style={styles.root}>
-            <Image
+        <View style={styles.container}>
+            <View style={styles.fondoLogo}> <Image
                 source={ArgTeamLogo}
                 style={styles.imgStyle}
-            ></Image>
-            <Text style={styles.nombreEvento}>Nombre del evento</Text>
+            ></Image></View>
+            <Text style={styles.nombreEvento}>Nombre del Santa rosa de la FO</Text>
             <Text style={styles.desc}>descripcion</Text> 
-            <DataEvent></DataEvent> 
+            <View style={styles.divDataEvent}>
+                <DataEvent style={styles.dataEventLeft}></DataEvent> 
+                <DataEvent style={styles.dataEventRight}></DataEvent>
+            </View>
         </View>
     );
 };
-
-const syles = StyleSheet.create({
+/**/
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: "#cfcfcf",
+        alignItems: "center",
+        flex: "center",
+        flex: 6,
+    },
+    divDataEvent: {
+        width:'80%',
+        height:'30%',
+        rowGap:1,
+        padding:10,
+        alignItems: "center",
+        flex: "center",
+    },
+    dataEventLeft:{
+        width:'80%',
+        height:'100%',
+        flex:'left'
+    },dataEventRight:{
+        width:'80%',
+        height:'100%',
+        flex:'right'
+    },
+    fondoLogo:{
+        width:'100%',
+        backgroundColor:'#1A4B8E',
+        alignItems: "center",
+        flex: "center",
+    },
     imgStyle: {
         marginTop: 30,
         marginBottom: 20,
@@ -37,11 +69,13 @@ const syles = StyleSheet.create({
     },
     nombreEvento:{
         backgroundColor:'#1A4B8E',
-        color:'white',
+        color:'white',margin:4,
+        padding:20,marginTop:10,
+        borderRadius:15,fontSize:15,fontWeight:'700'
     },
     desc: {
         width:'80%',
-        height:'50%',
+        height:'30%',
         textAlign:'left',
         rowGap:1,
         color: '#1A4B8E',

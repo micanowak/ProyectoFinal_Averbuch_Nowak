@@ -11,6 +11,7 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 import HomeScreen from "./screens/Home/HomeScreen.js";
+import SpecificEvent from "./screens/SpecificEvent/SpecificEvent";
 
 export default function App() {
   const [esUsuario, setEsUsuario] = useState(false);
@@ -43,6 +44,13 @@ export default function App() {
           component={HomeScreen}
           options={{ title: "Home" }}
         />
+        <Stack.Screen
+          name="SpecificEvent"
+          component={SpecificEvent}
+          options={{ title: "Detalle evento específico" }}
+        />        
+        
+
       </Stack.Navigator>
     </NavigationContainer>
   );
