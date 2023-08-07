@@ -20,7 +20,7 @@ const SpecificEvent = () => {
                 source={ArgTeamLogo}
                 style={styles.imgStyle}
             ></Image></View>
-            <Text style={styles.nombreEvento}>Nombre del evento</Text>
+            <Text style={styles.nombreEvento}>Nombre del Santa rosa de la FO</Text>
             <Text style={styles.desc}>descripcion</Text> 
             <View style={styles.divDataEvent}>
                 <DataEvent style={styles.dataEventLeft}></DataEvent> 
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#1A4B8E',
         color:'white',margin:4,
         padding:20,marginTop:10,
-        borderRadius:15
+        borderRadius:15,fontSize:15,fontWeight:'700'
     },
     desc: {
         width:'80%',

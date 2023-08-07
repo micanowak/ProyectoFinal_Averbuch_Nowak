@@ -37,10 +37,10 @@ const HomeScreen = () => {
     }, []);
     return (
         <View style={styles.container}>
-            <Image
-                source={ArgTeamLogo /*require( '../../assets/images/ArgTeamLogo.png')*/}
+            <View style={styles.fondoLogo}><Image
+                source={ArgTeamLogo}
                 style={styles.imgStyle}
-            ></Image>
+            ></Image></View>
             <Card />
             <Card />
             <Card />
@@ -64,6 +64,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flex: "center",
         flex: 6,
+    },fondoLogo:{
+        width:'100%',
+        backgroundColor:'#1A4B8E',
+        alignItems: "center",
+        flex: "center",
     },
     buttonStyle: {
         width: '70%',
