@@ -39,3 +39,14 @@ app.post('/logInUsuario', async (req, res) => {
         console.error("error", error);
     }
 })
+
+app.post('/AgregarEvento', async (req, res) => {
+    console.log("en post, req:", req)
+    try {
+        await PF_ArgTeam_Services.insertEvento(req.body)
+        res.status(200).json({ message: 'Evento creado' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Fallo el insert' });
+    }
+})

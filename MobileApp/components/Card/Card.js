@@ -9,7 +9,6 @@ const Card = (props) => {
             <Text style={styles.textStyle}>{props.evento.fechaInicio}</Text>
             <Text style={styles.textStyle}>{props.evento.fechaFin}</Text>
             <Text style={styles.textStyle}>{props.evento.lugar}</Text>
-            <Text style={styles.textStyle}>{props.evento.descripcion}</Text>
 
         </View>
     );
