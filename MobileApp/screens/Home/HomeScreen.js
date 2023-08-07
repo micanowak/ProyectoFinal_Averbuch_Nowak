@@ -6,6 +6,7 @@ import {
     Image,
     useWindowDimensions,
     Button,
+    TouchableOpacity                                                                                      
 } from "react-native";
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 //import logoFirex from '../../assets/images/LogoFirex.png';
@@ -18,6 +19,12 @@ const HomeScreen = () => {
 
     const [listaEventos, setListaEventos] = useState([{}]); 
     const baseURL = "http://localhost:3000/getEvents";
+
+    const buttonOnPressHandler = (e) => {
+        e.preventDefault();
+        console.log("entra");
+        navigation.navigate("SpecificEvent");
+    }
 
     useEffect(() => {
         axios.get(baseURL).then((response) => {
@@ -37,7 +44,10 @@ const HomeScreen = () => {
             <Card />
             <Card />
             <Card />
-            <Text style={styles.textStyle}>Mostrar más +</Text>
+            <TouchableOpacity onPress={buttonOnPressHandler}>
+                <Text>Press Here</Text>
+            </TouchableOpacity>
+            {/*<Text style={styles.textStyle} onPress={buttonOnPressHandler}>Mostrar más +</Text>*/}
             <Button
                 title="Agregar evento"
                 name="Agregar evento"
@@ -59,7 +69,14 @@ const styles = StyleSheet.create({
         width: '70%',
         height: '10%',
         backgroundColor: '#E741EB',
-        color: '#1A4B8E',
+        color: '#1A4B8E',padding: 10,
+    textAlign: "center", margin: 10,
+    borderRadius: 5,flex: "contain"
+        /*color: "#E741EB",
+    
+    width: "15%",
+    ",
+   */
     },
     imgStyle: {
         marginTop: 30,

@@ -6,7 +6,8 @@ import {
   Image,
   useWindowDimensions,
   Button,
-  Pressable
+  Pressable,
+  TouchableOpacity
 } from "react-native";
 
 import LogoFirex from "../../assets/images/LogoFirex.png";
