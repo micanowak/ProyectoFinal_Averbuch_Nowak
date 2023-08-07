@@ -16,15 +16,15 @@ import axios from "axios";
 const HomeScreen = () => {
     const { height } = useWindowDimensions();
 
-    const [listaEventos, setListaEventos] = useState([{}]); 
+    const [listaEventos, setListaEventos] = useState([]); 
     const baseURL = "http://localhost:3000/getEvents";
 
     useEffect(() => {
         axios.get(baseURL).then((response) => {
-            response.data.forEach(element => {
+            /*response.data.forEach(element => {
                 console.log(element);
-                setListaEventos([...listaEventos, element])  
-            });
+            });*/
+            setListaEventos(response.data);
             console.log(listaEventos);
         });
     }, []);
@@ -34,9 +34,10 @@ const HomeScreen = () => {
                 source={ArgTeamLogo /*require( '../../assets/images/ArgTeamLogo.png')*/}
                 style={styles.imgStyle}
             ></Image>
-            <Card />
-            <Card />
-            <Card />
+            <>
+                {listaEventos.map(evento => <Card evento={evento} />)}
+            </>
+                
             <Text style={styles.textStyle}>Mostrar más +</Text>
             <Button
                 title="Agregar evento"

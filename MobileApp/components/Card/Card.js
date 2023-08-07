@@ -2,12 +2,14 @@ import react from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 //import icon from '../../assets/simboloMayor.png';
 
-const Card = () => {
+const Card = (props) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.titleCard}>Nombre del evento</Text>
-            <Text style={styles.textStyle}>23/06/23</Text>
-            <Text style={styles.textStyle}>de 15 a 18 hs</Text>
+            <Text style={styles.titleCard}>{props.evento.nombre}</Text>
+            <Text style={styles.textStyle}>{props.evento.fechaInicio}</Text>
+            <Text style={styles.textStyle}>{props.evento.fechaFin}</Text>
+            <Text style={styles.textStyle}>{props.evento.lugar}</Text>
+            <Text style={styles.textStyle}>{props.evento.descripcion}</Text>
 
         </View>
     );
