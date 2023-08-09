@@ -27,7 +27,11 @@ const SpecificEvent = () => {
                 <DataEvent style={styles.dataEventLeft}></DataEvent> 
                 <DataEvent style={styles.dataEventRight}></DataEvent>
             </View>
-            <Contacts></Contacts>
+            <Text style = {styles.tituloContactos}>Contactos</Text>
+            <View style = {styles.contactos}>
+                <Contacts></Contacts>
+                <Contacts></Contacts>
+            </View>
         </View>
     );
 };
@@ -38,6 +42,14 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flex: "center",
         flex: 6,
+    },
+    tituloContactos:{
+        color:'#1A4B8E',
+        fontWeight:'500',fontSize:16,  
+    },
+    contactos:{
+        width: '100%',
+        height:'20%', flexDirection:"row", 
     },
     divDataEvent: {
         width:'80%',
