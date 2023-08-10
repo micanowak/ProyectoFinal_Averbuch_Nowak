@@ -13,6 +13,7 @@ const Stack = createNativeStackNavigator();
 import HomeScreen from "./screens/Home/HomeScreen.js";
 import SpecificEvent from "./screens/SpecificEvent/SpecificEvent";
 import AgregarEvento from "./screens/AgregarEvento/AgregarEvento";
+import NewEventsDate from "./screens/NewEventsDate/NewEventsDate";
 
 export default function App() {
   // const [esUsuario, setEsUsuario] = useState(false);
@@ -28,6 +29,7 @@ export default function App() {
 
   return (
     <NavigationContainer theme={navTheme}>
+      
       <Stack.Navigator
         screenOptions={{
           animationEnabled: false,
@@ -35,10 +37,21 @@ export default function App() {
         }}
       > 
       <Stack.Screen
+          name="NewEventsDate"
+          component={NewEventsDate}
+          options={{ title: "Fecha nuevo evento" }}
+        />  
+        <Stack.Screen
           name="SpecificEvent"
           component={SpecificEvent}
           options={{ title: "Detalle evento específico" }}
-        />  
+        /> 
+      
+      
+      
+      
+      
+      
         <Stack.Screen
           name="AgregarEvento"
           component={AgregarEvento}

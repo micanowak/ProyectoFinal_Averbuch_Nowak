@@ -13,10 +13,9 @@ const DataEvent = () => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor:'white',
-        borderColor:'#1A4B8E',
-        borderWidth:1,
-        width:'50%',
-        height:'30%',
+        
+        width:'100%',
+        height:'100%',
         borderRadius:15,
         margin:3,flex:'center',alignItems:'center'
     },

@@ -24,11 +24,14 @@ const SpecificEvent = () => {
             <Text style={styles.nombreEvento}>Nombre del Santa rosa de la FO</Text>
             <Text style={styles.desc}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </Text> 
             <View style={styles.divDataEvent}>
+                <Text style={styles.titleCard}>Dia Inicio</Text>
                 <DataEvent style={styles.dataEvent}></DataEvent> 
+                <Text style={styles.titleCardFinal}>Dia Final</Text>
                 <DataEvent style={styles.dataEvent}></DataEvent>
             </View>
             <Text style = {styles.tituloContactos}>Contactos</Text>
             <View style = {styles.contactos}>
+
                 <Contacts></Contacts>
                 <Contacts></Contacts>
                 
@@ -48,9 +51,29 @@ const styles = StyleSheet.create({
         
         flex: 6,
     },  
+    titleCardFinal:{
+        width:'80%',
+        height:'15%',
+        textAlign:'center',
+        rowGap:1,
+        fontWeight: 'bold',
+        color: '#6736CF',
+        fontSize:15,
+        paddingTop:8, 
+    },
     tituloContactos:{
         color:'#1A4B8E', fontWeight:'500', fontSize:16, textAlign:'left',margin:5   
     },
+    titleCard: {
+        width:'80%',
+        height:'15%',
+        textAlign:'center',
+        rowGap:1,
+        fontWeight: 'bold',
+        color: '#E742EB',
+        fontSize:15,
+        paddingTop:8, 
+    },  
     contactos:{
         width: '100%',
         flexDirection:"row",alignItems: "center", 
@@ -66,7 +89,7 @@ const styles = StyleSheet.create({
     },
     dataEvent:{
         width:'50%',
-        height:'100%',
+        height:'50%',
     },
     fondoLogo:{
         width:'100%',
