@@ -16,10 +16,10 @@ const styles = StyleSheet.create({
         backgroundColor:'white',
         borderColor:'#1A4B8E',
         borderWidth:2,
-        width:'70%',
+        width:'45%',
         height:'40%',
         borderRadius:15,
-        margin:10,flex:'center',alignItems:'center'
+        margin:3,flex:'center',alignItems:'center'
     },
     titleCard: {
         width:'80%',

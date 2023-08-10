@@ -2,7 +2,7 @@ import react from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import phoneIcon from "../../assets/images/phoneIcon.png";
 import mailIcon from "../../assets/images/mailIcon.png";
-const DataEvent = () => {
+const Contact = () => {
     return(
         <View style={styles.container}>
             <Text style={styles.titleCard}>María Sanchez</Text>
@@ -20,10 +20,10 @@ const styles = StyleSheet.create({
         borderRightWidth:3,
         flexDirection: 'row',
         width:'32%',
-        height:'30%',
+        height:'80%',
         borderRadius:15,
-        margin:10,flex:'center',alignItems:'center',flexDirection:'row', flex: 1,
-        justifyContent: 'center'
+        margin:10,flex:'center',alignItems:'center',flex: 1,
+        justifyContent: 'center', 
     },
     titleCard: {
         width:'90%',
@@ -34,25 +34,23 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#1A4B8E',
         fontSize:12,
-        textAlign: 'center',
+        
     },
     containerPics:{
-        width: '50%', height:'60%',marginBottom:15,alignItems:'flex-start',
+        width: '50%', height:'90%',marginBottom:15,alignItems:'center',flexDirection: 'column', marginTop:10,
     },
     textStyle:{
-        height:'25%',
+        height:'25%', 
         width:'80%',
         color: '#1A4B8E',
         fontSize:18,
-        padding:4,
+        padding:4,flexDirection:'row',flex:1 ,alignContent:'center',alignItems:'center',
     },
     imgStyle: {
-        resizeMode: "contain",
-        width: '70%',
-        height:'70%',
-        alignItems:'left', flex:'left'
-    },
+        width: '40%', marginTop:5,
+        height:'40%',
+    }
 });
 
 
-export default DataEvent;
+export default Contact;

@@ -22,12 +22,18 @@ const SpecificEvent = () => {
                 style={styles.imgStyle}
             ></Image></View>
             <Text style={styles.nombreEvento}>Nombre del Santa rosa de la FO</Text>
-            <Text style={styles.desc}>descripcion</Text> 
+            <Text style={styles.desc}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </Text> 
             <View style={styles.divDataEvent}>
-                <DataEvent style={styles.dataEventLeft}></DataEvent> 
-                <DataEvent style={styles.dataEventRight}></DataEvent>
+                <DataEvent style={styles.dataEvent}></DataEvent> 
+                <DataEvent style={styles.dataEvent}></DataEvent>
             </View>
             <Text style = {styles.tituloContactos}>Contactos</Text>
+            <View style = {styles.contactos}>
+                <Contacts></Contacts>
+                <Contacts></Contacts>
+                
+            </View>
+            <Text style = {styles.tituloContactos}>Coordinadores</Text>
             <View style = {styles.contactos}>
                 <Contacts></Contacts>
                 <Contacts></Contacts>
@@ -39,34 +45,28 @@ const SpecificEvent = () => {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: "#cfcfcf",
-        alignItems: "center",
-        flex: "center",
+        
         flex: 6,
-    },
+    },  
     tituloContactos:{
-        color:'#1A4B8E',
-        fontWeight:'500',fontSize:16,  
+        color:'#1A4B8E', fontWeight:'500', fontSize:16, textAlign:'left',margin:5   
     },
     contactos:{
         width: '100%',
-        height:'20%', flexDirection:"row", 
+        flexDirection:"row",alignItems: "center", 
+        flex:1, justifyContent: 'flex-start', maxHeight:'10%'    //IMPORTanteeeeee  
+
     },
     divDataEvent: {
-        width:'80%',
-        height:'30%',
-        rowGap:1,
-        padding:10,
+        width:'100%',
+        height:'20%',
+        rowGap:1, marginTop:5, padding:0,
         alignItems: "center",
-        flex: "center",
+        flex:  1, flexDirection:'column',maxHeight:'30%'
     },
-    dataEventLeft:{
-        width:'80%',
+    dataEvent:{
+        width:'50%',
         height:'100%',
-        flex:'left'
-    },dataEventRight:{
-        width:'80%',
-        height:'100%',
-        flex:'right'
     },
     fondoLogo:{
         width:'100%',
@@ -83,18 +83,19 @@ const styles = StyleSheet.create({
     },
     nombreEvento:{
         backgroundColor:'#1A4B8E',
-        color:'white',margin:4,
+        color:'white',marginLeft:30,marginRight:30,
         padding:20,marginTop:10,
-        borderRadius:15,fontSize:15,fontWeight:'700'
+        borderRadius:15,fontSize:15,fontWeight:'700',alignItems: "center",
+        flex: "center", 
     },
     desc: {
         width:'80%',
-        height:'30%',
+        maxHeight:'15%',
         textAlign:'left',
         rowGap:1,
         color: '#1A4B8E',
-        fontSize:20,
-        padding:10,
+        fontSize:15,
+        padding:10,margin:10
 
     },
 });
