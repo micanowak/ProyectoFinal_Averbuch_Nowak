@@ -1,14 +1,23 @@
 import react from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 //import icon from '../../assets/simboloMayor.png';
 
 const Card = (props) => {
+    
+    const masInfoOnPressHandler = (e) => {
+        navigation.navigate("SpecificEvent");
+    }
+    
     return (
         <View style={styles.container}>
             <Text style={styles.titleCard}>{props.evento.nombre}</Text>
             <Text style={styles.textStyle}>{props.evento.fechaInicio}</Text>
             <Text style={styles.textStyle}>{props.evento.fechaFin}</Text>
             <Text style={styles.textStyle}>{props.evento.lugar}</Text>
+            <TouchableOpacity style={styles.butonStyle} onPress={masInfoOnPressHandler}>
+                <Text>Más info</Text>
+            </TouchableOpacity>
+
 
         </View>
     );
@@ -26,6 +35,12 @@ const styles = StyleSheet.create({
         borderRadius:15,
         marginTop:20,
         backgroundColor:'white',
+    },
+    butonStyle:{
+        backgroundColor: '#E741EB',
+        width:50 ,
+        height:30,
+        textAlign: 'center',
     },
     iconStyle: {
         resizeMode: 'contain',

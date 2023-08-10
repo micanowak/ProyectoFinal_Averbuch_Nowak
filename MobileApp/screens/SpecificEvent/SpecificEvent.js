@@ -12,7 +12,7 @@ import DataEvent from "../../components/DataEvent/DataEvent.js";
 import Contacts from "../../components/Contacts/Contacts.js"
 
 
-const SpecificEvent = () => {
+const SpecificEvent = (props) => {
     const { height } = useWindowDimensions();
 
     return(

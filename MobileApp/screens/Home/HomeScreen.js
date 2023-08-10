@@ -18,7 +18,7 @@ import axios from "axios";
 //buscar SWITCH para la flechita
 
 
-const HomeScreen = () => {
+const HomeScreen = (sendlistaEventos) => {
     const { height } = useWindowDimensions();
 
     const [listaEventos, setListaEventos] = useState([]); 
@@ -29,6 +29,9 @@ const HomeScreen = () => {
         console.log("entra");
         navigation.navigate("SpecificEvent");
     }
+    const buttonAgregarOnPressHandler = () => {
+        navigation.navigate("AgregarEvento");
+    }
 
     useEffect(() => {
         axios.get(baseURL).then((response) => {
@@ -37,6 +40,7 @@ const HomeScreen = () => {
             });*/
             setListaEventos(response.data);
             console.log(listaEventos);
+            sendlistaEventos(listaEventos);
         });
     }, []);
     return (
@@ -56,6 +60,7 @@ const HomeScreen = () => {
                 title="Agregar evento"
                 name="Agregar evento"
                 style={styles.buttonStyle}
+                onPress={buttonAgregarOnPressHandler}
             ></Button>
             {/*<NavBar />*/}
         </View> 

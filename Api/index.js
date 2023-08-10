@@ -33,6 +33,7 @@ app.post('/logInUsuario', async (req, res) => {
         } else {
             console.log("No encontrado");
             res.status(401).json('Nombre de usuario y/o contraseña incorrecta');
+            console.log(results);
         }
         
     } catch (error) {

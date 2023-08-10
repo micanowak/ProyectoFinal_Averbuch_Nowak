@@ -16,7 +16,11 @@ import AgregarEvento from "./screens/AgregarEvento/AgregarEvento";
 import NewEventsDate from "./screens/NewEventsDate/NewEventsDate";
 
 export default function App() {
-  // const [esUsuario, setEsUsuario] = useState(false);
+  const [listaEventos, setListaEventos] = useState([]);
+  const listaEvendonsSent = (listaaa) => {
+    setListaEventos(...listaEventos, listaaa)
+    console.log(listaEventos);
+  }
 
 
   const navTheme = {
@@ -37,30 +41,16 @@ export default function App() {
         }}
       > 
       <Stack.Screen
-          name="NewEventsDate"
-          component={NewEventsDate}
-          options={{ title: "Fecha nuevo evento" }}
-        />  
-        <Stack.Screen
           name="SpecificEvent"
           component={SpecificEvent}
+          initialParams={listaEventos}
           options={{ title: "Detalle evento específico" }}
-        /> 
-      
-      
-      
-      
-      
-      
-        <Stack.Screen
-          name="AgregarEvento"
-          component={AgregarEvento}
-          options={{ title: "Agregar Evento" }}
-        /> 
-        <Stack.Screen
+        />  
+      <Stack.Screen
           name="LogIn"
           component={LogInScreen}
           style={styles.root}
+          initialParams={listaEvendonsSent}
           options={{ title: "Inicio De Sesion" }}
         />
         <Stack.Screen
@@ -68,8 +58,16 @@ export default function App() {
           component={HomeScreen}
           options={{ title: "Home" }}
         />
-              
-        
+      <Stack.Screen
+          name="NewEventsDate"
+          component={NewEventsDate}
+          options={{ title: "Fecha nuevo evento" }}
+        />       
+        <Stack.Screen
+          name="AgregarEvento"
+          component={AgregarEvento}
+          options={{ title: "Agregar Evento" }}
+        /> 
 
       </Stack.Navigator>
     </NavigationContainer>
