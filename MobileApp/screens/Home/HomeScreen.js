@@ -22,19 +22,18 @@ import { useNavigation } from '@react-navigation/native';
 const HomeScreen = (sendlistaEventos) => {
     const { height } = useWindowDimensions();
     const navigation = useNavigation();
+    const [eventoCreado, setEventoCreado] = useState({});
 
     const [listaEventos, setListaEventos] = useState([]); 
     const baseURL = "http://localhost:3000/getEvents";
 
-    const buttonOnPressHandler = (e) => {
-        e.preventDefault();
-        console.log("entra");
-        navigation.navigate("SpecificEvent");
-    }
     const buttonAgregarOnPressHandler = () => {
         navigation.navigate("AgregarEvento");
     }
 
+    const buttonAgregarOnPressHandler2 = () => {
+        navigation.navigate("Ir a NewEventsDate");
+    }
     useEffect(() => {
         axios.get(baseURL).then((response) => {
             /*response.data.forEach(element => {
@@ -45,6 +44,11 @@ const HomeScreen = (sendlistaEventos) => {
             sendlistaEventos(listaEventos);
         });
     }, []);
+
+    const spoilerToShow = () => {
+        navigation.navigate("NewEventsDate");
+    }
+
     return (
         <View style={styles.container}>
             <View style={styles.fondoLogo}><Image
@@ -54,9 +58,6 @@ const HomeScreen = (sendlistaEventos) => {
             <>
                 {listaEventos.map((element) => <Card evento={element}/>)}
             </>
-            <TouchableOpacity onPress={buttonOnPressHandler}>
-                <Text>Press Here</Text>
-            </TouchableOpacity>
             {/*<Text style={styles.textStyle} onPress={buttonOnPressHandler}>Mostrar más +</Text>*/}
             <Button
                 title="Agregar evento"
@@ -64,6 +65,8 @@ const HomeScreen = (sendlistaEventos) => {
                 style={styles.buttonStyle}
                 onPress={buttonAgregarOnPressHandler}
             ></Button>
+            <Text onPress={spoilerToShow}>Spoiler Screen</Text>
+
             {/*<NavBar />*/}
         </View> 
     );
@@ -86,7 +89,7 @@ const styles = StyleSheet.create({
         height: '10%',
         backgroundColor: '#E741EB',
         color: '#1A4B8E',padding: 10,
-    textAlign: "center", margin: 10,
+    textAlign: "center", marginTop: 50,
     borderRadius: 5,flex: "contain"
         /*color: "#E741EB",
     

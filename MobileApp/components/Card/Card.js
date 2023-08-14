@@ -17,7 +17,7 @@ const Card = (props) => {
             <Text style={styles.textStyle}>{props.evento.fechaFin}</Text>
             <Text style={styles.textStyle}>{props.evento.lugar}</Text>
             <TouchableOpacity style={styles.butonStyle} onPress={masInfoOnPressHandler}>
-                <Text>Más info</Text>
+                <Text style = {styles.masInfo}>Más info</Text>
             </TouchableOpacity>
         </View>
     );
@@ -38,9 +38,13 @@ const styles = StyleSheet.create({
     },
     butonStyle:{
         backgroundColor: '#E741EB',
-        width:50 ,
+        width:'100% ',
         height:30,
         textAlign: 'center',
+        borderRadius:10
+    },
+    masInfo:{
+        color:'white', paddingTop:4,
     },
     iconStyle: {
         resizeMode: 'contain',

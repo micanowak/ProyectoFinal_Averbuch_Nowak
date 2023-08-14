@@ -30,10 +30,14 @@ const SpecificEvent = (props) => {
             <Text style={styles.nombreEvento}>{props.route.params.evento.nombre}</Text>
             <Text style={styles.desc}>{props.route.params.evento.descripcion} </Text> 
             <View style={styles.divDataEvent}>
-                <Text style={styles.titleCard}>{props.route.params.evento.fechaInicio}</Text>
-                <DataEvent style={styles.dataEvent}></DataEvent> 
-                <Text style={styles.titleCardFinal}>{props.route.params.evento.fechaFin}</Text>
-                <DataEvent style={styles.dataEvent}></DataEvent>
+                <View style = {styles.containerCadaFecha}>
+                    <Text style={styles.titleCard}>Fecha Inicio</Text>
+                    <Text style={styles.textStyle}>{props.route.params.evento.fechaInicio}</Text> 
+                </View>
+                <View style = {styles.containerCadaFecha}>
+                    <Text style={styles.titleCardFinal}> Fecha Final</Text>
+                    <Text style={styles.textStyle} >{props.route.params.evento.fechaFin}</Text>
+                </View>
             </View>
             <Text style = {styles.tituloContactos}>Contactos</Text>
             <View style = {styles.contactos}>
@@ -57,6 +61,15 @@ const styles = StyleSheet.create({
         
         flex: 6,
     },  
+    containerCadaFecha: {
+        backgroundColor:'white',
+        borderColor:'#1A4B8E',
+        borderWidth:1,
+        width:'50%',
+        height:'30%',
+        borderRadius:15,
+        margin:3,flex:'center',alignItems:'center'
+    },
     titleCardFinal:{
         width:'80%',
         height:'15%',
@@ -127,6 +140,16 @@ const styles = StyleSheet.create({
         padding:10,margin:10
 
     },
+    
+    textStyle:{
+        height:'25%',
+        width:'80%',
+        color: '#1A4B8E',
+        fontSize:13,
+        padding:12,
+        marginTop:10
+    },
+    
 });
 
 export default SpecificEvent;

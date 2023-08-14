@@ -1,11 +1,11 @@
 import react from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
-const DataEvent = () => {
+const DataEvent = (props) => {
     return(
         <View style={styles.container}>
-            <Text style={styles.textStyle}>23/06/23</Text>
-            <Text style={styles.textStyle}>de 15 a 18 hs</Text>
+            <Text style={styles.textStyle}>{props.evento.fechaInicio}</Text>
+{/*  <Text style={styles.textStyle}>de 15 a 18 hs</Text>*/}
 
         </View>
     );
