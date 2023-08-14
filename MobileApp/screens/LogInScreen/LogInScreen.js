@@ -11,6 +11,7 @@ import {
 } from "react-native";
 
 import LogoFirex from "../../assets/images/LogoFirex.png";
+import { useNavigation } from '@react-navigation/native';
 
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import CustomInputTop from "../../components/CustomInputTop/CustomInputTop";
@@ -21,6 +22,7 @@ const LogInScreen = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigation = useNavigation();
 
   const buttonOnsubmitHandler = () => {
     axios

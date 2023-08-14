@@ -41,18 +41,18 @@ export default function App() {
         }}
       > 
       <Stack.Screen
-          name="SpecificEvent"
-          component={SpecificEvent}
-          initialParams={listaEventos}
-          options={{ title: "Detalle evento específico" }}
-        />  
-      <Stack.Screen
           name="LogIn"
           component={LogInScreen}
           style={styles.root}
           initialParams={listaEvendonsSent}
           options={{ title: "Inicio De Sesion" }}
         />
+      <Stack.Screen
+          name="SpecificEvent"
+          component={SpecificEvent}
+          initialParams={listaEventos}
+          options={{ title: "Detalle evento específico" }}
+        />  
         <Stack.Screen
           name="Home"
           component={HomeScreen}

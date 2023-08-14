@@ -10,10 +10,12 @@ import {
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import DataEvent from "../../components/DataEvent/DataEvent.js";
 import Contacts from "../../components/Contacts/Contacts.js"
+import { useNavigation } from '@react-navigation/native';
 
 
 const SpecificEvent = (props) => {
     const { height } = useWindowDimensions();
+    const navigation = useNavigation();
 
     return(
         <View style={styles.container}>

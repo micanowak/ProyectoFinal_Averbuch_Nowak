@@ -11,9 +11,11 @@ import {
 } from "react-native";
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import DataEvent from "../../components/DataEvent/DataEvent.js";
+import { useNavigation } from '@react-navigation/native';
 
 
 const AgregarEvento = () => {
+    const navigation = useNavigation();
     const { height } = useWindowDimensions();
     const [id, setId] = useState(0);
     const [nombre, setNombre] = useState('');

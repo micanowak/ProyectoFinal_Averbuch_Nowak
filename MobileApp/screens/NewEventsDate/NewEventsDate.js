@@ -3,9 +3,11 @@ import { StyleSheet, View, Image, useWindowDimensions,Text,Button } from "react-
 import { Calendar } from 'react-native-calendars';
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import DataEventSmall from "../../components/DataEvent/DataEventSmall.js";
+import { useNavigation } from '@react-navigation/native';
 
 const NewEventsDate = () => {
     const { height } = useWindowDimensions();
+    const navigation = useNavigation();
 
     return (
         <View style={styles.container}>

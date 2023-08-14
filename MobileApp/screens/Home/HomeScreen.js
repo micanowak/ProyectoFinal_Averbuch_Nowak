@@ -13,6 +13,7 @@ import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import Card from "../../components/Card/Card.js";
 import NavBar from "../../components/NavBar/NavBar.js";
 import axios from "axios";
+import { useNavigation } from '@react-navigation/native';
 
 
 //buscar SWITCH para la flechita
@@ -20,6 +21,7 @@ import axios from "axios";
 
 const HomeScreen = (sendlistaEventos) => {
     const { height } = useWindowDimensions();
+    const navigation = useNavigation();
 
     const [listaEventos, setListaEventos] = useState([]); 
     const baseURL = "http://localhost:3000/getEvents";
