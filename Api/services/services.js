@@ -42,8 +42,8 @@ export class PF_ArgTeam_Services {
             let result = await pool.request()
                 .input('pNom', Evento.nombre)
                 .input('pLug', Evento.lugar)
-                .input('pFechIn', Evento.fechIn)
-                .input('pFechFin', Evento.fechFin)
+                .input('pFechIn', Evento.fechaInicio)
+                .input('pFechFin', Evento.fechaFin)
                 .input('pDesc', Evento.descripcion)
                 .query('INSERT INTO Evento (nombre, lugar, fechaInicio, fechaFin, descripcion) VALUES (@pNom, @pLug, @pFechIn, @pFechFin, @pDesc)');
             returnEntity = result.recordsets[0];

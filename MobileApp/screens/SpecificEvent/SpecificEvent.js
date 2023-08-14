@@ -16,19 +16,23 @@ import { useNavigation } from '@react-navigation/native';
 const SpecificEvent = (props) => {
     const { height } = useWindowDimensions();
     const navigation = useNavigation();
+    const onpressVolver = () => {
+        navigation.navigate("Home");
+    }
 
     return(
         <View style={styles.container}>
+            <Text onPress={onpressVolver}>Volver!</Text>
             <View style={styles.fondoLogo}> <Image
                 source={ArgTeamLogo}
                 style={styles.imgStyle}
             ></Image></View>
-            <Text style={styles.nombreEvento}>Nombre del Santa rosa de la FO</Text>
-            <Text style={styles.desc}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </Text> 
+            <Text style={styles.nombreEvento}>{props.route.params.evento.nombre}</Text>
+            <Text style={styles.desc}>{props.route.params.evento.descripcion} </Text> 
             <View style={styles.divDataEvent}>
-                <Text style={styles.titleCard}>Dia Inicio</Text>
+                <Text style={styles.titleCard}>{props.route.params.evento.fechaInicio}</Text>
                 <DataEvent style={styles.dataEvent}></DataEvent> 
-                <Text style={styles.titleCardFinal}>Dia Final</Text>
+                <Text style={styles.titleCardFinal}>{props.route.params.evento.fechaFin}</Text>
                 <DataEvent style={styles.dataEvent}></DataEvent>
             </View>
             <Text style = {styles.tituloContactos}>Contactos</Text>

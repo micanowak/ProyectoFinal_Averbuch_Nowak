@@ -1,11 +1,13 @@
 import react from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 //import icon from '../../assets/simboloMayor.png';
+import { useNavigation } from '@react-navigation/native';
 
 const Card = (props) => {
+    const navigation = useNavigation();
     
     const masInfoOnPressHandler = (e) => {
-        navigation.navigate("SpecificEvent");
+        navigation.navigate("SpecificEvent", { evento: props.evento });
     }
     
     return (
@@ -17,8 +19,6 @@ const Card = (props) => {
             <TouchableOpacity style={styles.butonStyle} onPress={masInfoOnPressHandler}>
                 <Text>Más info</Text>
             </TouchableOpacity>
-
-
         </View>
     );
 };

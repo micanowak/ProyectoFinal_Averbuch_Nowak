@@ -18,7 +18,7 @@ import CustomInputTop from "../../components/CustomInputTop/CustomInputTop";
 import CustomInputBottom from "../../components/CustomInputBottom/CustomInputBottom";
 import axios from "axios";
 
-const LogInScreen = ({ navigation }) => {
+const LogInScreen = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");

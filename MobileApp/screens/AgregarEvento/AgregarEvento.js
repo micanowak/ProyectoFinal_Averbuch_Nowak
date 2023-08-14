@@ -14,7 +14,7 @@ import DataEvent from "../../components/DataEvent/DataEvent.js";
 import { useNavigation } from '@react-navigation/native';
 
 
-const AgregarEvento = () => {
+const AgregarEvento = ({sendEvento}) => {
     const navigation = useNavigation();
     const { height } = useWindowDimensions();
     const [id, setId] = useState(0);
@@ -24,6 +24,7 @@ const AgregarEvento = () => {
     const [dat, setDate] = useState(new Date());
     const [fechaInicio, setFechaInicio] = useState(new Date());
     const [descripcion, setDescripcion] = useState('');
+    const [SubmitPressed, setSubmitPressed] = useState(false);
 
     const nombreOnchangeHandler = evento => {
         setNombre(evento.target.value)
@@ -47,6 +48,7 @@ const AgregarEvento = () => {
 
     const buttonOnsubmitHandler = evento => {
         evento.preventDefault();
+        setSubmitPressed(true);
         console.log('enviando...')
         const nuevoEvento = {
             nombre: nombre,
@@ -107,6 +109,7 @@ const AgregarEvento = () => {
             <TouchableOpacity onPress={buttonOnsubmitHandler}>
                 <Text>Submit</Text>
             </TouchableOpacity>
+            {SubmitPressed ? <Text>Creado</Text> : <p></p>}
         </View>
     );
 };
