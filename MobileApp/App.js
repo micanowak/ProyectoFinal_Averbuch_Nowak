@@ -13,7 +13,8 @@ const Stack = createNativeStackNavigator();
 import HomeScreen from "./screens/Home/HomeScreen.js";
 import SpecificEvent from "./screens/SpecificEvent/SpecificEvent";
 import AgregarEvento from "./screens/AgregarEvento/AgregarEvento";
-import NewEventsDate from "./screens/NewEventsDate/NewEventsDate";
+import NewEventsDate from "./screens/NewEvents/NewEventsDate";
+import NewEventsInfo from "./screens/NewEvents/NewEventsInfo";
 
 export default function App() {
   const [listaEventos, setListaEventos] = useState([]);
@@ -40,6 +41,12 @@ export default function App() {
           headerShown: false,
         }}
       > 
+      <Stack.Screen
+          name="NewEventsInfo"
+          component={NewEventsInfo}
+          //initialParams={listaEvendonsSent}
+          options={{ title: "New Events Info" }}
+        />
       <Stack.Screen
           name="LogIn"
           component={LogInScreen}
