@@ -12,6 +12,8 @@ import {
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
+import Contacts from "../../components/Contacts/Contacts.js"
+import back from "../../assets/images/simboloMenor.png"
 
 
 const NewEventsContact = () =>{
@@ -24,24 +26,23 @@ const descripcionOnchangeHandler = (evento) => {
     setDescripcion(evento.target.value);
 };*/
     return(
-        <View style={styles.container}>
-            <View style={styles.fondoLogo}>
-                {" "}
-                <Image source={ArgTeamLogo} style={styles.imgStyle}></Image>
+        <View style = {styles.container}>
+            <View style ={styles.fondoArriba}>
+                <Image source={back}
+                style={styles.back}></Image>
+                <Text style ={styles.textArriba} >Nuevo contacto</Text>
             </View>
-            <Text style ={styles.tituloMain}>Descripcion</Text>
-            <View style = {styles.containerForm}>
-                <Text /*value={descripcion}
-                    setValue={setDescripcion}
-                    placeholder="Descrpción"
-                    style={styles.eachForm}
-                    onChange={descripcionOnchangeHandler}*/>Descripcion</Text>
-                    
-                
+            <Text style = {styles.tituloContactos}>Contactos</Text>
+            <View style = {styles.contactos}>
+
+                <Contacts></Contacts>
+                <Contacts></Contacts>
             </View>
-            <TouchableOpacity style = {styles.button} onPress={buttonOnsubmitHandler}>
-                <Text style={styles.textButton}>Siguiente</Text>
-            </TouchableOpacity>
+            <Text style = {styles.tituloContactos}>Profesionales contratados</Text>
+            <View style = {styles.contactos}>
+                <Contacts></Contacts>
+                <Contacts></Contacts>
+            </View>
         </View>
     );
 };
@@ -52,9 +53,24 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flex: "center",
         flex: 6,
+    }, probar:{
+        widht:'100%',
+        height:'30%'
     },
-    fondoLogo: {
+    back: {
+        
+        
+        width: 20,
+        height:30,
+        
+        
+    },textArriba:{
+        color:'white',
+        fontSize:23,  alignContent:'center', width:'70%',
+    },
+    fondoArriba: {
         width: "100%",
+        height:'10%',
         backgroundColor: "#1A4B8E",
         alignItems: "center",
         flex: "center",
@@ -66,13 +82,7 @@ const styles = StyleSheet.create({
         borderRadius:15,fontSize:15,fontWeight:'700',alignItems: "center",
         flex: "center", 
     },
-    imgStyle: {
-        marginTop: 30,
-        marginBottom: 20,
-        resizeMode: "contain",
-        width: 150,
-        height: 50,
-    },
+    
     nombrePag:
     {
         backgroundColor:'#1A4B8E',
@@ -104,7 +114,15 @@ const styles = StyleSheet.create({
     textButton:{
         color:'white'
         
-    }
+    },
+    tituloContactos:{
+        color:'#1A4B8E', fontWeight:'500', fontSize:16, textAlign:'left',margin:10, alignContent:'center'   ,
+    }, contactos:{
+        width: '100%',
+        flexDirection:"row",alignItems: "center", 
+        flex:1, justifyContent: 'flex-start', maxHeight:'10%'    //IMPORTanteeeeee  
+
+    },
 });
 
 export default NewEventsContact;

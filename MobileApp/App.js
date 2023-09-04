@@ -41,7 +41,18 @@ export default function App() {
           headerShown: false,
         }}
       > 
-      
+      <Stack.Screen
+          name="NewEventsContact"
+          component={NewEventsContact}
+          //initialParams={listaEvendonsSent}
+          options={{ title: "New Events Contact" }}
+        />
+        <Stack.Screen
+          name="SpecificEvent"
+          component={SpecificEvent}
+          initialParams={listaEventos}
+          options={{ title: "Detalle evento específico" }}
+        />  
       <Stack.Screen
           name="LogIn"
           component={LogInScreen}
@@ -61,20 +72,7 @@ export default function App() {
           //initialParams={listaEvendonsSent}
           options={{ title: "New Events Info" }}
         />
-      <Stack.Screen
-          name="NewEventsContact"
-          component={NewEventsContact}
-          //initialParams={listaEvendonsSent}
-          options={{ title: "New Events Contact" }}
-        />
-              
       
-      <Stack.Screen
-          name="SpecificEvent"
-          component={SpecificEvent}
-          initialParams={listaEventos}
-          options={{ title: "Detalle evento específico" }}
-        />  
         <Stack.Screen
           name="Home"
           component={HomeScreen}

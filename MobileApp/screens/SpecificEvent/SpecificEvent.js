@@ -22,7 +22,7 @@ const SpecificEvent = (props) => {
 
     return(
         <View style={styles.container}>
-            <Text onPress={onpressVolver}>Volver!</Text>
+            <Text onPress={onpressVolver}>  Volver!</Text>
             <View style={styles.fondoLogo}> <Image
                 source={ArgTeamLogo}
                 style={styles.imgStyle}
