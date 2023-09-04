@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
         borderColor: '#AE9DD9',
         borderWidth:1,
         alignItems: 'center',  
+        color:'white'
     },
 });
 

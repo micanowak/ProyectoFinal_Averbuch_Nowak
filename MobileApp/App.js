@@ -15,7 +15,7 @@ import SpecificEvent from "./screens/SpecificEvent/SpecificEvent";
 import NewEventsDate from "./screens/NewEvents/NewEventsDate";
 import NewEventsInfo from "./screens/NewEvents/NewEventsInfo";
 import NewEventsContact from "./screens/NewEvents/NewEventsContact";
-
+import NewEventsContactList from "./screens/NewEvents/NewEventsContactList";
 export default function App() {
   const [listaEventos, setListaEventos] = useState([]);
   const listaEvendonsSent = (listaaa) => {
@@ -41,20 +41,7 @@ export default function App() {
           headerShown: false,
         }}
       > 
-      <Stack.Screen
-          name="NewEventsContact"
-          component={NewEventsContact}
-          //initialParams={listaEvendonsSent}
-          options={{ title: "New Events Contact" }}
-        />
       
-      <Stack.Screen
-          name="NewEventsInfo"
-          component={NewEventsInfo}
-          //initialParams={listaEvendonsSent}
-          options={{ title: "New Events Info" }}
-        />
-        
       <Stack.Screen
           name="LogIn"
           component={LogInScreen}
@@ -62,6 +49,26 @@ export default function App() {
           initialParams={listaEvendonsSent}
           options={{ title: "Inicio De Sesion" }}
         />
+      <Stack.Screen
+          name="NewEventsContactList"
+          component={NewEventsContactList}
+          //initialParams={listaEvendonsSent}
+          options={{ title: "New Events Contact List" }}
+        />
+      <Stack.Screen
+          name="NewEventsInfo"
+          component={NewEventsInfo}
+          //initialParams={listaEvendonsSent}
+          options={{ title: "New Events Info" }}
+        />
+      <Stack.Screen
+          name="NewEventsContact"
+          component={NewEventsContact}
+          //initialParams={listaEvendonsSent}
+          options={{ title: "New Events Contact" }}
+        />
+              
+      
       <Stack.Screen
           name="SpecificEvent"
           component={SpecificEvent}

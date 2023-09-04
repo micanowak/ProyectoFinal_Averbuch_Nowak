@@ -73,12 +73,11 @@ const LogInScreen = () => {
         secureTextEntry={true}
       />
 
-      <Button
-        title="Iniciar Sesión"
-        name="Iniciar Sesión"
+      <TouchableOpacity
+        
         style={styles.button}
         onPress={buttonOnsubmitHandler}
-      ></Button>
+      ><Text style = {styles.textButton}>Iniciar sesión</Text></TouchableOpacity>
       {error}
     </View>
   );
@@ -101,11 +100,11 @@ const styles = StyleSheet.create({
     height: 100,
     margin: 30,
   },
-  button: {
-    color: "#E741EB",
+  /*button: {
+    backgroundColor: "#E741EB",
     padding: 10,
     textAlign: "center",
-    width: "15%",
+    width: "30%",
     flex: "contain",
     margin: 10,
     borderRadius: 5,
@@ -114,7 +113,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     fontSize: 20,
-  },
+  },*/
+  button:{
+    backgroundColor:'#E742EB', margin:10,padding:10,borderRadius:15, width:'35%',alignContent:'center',alignItems:'center',
+},
+textButton:{
+    color:'white', fontSize:15, fontWeight: 'bold',
+
+}
 });
 
 export default LogInScreen;
