@@ -10,7 +10,6 @@ import {
     TouchableOpacity,
 } from "react-native";
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
-import DataEvent from "../../components/DataEvent/DataEvent.js";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 
@@ -89,7 +88,7 @@ const AgregarEvento = () => {
                 {" "}
                 <Image source={ArgTeamLogo} style={styles.imgStyle}></Image>
             </View>
-            <Text style ={styles.tituloMain}>Agregar Evento</Text>
+            <Text style ={styles.tituloMain}>Ingreso de características</Text>
             <View style = {styles.containerForm}>
                 <TextInput
                     value={nombre}

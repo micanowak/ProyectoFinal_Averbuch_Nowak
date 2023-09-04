@@ -12,9 +12,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 const Stack = createNativeStackNavigator();
 import HomeScreen from "./screens/Home/HomeScreen.js";
 import SpecificEvent from "./screens/SpecificEvent/SpecificEvent";
-import AgregarEvento from "./screens/AgregarEvento/AgregarEvento";
 import NewEventsDate from "./screens/NewEvents/NewEventsDate";
 import NewEventsInfo from "./screens/NewEvents/NewEventsInfo";
+import NewEventsContact from "./screens/NewEvents/NewEventsContact";
 
 export default function App() {
   const [listaEventos, setListaEventos] = useState([]);
@@ -42,11 +42,19 @@ export default function App() {
         }}
       > 
       <Stack.Screen
+          name="NewEventsContact"
+          component={NewEventsContact}
+          //initialParams={listaEvendonsSent}
+          options={{ title: "New Events Contact" }}
+        />
+      
+      <Stack.Screen
           name="NewEventsInfo"
           component={NewEventsInfo}
           //initialParams={listaEvendonsSent}
           options={{ title: "New Events Info" }}
         />
+        
       <Stack.Screen
           name="LogIn"
           component={LogInScreen}
@@ -70,12 +78,6 @@ export default function App() {
           component={NewEventsDate}
           options={{ title: "Fecha nuevo evento" }}
         />       
-        <Stack.Screen
-          name="AgregarEvento"
-          component={AgregarEvento}
-          options={{ title: "Agregar Evento" }}
-        /> 
-
       </Stack.Navigator>
     </NavigationContainer>
   );
