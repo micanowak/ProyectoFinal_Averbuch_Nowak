@@ -85,9 +85,11 @@ const AgregarEvento = () => {
     return (
         <View style={styles.container}>
             <View style={styles.fondoLogo}>
+                
                 {" "}
                 <Image source={ArgTeamLogo} style={styles.imgStyle}></Image>
             </View>
+            
             <Text style ={styles.tituloMain}>Ingreso de características</Text>
             <View style = {styles.containerForm}>
                 <TextInput
