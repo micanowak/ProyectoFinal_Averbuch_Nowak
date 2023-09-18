@@ -9,6 +9,7 @@ import {
     TextInput,
     TouchableOpacity,
 } from "react-native";
+//import DatePicker from "react-native-datepicker"
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
@@ -92,10 +93,7 @@ const AgregarEvento = () => {
 
     return (
         <View style={styles.container}>
-            {/*<View style={styles.fondoLogo}>
-                {" "}
-                    
-                </View>*/}
+            
             <View style ={styles.fondoArriba}>
                 <TouchableOpacity onPress={onPressBack}>
                     <Image source={back} style={styles.back} ></Image>
@@ -103,7 +101,10 @@ const AgregarEvento = () => {
                 <Image source={ArgTeamLogo} style={styles.imgStyle}></Image>
             </View>
             <Text style ={styles.tituloMain}>Ingreso de características</Text>
-            <View style = {styles.containerForm}>
+            
+
+            <Text style={styles.tituloMain}>Ingreso de características</Text>
+            <View style={styles.containerForm}>
                 <TextInput
                     value={nombre}
                     setValue={setNombre}
@@ -126,25 +127,61 @@ const AgregarEvento = () => {
                     onChange={descripcionOnchangeHandler}
                 />
                 <TextInput
-                    value={fechaInicio}
-                    setValue={setFechaInicio}
+                    date={fechaInicio}
+                    onDateChange={setFechaInicio}
                     style={styles.eachForm}
                     placeholder="Fecha Inicio"
                     onChange={fechaInicioOnchangeHandler}
                 />
                 <TextInput
-                    value={fechaFin}
-                    setValue={setFechaFin}
+                    date={fechaFin}
+                    onDateChange={setFechaFin}
                     placeholder="Fecha Fin"
                     style={styles.eachForm}
                     onChange={fechaFinOnchangeHandler}
                 />
-
+                {/*<Text>Fecha Fin:</Text>
+                <DatePicker
+                    style={styles.eachForm}
+                    date={fechaFin}
+                    mode="date"
+                    placeholder="seleccionar fecha"
+                    format="DD/MM/YYYY"
+                    minDate="01-01-2023"
+                    maxDate="01-01-2025"
+                    confirmBtnText="Confirm"
+                    cancelBtnText="Cancel"
+                    customStyles={{
+                        dateIcon: {
+                            position: 'absolute',
+                            right: -5,
+                            top: 4,
+                            marginLeft: 0,
+                        },
+                        dateInput: {
+                            borderColor: "gray",
+                            alignItems: "flex-start",
+                            borderWidth: 0,
+                            borderBottomWidth: 1,
+                        },
+                        placeholderText: {
+                            fontSize: 17,
+                            color: "gray"
+                        },
+                        dateText: {
+                            fontSize: 17,
+                        }
+                    }}
+                    onDateChange={(date) => {
+                        setFechaFin(date);
+                    }}
+                />*/
+}
             </View>
-            <TouchableOpacity style = {styles.button} onPress={buttonOnsubmitHandler}>
-                <Text style={styles.textButton}>Submit</Text>
-            </TouchableOpacity>
-        </View>
+                <TouchableOpacity style={styles.button} onPress={buttonOnsubmitHandler}>
+                    <Text style={styles.textButton}>Submit</Text>
+                </TouchableOpacity>
+            </View>
     );
 };
 
@@ -161,41 +198,41 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flex: "center",
     },
-    tituloMain:{
-        backgroundColor:'#1A4B8E',
-        color:'white',marginLeft:30,marginRight:30,
-        padding:14,marginTop:30,
-        borderRadius:15,fontSize:15,fontWeight:'700',alignItems: "center",
-        flex: "center", 
+    tituloMain: {
+        backgroundColor: '#1A4B8E',
+        color: 'white', marginLeft: 30, marginRight: 30,
+        padding: 14, marginTop: 30,
+        borderRadius: 15, fontSize: 15, fontWeight: '700', alignItems: "center",
+        flex: "center",
     },
     
     nombrePag:
     {
-        backgroundColor:'#1A4B8E',
-        color:'white',marginLeft:30,marginRight:30,
-        padding:20,marginTop:10,
-        borderRadius:15,fontSize:15,fontWeight:'700',alignItems: "center",
-        flex: "center", 
+        backgroundColor: '#1A4B8E',
+        color: 'white', marginLeft: 30, marginRight: 30,
+        padding: 20, marginTop: 10,
+        borderRadius: 15, fontSize: 15, fontWeight: '700', alignItems: "center",
+        flex: "center",
     },
-    containerForm:{
-        borderColor:'#6736CF',
-        borderRadius:15,
-        borderWidth:2,
-        marginTop:20,
-        padding:10,
-        width:'70%',
+    containerForm: {
+        borderColor: '#6736CF',
+        borderRadius: 15,
+        borderWidth: 2,
+        marginTop: 20,
+        padding: 10,
+        width: '70%',
     },
-    eachForm:{
-        borderColor:'#E742EB',
-        borderRadius:15,
-        borderWidth:2,
-        paddingLeft:10,
-        padding:5,
-        margin:5,
-        marginBottom:20,
+    eachForm: {
+        borderColor: '#E742EB',
+        borderRadius: 15,
+        borderWidth: 2,
+        paddingLeft: 10,
+        padding: 5,
+        margin: 5,
+        marginBottom: 20,
     },
-    button:{
-        backgroundColor:'#E742EB', margin:10,padding:10,borderRadius:15, width:'35%',alignContent:'center',alignItems:'center',
+    button: {
+        backgroundColor: '#E742EB', margin: 10, padding: 10, borderRadius: 15, width: '35%', alignContent: 'center', alignItems: 'center',
     },
     textButton:{
         color:'white'
@@ -225,6 +262,10 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 50,
     },
+    textButton: {
+        color: 'white'
+
+    }
 });
 
 export default AgregarEvento;
