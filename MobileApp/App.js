@@ -65,7 +65,8 @@ export default function App() {
           //initialParams={listaEvendonsSent}
           options={{ title: "New Events Contact" }}
         />
-        <Stack.Screen
+        
+      <Stack.Screen
           name="SpecificEvent"
           component={SpecificEvent}
           initialParams={listaEventos}
