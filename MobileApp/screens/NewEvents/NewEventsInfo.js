@@ -12,7 +12,7 @@ import {
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
-
+import back from "../../assets/images/backArrow.png"
 const AgregarEvento = () => {
     const baseURL = "http://localhost:3000/AgregarEvento";
     const navigation = useNavigation();
@@ -47,6 +47,13 @@ const AgregarEvento = () => {
         setDate(datee);
     };
 
+    
+    const onPressBack = () => {
+        evento.preventDefault();
+
+        navigation.navigate("NewEventsDate");
+
+    }
     const buttonOnsubmitHandler = (evento) => {
         evento.preventDefault();
         console.log("enviando...");
@@ -57,6 +64,7 @@ const AgregarEvento = () => {
             fechaFin: fechaFin,
             descripcion: descripcion,
         };
+        navigation.navigate("NewEventsContact");
         //setEventoNuevo(nuevoEvento);
 
         axios
@@ -84,12 +92,16 @@ const AgregarEvento = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.fondoLogo}>
-                
+            {/*<View style={styles.fondoLogo}>
                 {" "}
+                    
+                </View>*/}
+            <View style ={styles.fondoArriba}>
+                <TouchableOpacity onPress={onPressBack}>
+                    <Image source={back} style={styles.back} ></Image>
+                </TouchableOpacity>
                 <Image source={ArgTeamLogo} style={styles.imgStyle}></Image>
             </View>
-            
             <Text style ={styles.tituloMain}>Ingreso de características</Text>
             <View style = {styles.containerForm}>
                 <TextInput
@@ -156,13 +168,7 @@ const styles = StyleSheet.create({
         borderRadius:15,fontSize:15,fontWeight:'700',alignItems: "center",
         flex: "center", 
     },
-    imgStyle: {
-        marginTop: 30,
-        marginBottom: 20,
-        resizeMode: "contain",
-        width: 150,
-        height: 50,
-    },
+    
     nombrePag:
     {
         backgroundColor:'#1A4B8E',
@@ -194,7 +200,31 @@ const styles = StyleSheet.create({
     textButton:{
         color:'white'
         
-    }
+    },
+    back: {
+        width: 30 ,
+        height:20,
+        position: 'absolute',
+        marginLeft:10, 
+        
+    },textArriba:{
+        color:'white',
+        fontSize:23,  alignContent:'center', width:'70%', marginLeft:'23%',
+    },
+    fondoArriba: {
+        width: "100%",
+        height:'10%',
+        backgroundColor: "#1A4B8E",
+        alignItems: "center",
+        flexDirection: "row",
+        
+    },imgStyle: {
+        marginTop: 30, alignContent:'center',
+        marginBottom: 20,
+        resizeMode: "contain",
+        width: '100%',
+        height: 50,
+    },
 });
 
 export default AgregarEvento;

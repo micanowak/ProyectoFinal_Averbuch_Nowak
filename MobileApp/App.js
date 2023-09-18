@@ -41,25 +41,27 @@ export default function App() {
           headerShown: false,
         }}
       > 
-        <Stack.Screen
+      <Stack.Screen
           name="NewEventsContactList"
           component={NewEventsContactList}
           //initialParams={listaEvendonsSent}
           options={{ title: "New Events Contact List" }}
         />
-        <Stack.Screen
+      <Stack.Screen
           name="NewEventsInfo"
           component={NewEventsInfo}
           //initialParams={listaEvendonsSent}
           options={{ title: "New Events Info" }}
         />
-        <Stack.Screen
+
+      <Stack.Screen
           name="NewEventsContact"
           component={NewEventsContact}
           //initialParams={listaEvendonsSent}
           options={{ title: "New Events Contact" }}
         />
-        <Stack.Screen
+        
+      <Stack.Screen
           name="SpecificEvent"
           component={SpecificEvent}
           initialParams={listaEventos}

@@ -14,20 +14,23 @@ import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import Contacts from "../../components/Contacts/ContactV2.js"
 import back from "../../assets/images/backArrow.png"
+import backPage from "../NewEvents/NewEventsContact.js"
+
 
 const NewEventsContactList = () =>{
-
+    const navigation = useNavigation();
     const buttonOnPressHandler = () =>{
 
     }
     const onPressBack = () => {
-        navigation.navigate("NewEventsContact");
+        evento.preventDefault();
+        navigation.navigate(backPage);
     
     }
     return(
         <View style={styles.container}>
             <View style ={styles.fondoArriba}>
-                <TouchableOpacity onPress={onPressBack}>
+                <TouchableOpacity onAccessibilityTap={onPressBack}>
                     <Image source={back} style={styles.back} ></Image>
                 </TouchableOpacity>
                 <Text style ={styles.textArriba} >Lista de contactos</Text>
@@ -39,7 +42,9 @@ const NewEventsContactList = () =>{
                 <Contacts></Contacts>
                 <Contacts></Contacts>
                 
-            </View>
+            </View>            
+            <Text style = {styles.plus}>+</Text>
+
             <Text style = {styles.tituloContactos}>Profesionales para contratar</Text>
             <View style = {styles.contactos}>
                 <Contacts></Contacts>
@@ -47,6 +52,7 @@ const NewEventsContactList = () =>{
                 <Contacts></Contacts>
                 
             </View>
+            <Text style = {styles.plus}>+</Text>
             <TouchableOpacity style = {styles.button} onPress={buttonOnPressHandler}>
                 <Text style={styles.textButton}>Guardar</Text>
             </TouchableOpacity>
@@ -89,6 +95,10 @@ const styles = StyleSheet.create({
     },textArriba:{
         color:'white',
         fontSize:23,  alignContent:'center', width:'70%', marginLeft:'28%',
+    },
+    plus:{
+        fontSize:25, color:'#845FD3',borderColor:'#845FD3' //fucsia
+        , borderWidth:2, borderRadius:20, paddingBottom:4, paddingRight:8, paddingLeft:8
     },
 });
 
