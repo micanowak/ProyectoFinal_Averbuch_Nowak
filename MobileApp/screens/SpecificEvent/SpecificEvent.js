@@ -21,7 +21,8 @@ const SpecificEvent = (props) => {
         navigation.navigate("Home");
     }
     const [listaContactos, setListaContactos] = useState([]);
-    const baseURL = "http://localhost:3000/getProfByEvent/:" + (props.route.params.evento.ID);
+    const idEvento = props.route.params.evento.ID;
+    const baseURL = "http://localhost:3000/getProfByEvent/" + idEvento;
 
     useEffect(() => {
         axios.get(baseURL).then((response) => {
@@ -55,11 +56,9 @@ const SpecificEvent = (props) => {
             </View>
             <Text style = {styles.tituloContactos}>Contactos</Text>
             <View style = {styles.contactos}>
-
             <>
                 {listaContactos.map((element) => <Contacts Contacto={element}/>)}
             </>
-                
             </View>
             <Text style = {styles.tituloContactos}>Coordinadores</Text>
             <View style = {styles.contactos}>

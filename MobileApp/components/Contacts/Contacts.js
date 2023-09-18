@@ -3,9 +3,11 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import phoneIcon from "../../assets/images/phoneIcon.png";
 import mailIcon from "../../assets/images/mailIcon.png";
 const Contact = ({Contacto}) => {
+    console.log(Contacto);
+
     return(
         <View style={styles.container}>
-            <Text style={styles.titleCard}>{Contacto.nombre} {Contacto.apellido}</Text>
+            <Text style={styles.titleCard}>MJ{/*{Contacto.nombre} {Contacto.apellido}*/}</Text>
             <View style = {styles.containerPics}>
                 <Image source={phoneIcon} style={styles.imgStyle}></Image> 
                 <Image source={mailIcon} style={styles.imgStyle}></Image>
