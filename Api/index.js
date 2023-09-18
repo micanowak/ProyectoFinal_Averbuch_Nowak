@@ -51,3 +51,9 @@ app.post('/AgregarEvento', async (req, res) => {
         res.status(500).json({ error: 'Fallo el insert' });
     }
 })
+
+app.get('/getProfByEvent', async (req, res) => {
+    console.log(req.params.id);
+    const Profesionales = await PF_ArgTeam_Services.getProfByEvent(req.params.id)
+    res.status(200).send(Profesionales);
+})
