@@ -100,7 +100,6 @@ const AgregarEvento = () => {
                 </TouchableOpacity>
                 <Image source={ArgTeamLogo} style={styles.imgStyle}></Image>
             </View>
-            <Text style ={styles.tituloMain}>Ingreso de características</Text>
             
 
             <Text style={styles.tituloMain}>Ingreso de características</Text>
