@@ -28,7 +28,7 @@ const HomeScreen = (sendlistaEventos) => {
     const baseURL = "http://localhost:3000/getEvents";
 
     const buttonAgregarOnPressHandler = () => {
-        navigation.navigate("AgregarEvento");
+        navigation.navigate("NewEventsDate");
     }
 
     const buttonAgregarOnPressHandler2 = () => {
@@ -65,7 +65,7 @@ const HomeScreen = (sendlistaEventos) => {
                 style={styles.buttonStyle}
                 onPress={buttonAgregarOnPressHandler}
             ></Button>
-            <Text onPress={spoilerToShow}>Spoiler Screen</Text>
+            <Text onPress={spoilerToShow}>Calendario (spoiler)</Text>
 
             {/*<NavBar />*/}
         </View> 
