@@ -52,7 +52,7 @@ app.post('/AgregarEvento', async (req, res) => {
     }
 })
 
-app.get('/getProfByEvent', async (req, res) => {
+app.get('/getProfByEvent/:id', async (req, res) => {
     console.log(req.params.id);
     const Profesionales = await PF_ArgTeam_Services.getProfByEvent(req.params.id)
     res.status(200).send(Profesionales);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
     StyleSheet,
     View,
@@ -11,6 +11,7 @@ import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import DataEvent from "../../components/DataEvent/DataEvent.js";
 import Contacts from "../../components/Contacts/Contacts.js"
 import { useNavigation } from '@react-navigation/native';
+import axios from "axios";
 
 
 const SpecificEvent = (props) => {
@@ -19,6 +20,19 @@ const SpecificEvent = (props) => {
     const onpressVolver = () => {
         navigation.navigate("Home");
     }
+    const [listaContactos, setListaContactos] = useState([]);
+    const baseURL = "http://localhost:3000/getProfByEvent/:" + (props.route.params.evento.ID);
+
+    useEffect(() => {
+        axios.get(baseURL).then((response) => {
+            /*response.data.forEach(element => {
+                console.log(element);
+            });*/
+            console.log(response);
+            setListaContactos(response.data);
+            console.log(listaContactos);
+        });
+    }, []);
 
     return(
         <View style={styles.container}>
@@ -42,8 +56,9 @@ const SpecificEvent = (props) => {
             <Text style = {styles.tituloContactos}>Contactos</Text>
             <View style = {styles.contactos}>
 
-                <Contacts></Contacts>
-                <Contacts></Contacts>
+            <>
+                {listaContactos.map((element) => <Contacts Contacto={element}/>)}
+            </>
                 
             </View>
             <Text style = {styles.tituloContactos}>Coordinadores</Text>
