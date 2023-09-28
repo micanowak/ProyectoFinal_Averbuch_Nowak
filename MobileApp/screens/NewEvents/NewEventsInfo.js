@@ -11,11 +11,10 @@ import {
 } from "react-native";
 //import DatePicker from "react-native-datepicker"
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
 import back from "../../assets/images/backArrow.png"
 const AgregarEvento = () => {
-    //const baseURL = "http://localhost:3000/AgregarEvento";
     const navigation = useNavigation();
     const { height } = useWindowDimensions();
     const [edicion, setEdicion] = useState(0);
@@ -26,6 +25,9 @@ const AgregarEvento = () => {
     const [hospedaje, setHospedaje] = useState('');
     const [descripcion, setDescripcion] = useState("");
     const [eventoNuevo, setEventoNuevo] = useState({});
+    const router = useRoute();
+
+    const {fechaInicio, fechaFin} = router.params;
 
     const nombreOnchangeHandler = (evento) => {
         setNombre(evento.target.value);
@@ -69,31 +71,17 @@ const AgregarEvento = () => {
         const nuevoEvento = {
             nombre: nombre,
             lugar: lugar,
-            gastronomia: gastronomia,
-            edicion: edicion,
+            fechaInicio: fechaInicio,
+            fechaFin: fechaFin,
             descripcion: descripcion,
             hospedaje: hospedaje,
+            gastronomia: gastronomia,
+            numEdicionEvento: edicion,
             sponsors: sponsors
         };
         setEventoNuevo(nuevoEvento);
         navigation.navigate("NewEventsContact");
         
-
-        /*axios
-            .post(baseURL, nuevoEvento)
-            .then(
-                (response) => {
-                    if (response.status === 200) {
-                        //esUsuario = true;
-                        setSubmitPressed(true);
-                        //navigation.navigate("Home");
-                        console.log(response);
-                    }
-                },
-                (res) => {
-                    setError(res.response.data);
-                }
-            );*/
 
         setDescripcion("");
         setNombre("");
@@ -149,14 +137,14 @@ const AgregarEvento = () => {
                     value={gastronomia}
                     setValue={setGastronomia}
                     style={styles.eachForm}
-                    placeholder="Hospedaje"
+                    placeholder="Gastronomía"
                     onChange={gastroOnchangeHandler}
                 />
                 <TextInput
                     value={sponsors}
                     setValue={setSponsors}
                     style={styles.eachForm}
-                    placeholder="Hospedaje"
+                    placeholder="Sponsors"
                     onChange={sponsorsOnchangeHandler}
                 />
                 <TextInput

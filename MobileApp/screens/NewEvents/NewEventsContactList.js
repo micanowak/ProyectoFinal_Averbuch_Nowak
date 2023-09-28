@@ -10,7 +10,7 @@ import {
     TouchableOpacity,
 } from "react-native";
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png"
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
 import Contacts from "../../components/Contacts/ContactV2.js"
 import back from "../../assets/images/backArrow.png"
@@ -18,9 +18,41 @@ import backPage from "../NewEvents/NewEventsContact.js"
 
 
 const NewEventsContactList = () =>{
+    const baseURL = "http://localhost:3000/AgregarEvento";
     const navigation = useNavigation();
-    const buttonOnPressHandler = () =>{
+    const router = useRoute();
+    const [eventoNuevo, setEventoNuevo] = useState({});
 
+    const {nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, edicion, sponsors} = router.params;
+
+    const buttonOnPressHandler = () =>{
+        const NewEventtt = {
+            nombre: nombre,
+            lugar: lugar,
+            fechaInicio: fechaInicio,
+            fechaFin: fechaFin,
+            descripcion: descripcion,
+            hospedaje: hospedaje,
+            gastronomia: gastronomia,
+            numEdicionEvento: edicion,
+            sponsors: sponsors
+        }
+
+        setEventoNuevo(NewEventtt);
+
+        axios
+            .post(baseURL, eventoNuevo)
+            .then(
+                (response) => {
+                    if (response.status === 200) {
+                        //navigation.navigate("Home");
+                        console.log(response);
+                    }
+                },
+                (res) => {
+                    setError(res.response.data);
+                }
+            );
     }
     const onPressBack = () => {
         evento.preventDefault();
