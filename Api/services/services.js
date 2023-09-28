@@ -45,7 +45,11 @@ export class PF_ArgTeam_Services {
                 .input('pFechIn', Evento.fechaInicio)
                 .input('pFechFin', Evento.fechaFin)
                 .input('pDesc', Evento.descripcion)
-                .query('INSERT INTO Evento (nombre, lugar, fechaInicio, fechaFin, descripcion) VALUES (@pNom, @pLug, @pFechIn, @pFechFin, @pDesc)');
+                .input('pHosp', Evento.hospedaje)
+                .input('pGas', Evento.gastronomia)
+                .input('pEdi', Evento.numEdicionEvento)
+                .input('pSpon', Evento.sponsors)
+                .query('INSERT INTO Evento (nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, numEdicionEvento, sponsors) VALUES (@pNom, @pLug, @pFechIn, @pFechFin, @pDesc, @pHosp, @pGas, @pEdi, @pSpon)');
             returnEntity = result.recordsets[0];
         } catch (error) {
             console.log(error);

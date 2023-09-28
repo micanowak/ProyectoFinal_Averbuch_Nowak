@@ -15,17 +15,16 @@ import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import back from "../../assets/images/backArrow.png"
 const AgregarEvento = () => {
-    const baseURL = "http://localhost:3000/AgregarEvento";
+    //const baseURL = "http://localhost:3000/AgregarEvento";
     const navigation = useNavigation();
     const { height } = useWindowDimensions();
-    const [id, setId] = useState(0);
+    const [edicion, setEdicion] = useState(0);
     const [nombre, setNombre] = useState("");
+    const [sponsors, setSponsors] = useState("");
     const [lugar, setLugar] = useState("");
-    const [fechaFin, setFechaFin] = useState(new Date());
-    const [dat, setDate] = useState(new Date());
-    const [fechaInicio, setFechaInicio] = useState(new Date());
+    const [gastronomia, setGastronomia] = useState('');
+    const [hospedaje, setHospedaje] = useState('');
     const [descripcion, setDescripcion] = useState("");
-    const [SubmitPressed, setSubmitPressed] = useState(false);
     const [eventoNuevo, setEventoNuevo] = useState({});
 
     const nombreOnchangeHandler = (evento) => {
@@ -34,23 +33,32 @@ const AgregarEvento = () => {
     const lugarOnchangeHandler = (evento) => {
         setLugar(evento.target.value);
     };
-    const fechaFinOnchangeHandler = (evento) => {
-        setFechaFin(evento.target.value);
+    const sponsorsOnchangeHandler = (evento) => {
+        setSponsors(evento.target.value);
     };
-    const fechaInicioOnchangeHandler = (evento) => {
-        setFechaInicio(evento.target.value);
+    const hospedajeOnchangeHandler = (evento) => {
+        setHospedaje(evento.target.value);
     };
     const descripcionOnchangeHandler = (evento) => {
         setDescripcion(evento.target.value);
     };
-
-    const datehandler = (datee) => {
-        setDate(datee);
+    const edicionOnchangeHandler = (evento) => {
+        setEdicion(evento.target.value);
+    };
+    const gastroOnchangeHandler = (evento) => {
+        setGastronomia(evento.target.value);
     };
 
     
     const onPressBack = () => {
         evento.preventDefault();
+        setDescripcion("");
+        setNombre("");
+        setEdicion(0);
+        setGastronomia('');
+        setSponsors('');
+        setHospedaje("");
+        setLugar("");
 
         navigation.navigate("NewEventsDate");
 
@@ -61,14 +69,17 @@ const AgregarEvento = () => {
         const nuevoEvento = {
             nombre: nombre,
             lugar: lugar,
-            fechaInicio: fechaInicio,
-            fechaFin: fechaFin,
+            gastronomia: gastronomia,
+            edicion: edicion,
             descripcion: descripcion,
+            hospedaje: hospedaje,
+            sponsors: sponsors
         };
+        setEventoNuevo(nuevoEvento);
         navigation.navigate("NewEventsContact");
-        //setEventoNuevo(nuevoEvento);
+        
 
-        axios
+        /*axios
             .post(baseURL, nuevoEvento)
             .then(
                 (response) => {
@@ -82,12 +93,14 @@ const AgregarEvento = () => {
                 (res) => {
                     setError(res.response.data);
                 }
-            );
+            );*/
 
         setDescripcion("");
         setNombre("");
-        setFechaInicio(new Date());
-        setFechaFin(new Date());
+        setEdicion(0);
+        setGastronomia('');
+        setSponsors('');
+        setHospedaje("");
         setLugar("");
     };
 
@@ -112,13 +125,6 @@ const AgregarEvento = () => {
                     style={styles.eachForm}
                 />
                 <TextInput
-                    value={lugar}
-                    setValue={setLugar}
-                    placeholder="Lugar"
-                    style={styles.eachForm}
-                    onChange={lugarOnchangeHandler}
-                />
-                <TextInput
                     value={descripcion}
                     setValue={setDescripcion}
                     placeholder="Descrpción"
@@ -126,59 +132,43 @@ const AgregarEvento = () => {
                     onChange={descripcionOnchangeHandler}
                 />
                 <TextInput
-                    date={fechaInicio}
-                    onDateChange={setFechaInicio}
+                    value={lugar}
+                    setValue={setLugar}
+                    placeholder="Lugar"
                     style={styles.eachForm}
-                    placeholder="Fecha Inicio"
-                    onChange={fechaInicioOnchangeHandler}
+                    onChange={lugarOnchangeHandler}
                 />
                 <TextInput
-                    date={fechaFin}
-                    onDateChange={setFechaFin}
-                    placeholder="Fecha Fin"
+                    value={hospedaje}
+                    setValue={setHospedaje}
                     style={styles.eachForm}
-                    onChange={fechaFinOnchangeHandler}
+                    placeholder="Hospedaje"
+                    onChange={hospedajeOnchangeHandler}
                 />
-                {/*<Text>Fecha Fin:</Text>
-                <DatePicker
+                <TextInput
+                    value={gastronomia}
+                    setValue={setGastronomia}
                     style={styles.eachForm}
-                    date={fechaFin}
-                    mode="date"
-                    placeholder="seleccionar fecha"
-                    format="DD/MM/YYYY"
-                    minDate="01-01-2023"
-                    maxDate="01-01-2025"
-                    confirmBtnText="Confirm"
-                    cancelBtnText="Cancel"
-                    customStyles={{
-                        dateIcon: {
-                            position: 'absolute',
-                            right: -5,
-                            top: 4,
-                            marginLeft: 0,
-                        },
-                        dateInput: {
-                            borderColor: "gray",
-                            alignItems: "flex-start",
-                            borderWidth: 0,
-                            borderBottomWidth: 1,
-                        },
-                        placeholderText: {
-                            fontSize: 17,
-                            color: "gray"
-                        },
-                        dateText: {
-                            fontSize: 17,
-                        }
-                    }}
-                    onDateChange={(date) => {
-                        setFechaFin(date);
-                    }}
-                />*/
-}
+                    placeholder="Hospedaje"
+                    onChange={gastroOnchangeHandler}
+                />
+                <TextInput
+                    value={sponsors}
+                    setValue={setSponsors}
+                    style={styles.eachForm}
+                    placeholder="Hospedaje"
+                    onChange={sponsorsOnchangeHandler}
+                />
+                <TextInput
+                    value={edicion}
+                    setValue={setEdicion}
+                    placeholder="Número de Edición"
+                    style={styles.eachForm}
+                    onChange={edicionOnchangeHandler}
+                />  
             </View>
                 <TouchableOpacity style={styles.button} onPress={buttonOnsubmitHandler}>
-                    <Text style={styles.textButton}>Submit</Text>
+                    <Text style={styles.textButton}>Siguiente</Text>
                 </TouchableOpacity>
             </View>
     );
@@ -254,7 +244,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flexDirection: "row",
         
-    },imgStyle: {
+    },
+    imgStyle: {
         marginTop: 30, alignContent:'center',
         marginBottom: 20,
         resizeMode: "contain",
