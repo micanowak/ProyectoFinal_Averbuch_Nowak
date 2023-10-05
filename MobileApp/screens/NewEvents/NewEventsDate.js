@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { StyleSheet, View, Image, useWindowDimensions, Text, Button } from "react-native";
+import { StyleSheet, View, Image, useWindowDimensions, Text, Button, TouchableOpacity } from "react-native";
 import { Calendar } from 'react-native-calendars';
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import DataEventSmall from "../../components/DataEvent/DataEventSmall.js";

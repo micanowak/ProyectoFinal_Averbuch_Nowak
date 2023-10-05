@@ -17,7 +17,7 @@ import back from "../../assets/images/backArrow.png"
 
 
 const NewEventsContact = () =>{
-    const baseURL = "http://localhost:3000/NewEventsContact";
+    const baseURL = "http://localhost:3000/insertContacto";
 /*const navigation = useNavigation();
 const { height } = useWindowDimensions();
 const [descripcion, setDescripcion] = useState("");

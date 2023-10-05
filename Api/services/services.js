@@ -72,4 +72,24 @@ export class PF_ArgTeam_Services {
         }
         return returnEntity;
     }
+
+
+    static insertContacto = async (Contacto) => {
+        let returnEntity = null;
+        console.log('Estoy en: PF_ArgTeam_Services.insertContacto(Evento)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pNom', Contacto.nombre)
+                .input('pApe', Contacto.apellido)
+                .input('pMail', Contacto.mail)
+                .input('pRol', Contacto.rol)
+                .input('pCel', Contacto.celular)
+                .query('INSERT INTO Profesionales (nombre, apellido, mail, rol, celular) VALUES (@pNom, @pApe, @pMail, @pRol, @pCel)');
+            returnEntity = result.recordsets[0];
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
 }

@@ -16,6 +16,7 @@ import NewEventsDate from "./screens/NewEvents/NewEventsDate";
 import NewEventsInfo from "./screens/NewEvents/NewEventsInfo";
 import NewEventsContact from "./screens/NewEvents/NewEventsContact";
 import NewEventsContactList from "./screens/NewEvents/NewEventsContactList";
+import NewContact from "./screens/NewContact/NewContact";
 import Calendar from "./screens/Calendar/Calendar";
 export default function App() {
   const [listaEventos, setListaEventos] = useState([]);
@@ -42,6 +43,18 @@ export default function App() {
           headerShown: false,
         }}
       > 
+      <Stack.Screen
+          name="NewContact"
+          component={NewContact}
+          //initialParams={listaEvendonsSent}
+          options={{ title: "New Contact" }}
+        />
+        <Stack.Screen
+          name="NewEventsContact"
+          component={NewEventsContact}
+          //initialParams={listaEvendonsSent}
+          options={{ title: "New Events Contact" }}
+        />
       <Stack.Screen
           name="NewEventsDate"
           component={NewEventsDate}
@@ -77,13 +90,6 @@ export default function App() {
           component={NewEventsContactList}
           //initialParams={listaEvendonsSent}
           options={{ title: "New Events Contact List" }}
-        />
-        
-        <Stack.Screen
-          name="NewEventsContact"
-          component={NewEventsContact}
-          //initialParams={listaEvendonsSent}
-          options={{ title: "New Events Contact" }}
         />
         
       <Stack.Screen
