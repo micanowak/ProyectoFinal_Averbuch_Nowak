@@ -43,6 +43,13 @@ export default function App() {
           headerShown: false,
         }}
       > 
+
+        <Stack.Screen
+          name="NewEventsContactList"
+          component={NewEventsContactList}
+          //initialParams={listaEvendonsSent}
+          options={{ title: "New Events Contact List" }}
+        />
       <Stack.Screen
           name="NewContact"
           component={NewContact}
@@ -85,12 +92,7 @@ export default function App() {
           component={HomeScreen}
           options={{ title: "Home" }}
         />
-        <Stack.Screen
-          name="NewEventsContactList"
-          component={NewEventsContactList}
-          //initialParams={listaEvendonsSent}
-          options={{ title: "New Events Contact List" }}
-        />
+        
         
       <Stack.Screen
           name="SpecificEvent"

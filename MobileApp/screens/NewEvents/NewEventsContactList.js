@@ -15,7 +15,7 @@ import axios from "axios";
 import Contacts from "../../components/Contacts/ContactV2.js"
 import back from "../../assets/images/backArrow.png"
 import backPage from "../NewEvents/NewEventsContact.js"
-
+import newContactPage from "../NewContact/NewContact.js"
 
 const NewEventsContactList = () =>{
     const baseURL = "http://localhost:3000/AgregarEvento";
@@ -59,6 +59,11 @@ const NewEventsContactList = () =>{
         navigation.navigate(backPage);
     
     }
+
+    const onPressNewContact = () => {
+        evento.preventDefault();
+        navigation.navigate(newContactPage);
+    }
     return(
         <View style={styles.container}>
             <View style ={styles.fondoArriba}>
@@ -87,6 +92,10 @@ const NewEventsContactList = () =>{
             <Text style = {styles.plus}>+</Text>
             <TouchableOpacity style = {styles.button} onPress={buttonOnPressHandler}>
                 <Text style={styles.textButton}>Guardar</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style = {styles.button} onPress={onPressNewContact}>
+                <Text style={styles.textButton}>Nuevo contacto</Text>
             </TouchableOpacity>
         </View>
         

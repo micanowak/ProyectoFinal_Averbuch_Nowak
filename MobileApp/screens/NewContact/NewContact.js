@@ -5,7 +5,6 @@ import {
     Text,
     Image,
     useWindowDimensions,
-    Button,
     TextInput,
     TouchableOpacity,
 } from "react-native";
@@ -73,16 +72,21 @@ const NewContact = () => {
         setCelular(0);
         setMail('');
         setRol('');
+
     };
 
+    const onPressBack = () => {
+        navigation.navigate("Home")
+    }
     return (
         <View style={styles.container}>
 
             <View style={styles.fondoArriba}>
                 <Image source={ArgTeamLogo} style={styles.imgStyle}></Image>
+                
             </View>
 
-
+<Text onPress={onPressBack}>volverrrr</Text>
             <Text style={styles.tituloMain}>Ingreso de características</Text>
             <View style={styles.containerForm}>
                 <TextInput
