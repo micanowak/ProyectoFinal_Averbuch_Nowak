@@ -18,6 +18,7 @@ import NewEventsContact from "./screens/NewEvents/NewEventsContact";
 import NewEventsContactList from "./screens/NewEvents/NewEventsContactList";
 import NewContact from "./screens/NewContact/NewContact";
 import Calendar from "./screens/Calendar/Calendar";
+import ContactList from "./screens/ContactsList/ContactList";
 export default function App() {
   const [listaEventos, setListaEventos] = useState([]);
   const listaEvendonsSent = (listaaa) => {
@@ -43,7 +44,12 @@ export default function App() {
           headerShown: false,
         }}
       > 
-
+        <Stack.Screen
+          name="ContactList"
+          component={ContactList}
+          //initialParams={listaEvendonsSent}
+          options={{ title: "Contact List" }}
+        />
         <Stack.Screen
           name="NewEventsContactList"
           component={NewEventsContactList}
@@ -100,7 +106,6 @@ export default function App() {
           initialParams={listaEventos}
           options={{ title: "Detalle evento específico" }}
         />  
-       
       </Stack.Navigator>
     </NavigationContainer>
   );
