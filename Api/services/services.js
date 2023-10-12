@@ -34,6 +34,20 @@ export class PF_ArgTeam_Services {
         return returnEntity;
     }
 
+    static getContactList = async () => {
+        let returnEntity = null;
+        console.log('Estoy en: PF_ArgTeam_Services.getContactList()');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .query('SELECT * FROM Profesionales');
+            returnEntity = result.recordsets[0];
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
+
     static insertEvento = async (Evento) => {
         let returnEntity = null;
         console.log('Estoy en: PF_ArgTeam_Services.insertEvento(Evento)');

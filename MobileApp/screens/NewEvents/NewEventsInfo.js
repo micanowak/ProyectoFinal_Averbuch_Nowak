@@ -14,7 +14,8 @@ import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
 import back from "../../assets/images/backArrow.png"
-const AgregarEvento = () => {
+
+const NewEventsInfo = () => {
     const navigation = useNavigation();
     const { height } = useWindowDimensions();
     const [edicion, setEdicion] = useState(0);
@@ -24,10 +25,9 @@ const AgregarEvento = () => {
     const [gastronomia, setGastronomia] = useState('');
     const [hospedaje, setHospedaje] = useState('');
     const [descripcion, setDescripcion] = useState("");
-    const [eventoNuevo, setEventoNuevo] = useState({});
-    const router = useRoute();
+    const route = useRoute();
 
-    const {fechaInicio, fechaFin} = router.params;
+    const {fechaInicio, fechaFin} = route.params;
 
     const nombreOnchangeHandler = (evento) => {
         setNombre(evento.target.value);
@@ -79,8 +79,7 @@ const AgregarEvento = () => {
             numEdicionEvento: edicion,
             sponsors: sponsors
         };
-        setEventoNuevo(nuevoEvento);
-        navigation.navigate("NewEventsContact");
+        navigation.navigate("NewEventsContactList", nuevoEvento);
         
 
         setDescripcion("");
@@ -246,4 +245,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default AgregarEvento;
+export default NewEventsInfo;

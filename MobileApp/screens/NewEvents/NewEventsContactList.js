@@ -14,16 +14,16 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
 import Contacts from "../../components/Contacts/ContactV2.js"
 import back from "../../assets/images/backArrow.png"
-import backPage from "../NewEvents/NewEventsContact.js"
 import newContactPage from "../NewContact/NewContact.js"
+import Search from "../../components/Search/Search.js"
 
 const NewEventsContactList = () =>{
     const baseURL = "http://localhost:3000/AgregarEvento";
     const navigation = useNavigation();
-    const router = useRoute();
+    const route = useRoute();
     const [eventoNuevo, setEventoNuevo] = useState({});
 
-    const {nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, edicion, sponsors} = router.params;
+    //const {nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, edicion, sponsors} = route.params;
 
     const buttonOnPressHandler = () =>{
         const NewEventtt = {
@@ -70,9 +70,9 @@ const NewEventsContactList = () =>{
                 <TouchableOpacity onAccessibilityTap={onPressBack}>
                     <Image source={back} style={styles.back} ></Image>
                 </TouchableOpacity>
-                <Text style ={styles.textArriba} >Lista de contactos</Text>
+                <Text style ={styles.textArriba} >Seleccionar Contactos</Text> 
             </View>
-            <Text style = {styles.tituloContactos}>Coordinadores</Text>
+            {/*<Text style = {styles.tituloContactos}>Coordinadores</Text>
             <View style = {styles.contactos}>
                 
                 <Contacts></Contacts>
@@ -88,7 +88,8 @@ const NewEventsContactList = () =>{
                 <Contacts></Contacts>
                 <Contacts></Contacts>
                 
-            </View>
+    </View>*/}
+            <Search></Search>
             <Text style = {styles.plus}>+</Text>
             <TouchableOpacity style = {styles.button} onPress={buttonOnPressHandler}>
                 <Text style={styles.textButton}>Guardar</Text>

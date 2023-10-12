@@ -18,6 +18,11 @@ app.get('/getEvents', async (req, res) => {
     res.status(200).send(Evento);
 })
 
+app.get('/getContactList', async (req, res) => {
+    const ListaContactos = await PF_ArgTeam_Services.getContactList()
+    res.status(200).send(ListaContactos);
+})
+
 app.post('/logInUsuario', async (req, res) => {
     console.log("en post, req:", req)
     console.log(req.body);

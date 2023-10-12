@@ -26,7 +26,7 @@ const NewEventsDate = () => {
         }
 
         setAmbasFechas(fechitas);
-        navigation.navigate("NewEventsInfo");
+        navigation.navigate("NewEventsInfo", fechitas);
     }
 
     const onPressBack = () => {
@@ -49,7 +49,7 @@ const NewEventsDate = () => {
             <br></br>
 
             <Button title="Seleccionar Fecha Inicio" onPress={() => setOpenIn(true)} />
-            <DatePicker
+            {/*<DatePicker
                 modal
                 open={openIn}
                 date={fechaInicio}
@@ -60,7 +60,7 @@ const NewEventsDate = () => {
                 onCancel={() => {
                     setOpenIn(false)
                 }}
-            />
+            />*/}
 
             {/*<Text>Fecha Inicio:</Text>
                 <DatePickerIOSBase
