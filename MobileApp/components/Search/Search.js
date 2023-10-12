@@ -1,12 +1,14 @@
 import { SearchBar } from 'react-native-elements';
 import React, { useState, useEffect } from 'react';
+import { Text } from 'react-native-elements';
 import axios from 'axios';
 
-const Search = () => {
+const Search = (listaContactosSeleccionados) => {
     const baseURL = "http://localhost:3000/getContactList";
-    const [contactList, setContactList] = useState([]);
+    const [contactList, setContactList] = useState([{}]);
     const [search, setSearch] = useState('');
-    const [suggestedContacts, setSuggestedContacts] = useState([]);
+    const [suggestedContacts, setSuggestedContacts] = useState([{}]);
+    const [sendListaContactosSeleccionados, setSendListaContactosSeleccionados] = useState([]);
 
     useEffect(() => {
         axios.get(baseURL).then((response) => {
@@ -14,16 +16,21 @@ const Search = () => {
         });
     }, []);
 
+    const contactOnPressHandler = (e) =>{
+        e.preventDefault();
+        setSendListaContactosSeleccionados(e.key);
+        listaContactosSeleccionados(sendListaContactosSeleccionados);
+    }
+
     const updateSearch = (text) => {
         setSearch(text);
-        // Filter the contact list based on the first three characters of the search input
-        if (text.length >= 3) {
+        if (text.length > 0) {
             const filteredContacts = contactList.filter(contact =>
                 contact.nombre.toLowerCase().includes(text.toLowerCase())
             );
             setSuggestedContacts(filteredContacts);
         } else {
-            setSuggestedContacts([]);
+            setSuggestedContacts([{}]);
         }
     };
 
@@ -36,7 +43,7 @@ const Search = () => {
             />
             {/* Display suggested contacts */}
             {suggestedContacts.map(contact => (
-                <Text key={contact.id}>{contact.name}</Text>
+                <Text key={contact.ID} onPress={contactOnPressHandler}>{contact.nombre}</Text>
             ))}
         </>
     );

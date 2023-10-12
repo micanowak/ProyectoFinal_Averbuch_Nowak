@@ -5,7 +5,7 @@ import { Calendar } from 'react-native-calendars';
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import DataEventSmall from "../../components/DataEvent/DataEventSmall.js";
 import { useNavigation } from '@react-navigation/native';
-import DatePicker from 'react-native-date-picker';
+//import DatePicker from 'react-native-date-picker';
 import back from "../../assets/images/backArrow.png";
 
 const NewEventsDate = () => {

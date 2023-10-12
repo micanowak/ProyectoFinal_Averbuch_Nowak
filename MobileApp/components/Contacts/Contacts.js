@@ -2,8 +2,9 @@ import react from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import phoneIcon from "../../assets/images/phoneIcon.png";
 import mailIcon from "../../assets/images/mailIcon.png";
-const Contact = ({Contacto}) => {
-    console.log(Contacto);
+const Contact = ({idContacto}) => {
+
+    // axios get by id y modificar todo según esto
 
     return(
         <View style={styles.container}>

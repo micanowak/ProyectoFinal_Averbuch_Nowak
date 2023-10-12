@@ -14,7 +14,6 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
 import Contacts from "../../components/Contacts/ContactV2.js"
 import back from "../../assets/images/backArrow.png"
-import newContactPage from "../NewContact/NewContact.js"
 import Search from "../../components/Search/Search.js"
 
 const NewEventsContactList = () =>{
@@ -22,6 +21,7 @@ const NewEventsContactList = () =>{
     const navigation = useNavigation();
     const route = useRoute();
     const [eventoNuevo, setEventoNuevo] = useState({});
+    const [listaContactosSeleccionados, setListaContactosSeleccionados] = useState([{}]);
 
     //const {nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, edicion, sponsors} = route.params;
 
@@ -62,8 +62,13 @@ const NewEventsContactList = () =>{
 
     const onPressNewContact = () => {
         evento.preventDefault();
-        navigation.navigate(newContactPage);
+        navigation.navigate("NewContact");
     }
+
+    const listaHandle = (lista) => {
+        setListaContactosSeleccionados(lista);
+    }
+
     return(
         <View style={styles.container}>
             <View style ={styles.fondoArriba}>
@@ -72,14 +77,7 @@ const NewEventsContactList = () =>{
                 </TouchableOpacity>
                 <Text style ={styles.textArriba} >Seleccionar Contactos</Text> 
             </View>
-            {/*<Text style = {styles.tituloContactos}>Coordinadores</Text>
-            <View style = {styles.contactos}>
-                
-                <Contacts></Contacts>
-                <Contacts></Contacts>
-                <Contacts></Contacts>
-                
-            </View>            
+            {/*            
             <Text style = {styles.plus}>+</Text>
 
             <Text style = {styles.tituloContactos}>Profesionales para contratar</Text>
@@ -89,8 +87,13 @@ const NewEventsContactList = () =>{
                 <Contacts></Contacts>
                 
     </View>*/}
-            <Search></Search>
-            <Text style = {styles.plus}>+</Text>
+            <Search listaContactosSeleccionados={listaHandle}></Search>
+            <Text style = {styles.tituloContactos}>Contactos</Text>
+            <View style = {styles.contactos}>
+                
+            {listaContactosSeleccionados.map((element) => <Contacts idContacto={element.ID}/>)}
+                
+            </View>
             <TouchableOpacity style = {styles.button} onPress={buttonOnPressHandler}>
                 <Text style={styles.textButton}>Guardar</Text>
             </TouchableOpacity>
