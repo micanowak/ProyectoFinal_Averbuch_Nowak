@@ -37,7 +37,7 @@ const ContactList = () => {
                 </TouchableOpacity>
                 <Text style={styles.textArriba} >Lista de contactos</Text>
             </View>
-            <Text style={styles.tituloContactos}>Coordinadores</Text>
+            
             <View style={styles.contactos}>
 
                 <Contacts></Contacts>
@@ -47,13 +47,7 @@ const ContactList = () => {
             </View>
             <Text style={styles.plus}>+</Text>
 
-            <Text style={styles.tituloContactos}>Profesionales para contratar</Text>
-            <View style={styles.contactos}>
-                <Contacts></Contacts>
-                <Contacts></Contacts>
-                <Contacts></Contacts>
 
-            </View>
         </View>
 
     );
@@ -69,7 +63,7 @@ const styles = StyleSheet.create({
     }, tituloContactos: {
         color: '#1A4B8E', fontWeight: '500', fontSize: 16, textAlign: 'left', margin: 10, alignContent: 'center', marginTop: 40
     }, contactos: {
-        width: '80%', flex: 2,
+        width: '80%', flex: 2, marginTop:20, marginBottom:10,
         flexDirection: "column", alignItems: "center",
         flex: 1, justifyContent: 'flex-start', maxHeight: '25%'    //IMPORTanteeeeee  
 
