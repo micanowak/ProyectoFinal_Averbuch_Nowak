@@ -21,7 +21,7 @@ const NewEventsContactList = () =>{
     const navigation = useNavigation();
     const route = useRoute();
     const [eventoNuevo, setEventoNuevo] = useState({});
-    const [listaContactosSeleccionados, setListaContactosSeleccionados] = useState([{}]);
+    const [listaContactosSeleccionados, setListaContactosSeleccionados] = useState([]);
 
     //const {nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, edicion, sponsors} = route.params;
 
@@ -60,7 +60,7 @@ const NewEventsContactList = () =>{
     
     }
 
-    const onPressNewContact = () => {
+    const onPressNewContact = (evento) => {
         evento.preventDefault();
         navigation.navigate("NewContact");
     }
@@ -77,21 +77,11 @@ const NewEventsContactList = () =>{
                 </TouchableOpacity>
                 <Text style ={styles.textArriba} >Seleccionar Contactos</Text> 
             </View>
-            {/*            
-            <Text style = {styles.plus}>+</Text>
-
-            <Text style = {styles.tituloContactos}>Profesionales para contratar</Text>
-            <View style = {styles.contactos}>
-                <Contacts></Contacts>
-                <Contacts></Contacts>
-                <Contacts></Contacts>
-                
-    </View>*/}
             <Search listaContactosSeleccionados={listaHandle}></Search>
             <Text style = {styles.tituloContactos}>Contactos</Text>
             <View style = {styles.contactos}>
                 
-            {listaContactosSeleccionados.map((element) => <Contacts idContacto={element.ID}/>)}
+            {listaContactosSeleccionados.map((element) => <Contacts idContacto={element}/>)}
                 
             </View>
             <TouchableOpacity style = {styles.button} onPress={buttonOnPressHandler}>

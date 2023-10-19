@@ -1,11 +1,26 @@
-import react from "react";
+import react, {useEffect, useState} from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import phoneIcon from "../../assets/images/phoneIcon.png";
 import mailIcon from "../../assets/images/mailIcon.png";
 import { ScrollView } from 'react-native';
+import axios from "axios";
 
 
-const ContactV2 = () => {
+const ContactV2 = ({idContacto}) => {
+
+    const baseURL = "http://localhost:3000/getContactById/" + idContacto;
+    const [Contacto, setContacto] = useState({});
+
+    useEffect(() => {
+        axios.get(baseURL)
+            .then((response) => {
+                setContacto(response.data);
+                console.log(Contacto);
+            })
+            .catch((error) => {
+                console.error("Error fetching contact data:", error);
+            });
+    }, []);
 
     const onClickDelete = () => {
         console.log(2)
@@ -18,7 +33,7 @@ const ContactV2 = () => {
 
     return(
         <View style={styles.container}>
-            <Text style={styles.titleCard}>Susana Gimenez</Text>
+            <Text style={styles.titleCard}>{Contacto.nombre} {Contacto.apellido}</Text>
             {/*<View style = {styles.containerPics}>
                 <Image source={phoneIcon} style={styles.imgStyle}></Image> 
                 <Image source={mailIcon} style={styles.imgStyle}></Image>

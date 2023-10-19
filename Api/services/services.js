@@ -106,4 +106,21 @@ export class PF_ArgTeam_Services {
         }
         return returnEntity;
     }
+
+
+    static getContactById = async (id) => {
+        let returnEntity = null;
+        console.log('Estoy en: PF_ArgTeam_Services.getContactById(id)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pId', sql.Int, id)
+                .query('SELECT * FROM Profesionales WHERE ID = @pId');
+            returnEntity = result.recordsets[0];
+            console.log(returnEntity);
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
 }

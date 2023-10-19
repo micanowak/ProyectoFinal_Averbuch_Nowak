@@ -73,3 +73,9 @@ app.post('/insertContacto', async (req, res) => {
         res.status(500).json({ error: 'Fallo el insert' });
     }
 })
+
+app.get('/getContactById/:id', async (req, res) => {
+    console.log(req.params.id);
+    const Profesional = await PF_ArgTeam_Services.getContactById(req.params.id)
+    res.status(200).send(Profesional);
+})

@@ -1,9 +1,9 @@
-import { SearchBar } from 'react-native-elements';
+import { SearchBar, Text } from 'react-native-elements';
 import React, { useState, useEffect } from 'react';
-import { Text } from 'react-native-elements';
+import { TouchableOpacity, View } from 'react-native';
 import axios from 'axios';
 
-const Search = (listaContactosSeleccionados) => {
+const Search = ({ listaContactosSeleccionados }) => {
     const baseURL = "http://localhost:3000/getContactList";
     const [contactList, setContactList] = useState([{}]);
     const [search, setSearch] = useState('');
@@ -16,10 +16,12 @@ const Search = (listaContactosSeleccionados) => {
         });
     }, []);
 
-    const contactOnPressHandler = (e) =>{
-        e.preventDefault();
-        setSendListaContactosSeleccionados(e.key);
-        listaContactosSeleccionados(sendListaContactosSeleccionados);
+    const contactOnPressHandler = (id) => {
+        console.log(id);
+        console.log("nn");
+        const updatedSendListaContactosSeleccionados = [...sendListaContactosSeleccionados, id];
+        setSendListaContactosSeleccionados(updatedSendListaContactosSeleccionados);
+        listaContactosSeleccionados(updatedSendListaContactosSeleccionados);
     }
 
     const updateSearch = (text) => {
@@ -41,9 +43,15 @@ const Search = (listaContactosSeleccionados) => {
                 onChangeText={updateSearch}
                 value={search}
             />
-            {/* Display suggested contacts */}
             {suggestedContacts.map(contact => (
-                <Text key={contact.ID} onPress={contactOnPressHandler}>{contact.nombre}</Text>
+                <TouchableOpacity
+                    key={contact.ID}
+                    onPress={() => contactOnPressHandler(contact.ID)}
+                >
+                    <View>
+                        <Text>{contact.nombre} {contact.ID}</Text>
+                    </View>
+                </TouchableOpacity>
             ))}
         </>
     );

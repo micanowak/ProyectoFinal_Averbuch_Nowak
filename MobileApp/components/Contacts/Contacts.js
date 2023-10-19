@@ -1,14 +1,14 @@
-import react from "react";
+import react, { useEffect, useState } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import phoneIcon from "../../assets/images/phoneIcon.png";
 import mailIcon from "../../assets/images/mailIcon.png";
-const Contact = ({idContacto}) => {
+import axios from "axios";
 
-    // axios get by id y modificar todo según esto
+const Contact = () => {
 
     return(
         <View style={styles.container}>
-            <Text style={styles.titleCard}>MJ{/*{Contacto.nombre} {Contacto.apellido}*/}</Text>
+            <Text style={styles.titleCard}>MJ</Text>
             <View style = {styles.containerPics}>
                 <Image source={phoneIcon} style={styles.imgStyle}></Image> 
                 <Image source={mailIcon} style={styles.imgStyle}></Image>
