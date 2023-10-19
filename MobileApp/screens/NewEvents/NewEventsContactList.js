@@ -77,12 +77,11 @@ const NewEventsContactList = () =>{
                 </TouchableOpacity>
                 <Text style ={styles.textArriba} >Seleccionar Contactos</Text> 
             </View>
-            <Search listaContactosSeleccionados={listaHandle}></Search>
+            <Search style={styles.search} listaContactosSeleccionados={listaHandle}></Search>
             <Text style = {styles.tituloContactos}>Contactos seleccionados</Text>
-            <View style = {styles.contactos}>
+            <View style = {styles.contactos} >
                 
             {listaContactosSeleccionados.map((element) => <Contacts idContacto={element}/>)}
-                
             </View>
             <TouchableOpacity style = {styles.mainButton} onPress={buttonOnPressHandler}>
                 <Text style={styles.textButton}>Guardar</Text>
@@ -136,6 +135,8 @@ const styles = StyleSheet.create({
     plus:{
         fontSize:25, color:'#845FD3',borderColor:'#845FD3' //fucsia
         , borderWidth:2, borderRadius:20, paddingBottom:4, paddingRight:8, paddingLeft:8
+    },search:{
+        backgroundColor:'blue', margin:10,  
     },
 });
 

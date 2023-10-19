@@ -1,5 +1,5 @@
 import { SearchBar, Text } from 'react-native-elements';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,  } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import axios from 'axios';
 
@@ -42,6 +42,11 @@ const Search = ({ listaContactosSeleccionados }) => {
                 placeholder="Ingrese Nombre"
                 onChangeText={updateSearch}
                 value={search}
+                inputStyle={{backgroundColor: 'white', borderRadius:10}}
+                containerStyle={{backgroundColor: 'transparent', borderRadius: 20, border:'none'}}
+                placeholderTextColor={{color: 'black'}}
+                inputContainerStyle={{backgroundColor: '#845FD3', borderRadius:15, padding:6}}
+
             />
             {suggestedContacts.map(contact => (
                 <TouchableOpacity
