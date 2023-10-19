@@ -43,8 +43,8 @@ export default function App() {
           animationEnabled: false,
           headerShown: false,
         }}
-      >
-        <Stack.Screen
+      >  
+      <Stack.Screen
           name="NewEventsContactList"
           component={NewEventsContactList}
           //initialParams={listaEvendonsSent}
@@ -56,6 +56,8 @@ export default function App() {
           //initialParams={listaEvendonsSent}
           options={{ title: "Contact List" }}
         />
+      
+        
         <Stack.Screen
           name="NewContact"
           component={NewContact}

@@ -88,13 +88,15 @@ const NewEventsContactList = () =>{
                 
     </View>*/}
             <Search listaContactosSeleccionados={listaHandle}></Search>
-            <Text style = {styles.tituloContactos}>Contactos</Text>
+            <Text style = {styles.tituloContactos}>Contactos seleccionados</Text>
             <View style = {styles.contactos}>
                 
             {listaContactosSeleccionados.map((element) => <Contacts idContacto={element.ID}/>)}
-                
+                {/*SOLO PARA VER COMO ME QUEDARÍA CON 2+ CONTACTOS*/}
+                <Contacts></Contacts>
+                <Contacts></Contacts>
             </View>
-            <TouchableOpacity style = {styles.button} onPress={buttonOnPressHandler}>
+            <TouchableOpacity style = {styles.mainButton} onPress={buttonOnPressHandler}>
                 <Text style={styles.textButton}>Guardar</Text>
             </TouchableOpacity>
 
@@ -120,8 +122,10 @@ const styles = StyleSheet.create({
         flexDirection:"column",alignItems: "center", 
         flex:1, justifyContent: 'flex-start', maxHeight:'25%'    //IMPORTanteeeeee  
 
+    }, mainButton:{
+        backgroundColor:'rgb(231, 66, 235);', marginTop:60,padding:10,borderRadius:15, width:'50%',height:'5%',alignContent:'center',alignItems:'center',
     }, button:{
-        backgroundColor:'rgb(26, 75, 142)', marginTop:60,padding:10,borderRadius:15, width:'50%',height:'5%',alignContent:'center',alignItems:'center',
+        backgroundColor:'rgb(26, 75, 142)', marginTop:60,padding:10,borderRadius:15, width:'40%',height:'5%',alignContent:'center',alignItems:'center',
     },textButton:{
         color:'white', fontSize:'110%', 
     },fondoArriba: {
@@ -138,8 +142,8 @@ const styles = StyleSheet.create({
         marginLeft:10, 
         
     },textArriba:{
-        color:'white',
-        fontSize:23,  alignContent:'center', width:'70%', marginLeft:'28%',
+        color:'white', marginHorizontal:'15%',
+        fontSize:23,  textAlign:'center', width:'70%',
     },
     plus:{
         fontSize:25, color:'#845FD3',borderColor:'#845FD3' //fucsia
