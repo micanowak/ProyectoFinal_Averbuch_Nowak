@@ -6,7 +6,7 @@ import { ScrollView } from 'react-native';
 import axios from "axios";
 
 
-const ContactV2 = ({idContacto}) => {
+const ContactV2 = ({idContacto, idEvento}) => {
 
     const baseURL = "http://localhost:3000/getContactById/" + idContacto;
     const [Contacto, setContacto] = useState({});

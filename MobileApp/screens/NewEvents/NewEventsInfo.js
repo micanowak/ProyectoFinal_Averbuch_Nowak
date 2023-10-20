@@ -27,7 +27,9 @@ const NewEventsInfo = () => {
     const [descripcion, setDescripcion] = useState("");
     const route = useRoute();
 
-    const {fechaInicio, fechaFin} = route.params;
+    //const {fechaInicio, fechaFin} = route.params;
+    const fechaInicio = new Date();
+    const fechaFin = new Date();
 
     const nombreOnchangeHandler = (evento) => {
         setNombre(evento.target.value);

@@ -48,6 +48,45 @@ export class PF_ArgTeam_Services {
         return returnEntity;
     }
 
+    static getIdEvent = async (Evento) => {
+        let returnEntity = null;
+        console.log('Estoy en: PF_ArgTeam_Services.getidevent()');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pNom', Evento.nombre)
+                .input('pLug', Evento.lugar)
+                .input('pFechIn', Evento.fechaInicio)
+                .input('pFechFin', Evento.fechaFin)
+                .input('pDesc', Evento.descripcion)
+                .input('pHosp', Evento.hospedaje)
+                .input('pGas', Evento.gastronomia)
+                .input('pEdi', Evento.numEdicionEvento)
+                .input('pSpon', Evento.sponsors)
+                .query('SELECT top 1 ID FROM Evento WHERE nombre = @pNom, lugar = @pLug, fechaInicio = @pFechIn, fechaFin = @pFechFin, descripcion = @pDesc, hospedaje = @pHosp, gastronomia = @pGas, numEdicionEvento = @pEdi, sponsors = @pSpon');
+            returnEntity = result.recordsets[0];
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
+
+    static insertProfXEvento = async (ids) => {
+        let returnEntity = null;
+        console.log('Estoy en: PersonajeServices.insert(Personaje)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pIdProf', ids.prof)
+                .input('pIdEv', ids.evento)
+                .query('INSERT INTO Profesional_X_Evento (fkProfesional, fkEvento) VALUES (@pIdProf, @pIdEv)');
+            returnEntity = result.recordsets[0];
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
+
     static insertEvento = async (Evento) => {
         let returnEntity = null;
         console.log('Estoy en: PF_ArgTeam_Services.insertEvento(Evento)');

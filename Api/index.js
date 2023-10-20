@@ -23,6 +23,22 @@ app.get('/getContactList', async (req, res) => {
     res.status(200).send(ListaContactos);
 })
 
+app.get('/getIdEvent', async (req, res) => {
+    const id = await PF_ArgTeam_Services.getIdEvent(req.body)
+    res.status(200).send(id);
+})
+
+app.post('/insertProfEvento', async (req, res) => {
+    console.log("en post, req:", req)
+    try {
+        await PF_ArgTeam_Services.insertProfXEvento(req.body)
+        res.status(200).json({ message: 'creada' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Fallo el insert' });
+    }
+})
+
 app.post('/logInUsuario', async (req, res) => {
     console.log("en post, req:", req)
     console.log(req.body);

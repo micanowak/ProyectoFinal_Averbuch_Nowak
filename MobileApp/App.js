@@ -45,6 +45,12 @@ export default function App() {
         }}
       >  
       <Stack.Screen
+          name="NewEventsInfo"
+          component={NewEventsInfo}
+          //initialParams={listaEvendonsSent}
+          options={{ title: "New Events Info" }}
+        />
+      <Stack.Screen
           name="NewEventsContactList"
           component={NewEventsContactList}
           //initialParams={listaEvendonsSent}
@@ -68,12 +74,6 @@ export default function App() {
           name="NewEventsDate"
           component={NewEventsDate}
           options={{ title: "Fecha nuevo evento" }}
-        />
-        <Stack.Screen
-          name="NewEventsInfo"
-          component={NewEventsInfo}
-          //initialParams={listaEvendonsSent}
-          options={{ title: "New Events Info" }}
         />
         <Stack.Screen
           name="LogIn"
