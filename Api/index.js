@@ -34,7 +34,7 @@ app.get('/getIdEvent', async (req, res) => {
         gastronomia: req.body.gastronomia,
         numEdicionEvento: req.body.edicion,
         sponsors: req.body.sponsors
-    }
+    };
     const id = await PF_ArgTeam_Services.getIdEvent(Evento)
     res.status(200).send(id);
 })
@@ -78,8 +78,9 @@ app.post('/logInUsuario', async (req, res) => {
 app.post('/AgregarEvento', async (req, res) => {
     console.log("en post, req:", req)
     try {
-        await PF_ArgTeam_Services.insertEvento(req.body)
-        res.status(200).json({ message: 'Evento creado' });
+        const results = await PF_ArgTeam_Services.insertEvento(req.body)
+        res.status(200).send(results);
+        console.log(results);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Fallo el insert' });

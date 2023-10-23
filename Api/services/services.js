@@ -102,13 +102,15 @@ export class PF_ArgTeam_Services {
                 .input('pGas', Evento.gastronomia)
                 .input('pEdi', Evento.numEdicionEvento)
                 .input('pSpon', Evento.sponsors)
-                .query('INSERT INTO Evento (nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, numEdicionEvento, sponsors) VALUES (@pNom, @pLug, @pFechIn, @pFechFin, @pDesc, @pHosp, @pGas, @pEdi, @pSpon)');
-            returnEntity = result.recordsets[0];
+                .query('INSERT INTO Evento (nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, numEdicionEvento, sponsors) OUTPUT INSERTED.* VALUES (@pNom, @pLug, @pFechIn, @pFechFin, @pDesc, @pHosp, @pGas, @pEdi, @pSpon)');
+            
+            returnEntity = result.recordset[0];
         } catch (error) {
             console.log(error);
         }
         return returnEntity;
     }
+
 
     static getProfByEvent = async (id) => {
         let returnEntity = null;

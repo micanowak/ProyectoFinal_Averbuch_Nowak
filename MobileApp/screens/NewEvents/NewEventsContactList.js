@@ -49,27 +49,7 @@ const NewEventsContactList = () => {
             .then(
                 (response) => {
                     if (response.status === 200) {
-                        //navigation.navigate("Home");
-                        console.log(response);
-                        axios
-                            .get(baseURL2, {
-                                nombre: nombre,
-                                lugar: lugar,
-                                fechaInicio: fechaInicio,
-                                fechaFin: fechaFin,
-                                descripcion: descripcion,
-                                hospedaje: hospedaje,
-                                gastronomia: gastronomia,
-                                numEdicionEvento: edicion,
-                                sponsors: sponsors
-                            })
-                            .then((response) => {
-                                setIdEvent(response.data);
-                                console.log("id: ", response);
-                            })
-                            .catch((error) => {
-                                console.error("Error fetching contact data:", error);
-                            });
+                        setIdEvent(response.data.ID);
                     }
                 },
                 (res) => {
@@ -79,7 +59,7 @@ const NewEventsContactList = () => {
     }, []);
 
     const buttonOnPressHandler = () => {
-
+        navigation.navigate("Home");
     }
     const onPressBack = () => {
         evento.preventDefault();
@@ -168,3 +148,23 @@ const styles = StyleSheet.create({
 });
 
 export default NewEventsContactList;
+
+/* axios
+                            .get(baseURL2, {
+                                nombre: nombre,
+                                lugar: lugar,
+                                fechaInicio: fechaInicio,
+                                fechaFin: fechaFin,
+                                descripcion: descripcion,
+                                hospedaje: hospedaje,
+                                gastronomia: gastronomia,
+                                numEdicionEvento: edicion,
+                                sponsors: sponsors
+                            })
+                            .then((response) => {
+                                setIdEvent(response.data);
+                                console.log("id: ", response);
+                            })
+                            .catch((error) => {
+                                console.error("Error fetching contact data:", error);
+                            }); */
