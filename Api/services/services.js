@@ -71,14 +71,14 @@ export class PF_ArgTeam_Services {
         return returnEntity;
     }
 
-    static insertProfXEvento = async (ids) => {
+    static insertProfXEvento = async (idContacto, idEvento) => {
         let returnEntity = null;
-        console.log('Estoy en: PersonajeServices.insert(Personaje)');
+        console.log('Estoy en: PersonajeServices.insert(profevento)');
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
-                .input('pIdProf', ids.prof)
-                .input('pIdEv', ids.evento)
+                .input('pIdProf', idContacto)
+                .input('pIdEv', idEvento)
                 .query('INSERT INTO Profesional_X_Evento (fkProfesional, fkEvento) VALUES (@pIdProf, @pIdEv)');
             returnEntity = result.recordsets[0];
         } catch (error) {

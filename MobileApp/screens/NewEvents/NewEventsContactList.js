@@ -12,7 +12,7 @@ import {
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png"
 import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
-import Contacts from "../../components/Contacts/ContactV2.js"
+import ContactV2 from "../../components/Contacts/ContactV2.js"
 import back from "../../assets/images/backArrow.png"
 import Search from "../../components/Search/Search.js"
 
@@ -24,9 +24,9 @@ const NewEventsContactList = () => {
     const [eventoNuevo, setEventoNuevo] = useState({});
     const [idEvent, setIdEvent] = useState(0);
     const [listaContactosSeleccionados, setListaContactosSeleccionados] = useState([]);
-    const nombre = " d ";
+    //const nombre = " d ";
 
-    const { lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, edicion, sponsors } = route.params;
+    const { nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, edicion, sponsors } = route.params;
 
     const buttonOnPressHandler = () => {
         const NewEventtt = {
@@ -94,7 +94,7 @@ const NewEventsContactList = () => {
             <Text style={styles.tituloContactos}>Contactos seleccionados</Text>
             <View style={styles.contactos} >
 
-                {listaContactosSeleccionados.map((element) => <Contacts idContacto={element} idEvento={idEvent} />)}
+                {listaContactosSeleccionados.map((element) => <ContactV2 idContacto={element} idEvento={idEvent} />)}
             </View>
             <TouchableOpacity style={styles.mainButton} onPress={buttonOnPressHandler}>
                 <Text style={styles.textButton}>Guardar</Text>

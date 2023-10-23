@@ -31,7 +31,7 @@ app.get('/getIdEvent', async (req, res) => {
 app.post('/insertProfEvento', async (req, res) => {
     console.log("en post, req:", req)
     try {
-        await PF_ArgTeam_Services.insertProfXEvento(req.body)
+        await PF_ArgTeam_Services.insertProfXEvento(req.idContacto, req.idEvento)
         res.status(200).json({ message: 'creada' });
     } catch (error) {
         console.error(error);
