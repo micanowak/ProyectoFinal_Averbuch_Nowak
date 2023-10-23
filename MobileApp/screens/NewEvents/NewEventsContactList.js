@@ -12,7 +12,7 @@ import {
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png"
 import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
-import Contacts from "../../components/Contacts/ContactV2.js"
+import ContactV2 from "../../components/Contacts/ContactV2.js"
 import back from "../../assets/images/backArrow.png"
 import Search from "../../components/Search/Search.js"
 
@@ -24,11 +24,12 @@ const NewEventsContactList = () => {
     const [eventoNuevo, setEventoNuevo] = useState({});
     const [idEvent, setIdEvent] = useState(0);
     const [listaContactosSeleccionados, setListaContactosSeleccionados] = useState([]);
-    const nombre = " d ";
+    //const nombre = " d ";
 
-    const { lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, edicion, sponsors } = route.params;
+    const { nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, edicion, sponsors } = route.params;
 
-    const buttonOnPressHandler = () => {
+    useEffect(() => {
+
         const NewEventtt = {
             nombre: nombre,
             lugar: lugar,
@@ -44,28 +45,21 @@ const NewEventsContactList = () => {
         setEventoNuevo(NewEventtt);
 
         axios
-            .post(baseURL, eventoNuevo)
+            .post(baseURL, NewEventtt)
             .then(
                 (response) => {
                     if (response.status === 200) {
-                        //navigation.navigate("Home");
-                        console.log(response);
+                        setIdEvent(response.data.ID);
                     }
                 },
                 (res) => {
                     setError(res.response.data);
                 }
             );
+    }, []);
 
-        axios
-            .get(baseURL2, NewEventtt)
-            .then((response) => {
-                setIdEvent(response.data);
-                console.log(response);
-            })
-            .catch((error) => {
-                console.error("Error fetching contact data:", error);
-            });
+    const buttonOnPressHandler = () => {
+        navigation.navigate("Home");
     }
     const onPressBack = () => {
         evento.preventDefault();
@@ -94,7 +88,7 @@ const NewEventsContactList = () => {
             <Text style={styles.tituloContactos}>Contactos seleccionados</Text>
             <View style={styles.contactos} >
 
-                {listaContactosSeleccionados.map((element) => <Contacts idContacto={element} idEvento={idEvent} />)}
+                {listaContactosSeleccionados.map((element) => <ContactV2 idContacto={element} idEvento={idEvent} />)}
             </View>
             <TouchableOpacity style={styles.mainButton} onPress={buttonOnPressHandler}>
                 <Text style={styles.textButton}>Guardar</Text>
@@ -154,3 +148,23 @@ const styles = StyleSheet.create({
 });
 
 export default NewEventsContactList;
+
+/* axios
+                            .get(baseURL2, {
+                                nombre: nombre,
+                                lugar: lugar,
+                                fechaInicio: fechaInicio,
+                                fechaFin: fechaFin,
+                                descripcion: descripcion,
+                                hospedaje: hospedaje,
+                                gastronomia: gastronomia,
+                                numEdicionEvento: edicion,
+                                sponsors: sponsors
+                            })
+                            .then((response) => {
+                                setIdEvent(response.data);
+                                console.log("id: ", response);
+                            })
+                            .catch((error) => {
+                                console.error("Error fetching contact data:", error);
+                            }); */
