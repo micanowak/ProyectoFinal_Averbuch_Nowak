@@ -28,7 +28,8 @@ const NewEventsContactList = () => {
 
     const { nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, edicion, sponsors } = route.params;
 
-    const buttonOnPressHandler = () => {
+    useEffect(() => {
+
         const NewEventtt = {
             nombre: nombre,
             lugar: lugar,
@@ -44,28 +45,41 @@ const NewEventsContactList = () => {
         setEventoNuevo(NewEventtt);
 
         axios
-            .post(baseURL, eventoNuevo)
+            .post(baseURL, NewEventtt)
             .then(
                 (response) => {
                     if (response.status === 200) {
                         //navigation.navigate("Home");
                         console.log(response);
+                        axios
+                            .get(baseURL2, {
+                                nombre: nombre,
+                                lugar: lugar,
+                                fechaInicio: fechaInicio,
+                                fechaFin: fechaFin,
+                                descripcion: descripcion,
+                                hospedaje: hospedaje,
+                                gastronomia: gastronomia,
+                                numEdicionEvento: edicion,
+                                sponsors: sponsors
+                            })
+                            .then((response) => {
+                                setIdEvent(response.data);
+                                console.log("id: ", response);
+                            })
+                            .catch((error) => {
+                                console.error("Error fetching contact data:", error);
+                            });
                     }
                 },
                 (res) => {
                     setError(res.response.data);
                 }
             );
+    }, []);
 
-        axios
-            .get(baseURL2, NewEventtt)
-            .then((response) => {
-                setIdEvent(response.data);
-                console.log(response);
-            })
-            .catch((error) => {
-                console.error("Error fetching contact data:", error);
-            });
+    const buttonOnPressHandler = () => {
+
     }
     const onPressBack = () => {
         evento.preventDefault();
