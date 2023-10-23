@@ -22,6 +22,7 @@ const SpecificEvent = (props) => {
     }
     const [listaContactos, setListaContactos] = useState([]);
     const idEvento = props.route.params.evento.ID;
+    const esPorEquipo = props.route.params.evento.esPorEquipo;
     const baseURL = "http://localhost:3000/getProfByEvent/" + idEvento;
 
     useEffect(() => {
@@ -36,6 +37,7 @@ const SpecificEvent = (props) => {
     }, []);
 
     return(
+        
         <View style={styles.container}>
             <Text onPress={onpressVolver}>  Volver!</Text>
             <View style={styles.fondoLogo}> <Image
@@ -60,10 +62,14 @@ const SpecificEvent = (props) => {
                 {listaContactos.map((element) => <Contacts Contacto={element}/>)}
             </>
             </View>
-            <Text style = {styles.tituloContactos}>Coordinadores</Text>
+
             <View style = {styles.contactos}>
-                <Contacts></Contacts>
-                <Contacts></Contacts>
+                {esPorEquipo === true ? (
+                    <p>es por equipo</p>
+                ) : 
+                (
+                    <p>no es por equipo</p>
+                )}
             </View>
         </View>
     );

@@ -38,18 +38,46 @@ export default function App() {
   return (
     <NavigationContainer theme={navTheme}>
 
+
       <Stack.Navigator
         screenOptions={{
           animationEnabled: false,
           headerShown: false,
         }}
       >  
-      <Stack.Screen
+        <Stack.Screen
           name="NewEventsInfo"
           component={NewEventsInfo}
           //initialParams={listaEvendonsSent}
           options={{ title: "New Events Info" }}
         />
+        
+        <Stack.Screen
+          name="LogIn"
+          component={LogInScreen}
+          style={styles.root}
+          initialParams={listaEvendonsSent}
+          options={{ title: "Inicio De Sesion" }}
+        />
+        <Stack.Screen
+          name="SpecificEvent"
+          component={SpecificEvent}
+          initialParams={listaEventos}
+          options={{ title: "Detalle evento específico" }}
+        />
+
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: "Home" }}
+        />
+      <Stack.Screen
+          name="NewContact"
+          component={NewContact}
+          //initialParams={listaEvendonsSent}
+          options={{ title: "New Contact" }}
+        />
+      
       <Stack.Screen
           name="NewEventsContactList"
           component={NewEventsContactList}
@@ -64,24 +92,13 @@ export default function App() {
         />
       
         
-        <Stack.Screen
-          name="NewContact"
-          component={NewContact}
-          //initialParams={listaEvendonsSent}
-          options={{ title: "New Contact" }}
-        />
+        
         <Stack.Screen
           name="NewEventsDate"
           component={NewEventsDate}
           options={{ title: "Fecha nuevo evento" }}
         />
-        <Stack.Screen
-          name="LogIn"
-          component={LogInScreen}
-          style={styles.root}
-          initialParams={listaEvendonsSent}
-          options={{ title: "Inicio De Sesion" }}
-        />
+        
         <Stack.Screen
           name="Calendar"
           component={Calendar}
@@ -89,19 +106,6 @@ export default function App() {
           options={{ title: "Calendar" }}
         />
 
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ title: "Home" }}
-        />
-
-
-        <Stack.Screen
-          name="SpecificEvent"
-          component={SpecificEvent}
-          initialParams={listaEventos}
-          options={{ title: "Detalle evento específico" }}
-        />
       </Stack.Navigator>
     </NavigationContainer>
   );

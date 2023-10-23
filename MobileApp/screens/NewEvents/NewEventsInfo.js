@@ -18,13 +18,14 @@ import back from "../../assets/images/backArrow.png"
 const NewEventsInfo = () => {
     const navigation = useNavigation();
     const { height } = useWindowDimensions();
-    const [edicion, setEdicion] = useState(0);
+    const [edicion, setEdicion] = useState();
     const [nombre, setNombre] = useState("");
     const [sponsors, setSponsors] = useState("");
     const [lugar, setLugar] = useState("");
     const [gastronomia, setGastronomia] = useState('');
     const [hospedaje, setHospedaje] = useState('');
     const [descripcion, setDescripcion] = useState("");
+    const [esPorEquipo, setEsPorEquipo] = useState();
     const route = useRoute();
 
     //const {fechaInicio, fechaFin} = route.params;
@@ -52,6 +53,9 @@ const NewEventsInfo = () => {
     const gastroOnchangeHandler = (evento) => {
         setGastronomia(evento.target.value);
     };
+    const equipoOnchangeHandler = (evento) => {
+        setEsPorEquipo(evento.target.value);
+    };
 
     
     const onPressBack = () => {
@@ -63,6 +67,7 @@ const NewEventsInfo = () => {
         setSponsors('');
         setHospedaje("");
         setLugar("");
+        setEsPorEquipo();
 
         navigation.navigate("NewEventsDate");
 
@@ -79,7 +84,8 @@ const NewEventsInfo = () => {
             hospedaje: hospedaje,
             gastronomia: gastronomia,
             numEdicionEvento: edicion,
-            sponsors: sponsors
+            sponsors: sponsors,
+            esPorEquipo: esPorEquipo,
         };
         navigation.navigate("NewEventsContactList", nuevoEvento);
         
@@ -91,6 +97,7 @@ const NewEventsInfo = () => {
         setSponsors('');
         setHospedaje("");
         setLugar("");
+        setEsPorEquipo();
     };
 
     return (
@@ -108,6 +115,7 @@ const NewEventsInfo = () => {
             <View style={styles.containerForm}>
                 <TextInput
                     value={nombre}
+                    placeholderTextColor={styles.placeholderStyle.color}
                     setValue={setNombre}
                     placeholder="Nombre del evento"
                     onChange={nombreOnchangeHandler}
@@ -117,11 +125,13 @@ const NewEventsInfo = () => {
                     value={descripcion}
                     setValue={setDescripcion}
                     placeholder="Descrpción"
+                    placeholderTextColor={styles.placeholderStyle.color}
                     style={styles.eachForm}
                     onChange={descripcionOnchangeHandler}
                 />
                 <TextInput
                     value={lugar}
+                    placeholderTextColor={styles.placeholderStyle.color}
                     setValue={setLugar}
                     placeholder="Lugar"
                     style={styles.eachForm}
@@ -130,6 +140,7 @@ const NewEventsInfo = () => {
                 <TextInput
                     value={hospedaje}
                     setValue={setHospedaje}
+                    placeholderTextColor={styles.placeholderStyle.color}
                     style={styles.eachForm}
                     placeholder="Hospedaje"
                     onChange={hospedajeOnchangeHandler}
@@ -137,6 +148,7 @@ const NewEventsInfo = () => {
                 <TextInput
                     value={gastronomia}
                     setValue={setGastronomia}
+                    placeholderTextColor={styles.placeholderStyle.color}
                     style={styles.eachForm}
                     placeholder="Gastronomía"
                     onChange={gastroOnchangeHandler}
@@ -145,6 +157,7 @@ const NewEventsInfo = () => {
                     value={sponsors}
                     setValue={setSponsors}
                     style={styles.eachForm}
+                    placeholderTextColor={styles.placeholderStyle.color}
                     placeholder="Sponsors"
                     onChange={sponsorsOnchangeHandler}
                 />
@@ -152,9 +165,19 @@ const NewEventsInfo = () => {
                     value={edicion}
                     setValue={setEdicion}
                     placeholder="Número de Edición"
+                    placeholderTextColor={styles.placeholderStyle.color}
                     style={styles.eachForm}
                     onChange={edicionOnchangeHandler}
                 />  
+                <TextInput
+                    value={esPorEquipo}
+                    setValue={setEsPorEquipo}
+                    placeholder="Equipo o participantes libres"
+                    placeholderTextColor={styles.placeholderStyle.color}
+                    style={styles.eachForm}
+                    onChange={equipoOnchangeHandler}
+                />  
+
             </View>
                 <TouchableOpacity style={styles.button} onPress={buttonOnsubmitHandler}>
                     <Text style={styles.textButton}>Siguiente</Text>
@@ -208,6 +231,11 @@ const styles = StyleSheet.create({
         padding: 5,
         margin: 5,
         marginBottom: 20,
+        fontWeight: 600,
+
+    },placeholderStyle:{
+        color:'#1a4b8e',
+        fontWeight:300
     },
     button: {
         backgroundColor: '#E742EB', margin: 10, padding: 10, borderRadius: 15, width: '35%', alignContent: 'center', alignItems: 'center',
