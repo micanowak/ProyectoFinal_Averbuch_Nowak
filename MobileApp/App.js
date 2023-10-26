@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import LogInScreen from "./screens/LogInScreen/LogInScreen";
 import axios from "axios";
+import MyDatePicker from "./screens/DatePicker";
 import { useState } from "react";
 import {
   NavigationContainer,
@@ -44,14 +45,24 @@ export default function App() {
           animationEnabled: false,
           headerShown: false,
         }}
-      >  
+      >
+        <Stack.Screen
+          name="DatePicker"
+          component={MyDatePicker}
+          options={{ title: "DatePicker" }}
+        />
+        <Stack.Screen
+          name="NewEventsDate"
+          component={NewEventsDate}
+          options={{ title: "Fecha nuevo evento" }}
+        />
         <Stack.Screen
           name="NewEventsInfo"
           component={NewEventsInfo}
           //initialParams={listaEvendonsSent}
           options={{ title: "New Events Info" }}
         />
-        
+
         <Stack.Screen
           name="LogIn"
           component={LogInScreen}
@@ -71,14 +82,14 @@ export default function App() {
           component={HomeScreen}
           options={{ title: "Home" }}
         />
-      <Stack.Screen
+        <Stack.Screen
           name="NewContact"
           component={NewContact}
           //initialParams={listaEvendonsSent}
           options={{ title: "New Contact" }}
         />
-      
-      <Stack.Screen
+
+        <Stack.Screen
           name="NewEventsContactList"
           component={NewEventsContactList}
           //initialParams={listaEvendonsSent}
@@ -90,15 +101,7 @@ export default function App() {
           //initialParams={listaEvendonsSent}
           options={{ title: "Contact List" }}
         />
-      
-        
-        
-        <Stack.Screen
-          name="NewEventsDate"
-          component={NewEventsDate}
-          options={{ title: "Fecha nuevo evento" }}
-        />
-        
+
         <Stack.Screen
           name="Calendar"
           component={Calendar}

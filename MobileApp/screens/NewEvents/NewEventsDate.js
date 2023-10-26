@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { StyleSheet, View, Image, useWindowDimensions, Text, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Image, useWindowDimensions, Text, Button, TouchableOpacity} from "react-native";
 import { Calendar } from 'react-native-calendars';
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import DataEventSmall from "../../components/DataEvent/DataEventSmall.js";
 import { useNavigation } from '@react-navigation/native';
-//import DatePicker from 'react-native-date-picker';
+import DatePicker from 'react-native-date-picker';
 import back from "../../assets/images/backArrow.png";
 
 const NewEventsDate = () => {
@@ -45,11 +45,10 @@ const NewEventsDate = () => {
                 </TouchableOpacity>
                 <Image source={ArgTeamLogo} style={styles.imgStyle}></Image>
             </View>
-            <br></br>
-            <br></br>
+
 
             <Button title="Seleccionar Fecha Inicio" onPress={() => setOpenIn(true)} />
-            {/*<DatePicker
+            <DatePicker
                 modal
                 open={openIn}
                 date={fechaInicio}
@@ -60,9 +59,9 @@ const NewEventsDate = () => {
                 onCancel={() => {
                     setOpenIn(false)
                 }}
-            />*/}
+            />
 
-            {/*<Text>Fecha Inicio:</Text>
+            <Text>Fecha Inicio:</Text>
                 <DatePickerIOSBase
                     style={styles.eachForm}
                     date={fechaInicio}
@@ -117,7 +116,7 @@ const NewEventsDate = () => {
                     <DataEventSmall ></DataEventSmall> 
                 </View>
             </View>
-                */}
+                
 
             <TouchableOpacity style={styles.button} onPress={buttonOnsubmitHandler}>
                 <Text style={styles.textButton}>Siguiente</Text>
