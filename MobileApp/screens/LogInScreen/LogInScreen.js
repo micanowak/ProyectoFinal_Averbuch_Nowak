@@ -39,7 +39,7 @@ const LogInScreen = () => {
           }
         },
         (res) => {
-          setError(res.response.data);
+          setError(res.response); 
         }
       );
   };

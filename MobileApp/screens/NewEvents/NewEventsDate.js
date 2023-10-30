@@ -62,7 +62,7 @@ const NewEventsDate = () => {
             />
 
             <Text>Fecha Inicio:</Text>
-                <DatePickerIOSBase
+                {/*<DatePickerIOSBase
                     style={styles.eachForm}
                     date={fechaInicio}
                     mode="date"
@@ -96,7 +96,7 @@ const NewEventsDate = () => {
                     onDateChange={(date) => {
                         setFechaInicio(date);
                     }}
-                />
+                />*/}
             <Text style={styles.nombreMes}>Agosto</Text>
             <View>
                 <Calendar 

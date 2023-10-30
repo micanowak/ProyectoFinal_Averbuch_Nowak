@@ -47,6 +47,27 @@ export default function App() {
         }}
       >
         <Stack.Screen
+          name="SpecificEvent"
+          component={SpecificEvent}
+          initialParams={listaEventos}
+          options={{ title: "Detalle evento específico" }}
+        />
+        <Stack.Screen
+          name="LogIn"
+          component={LogInScreen}
+          style={styles.root}
+          initialParams={listaEvendonsSent}
+          options={{ title: "Inicio De Sesion" }}
+        />
+        
+        <Stack.Screen
+          name="NewEventsInfo"
+          component={NewEventsInfo}
+          //initialParams={listaEvendonsSent}
+          options={{ title: "New Events Info" }}
+        />
+        
+        <Stack.Screen
           name="DatePicker"
           component={MyDatePicker}
           options={{ title: "DatePicker" }}
@@ -56,26 +77,10 @@ export default function App() {
           component={NewEventsDate}
           options={{ title: "Fecha nuevo evento" }}
         />
-        <Stack.Screen
-          name="NewEventsInfo"
-          component={NewEventsInfo}
-          //initialParams={listaEvendonsSent}
-          options={{ title: "New Events Info" }}
-        />
+        
 
-        <Stack.Screen
-          name="LogIn"
-          component={LogInScreen}
-          style={styles.root}
-          initialParams={listaEvendonsSent}
-          options={{ title: "Inicio De Sesion" }}
-        />
-        <Stack.Screen
-          name="SpecificEvent"
-          component={SpecificEvent}
-          initialParams={listaEventos}
-          options={{ title: "Detalle evento específico" }}
-        />
+        
+        
 
         <Stack.Screen
           name="Home"

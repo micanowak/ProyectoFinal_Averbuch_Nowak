@@ -21,10 +21,14 @@ const SpecificEvent = (props) => {
         navigation.navigate("Home");
     }
     const [listaContactos, setListaContactos] = useState([]);
-    const idEvento = props.route.params.evento.ID;
-    const esPorEquipo = props.route.params.evento.esPorEquipo;
+    const idEvento = props.route.params.evento ? props.route.params.evento.ID : null;
+    const esPorEquipo = props.route.params.evento ? props.route.params.evento.esPorEquipo : false;
     const baseURL = "http://localhost:3000/getProfByEvent/" + idEvento;
 
+    if (props.route.params.evento) {
+    idEvento = props.route.params.evento.ID;
+    }
+    
     useEffect(() => {
         axios.get(baseURL).then((response) => {
             /*response.data.forEach(element => {
@@ -35,7 +39,7 @@ const SpecificEvent = (props) => {
             console.log(listaContactos);
         });
     }, []);
-
+    
     return(
         
         <View style={styles.container}>
@@ -44,7 +48,7 @@ const SpecificEvent = (props) => {
                 source={ArgTeamLogo}
                 style={styles.imgStyle}
             ></Image></View>
-            <Text style={styles.nombreEvento}>{props.route.params.evento.nombre}</Text>
+            <Text style={styles.nombreEvento}>{/*{props.route.params.evento.nombre}*/}</Text>
             <Text style={styles.desc}>{props.route.params.evento.descripcion} </Text> 
             <View style={styles.divDataEvent}>
                 <View style = {styles.containerCadaFecha}>
@@ -70,7 +74,7 @@ const SpecificEvent = (props) => {
                 (
                     <p>no es por equipo</p>
                 )}
-            </View>
+                </View>
         </View>
     );
 };

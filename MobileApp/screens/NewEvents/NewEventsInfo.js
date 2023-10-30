@@ -14,6 +14,7 @@ import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
 import back from "../../assets/images/backArrow.png"
+import SelectDropdown from 'react-native-select-dropdown';
 
 const NewEventsInfo = () => {
     const navigation = useNavigation();
@@ -27,6 +28,10 @@ const NewEventsInfo = () => {
     const [descripcion, setDescripcion] = useState("");
     const [esPorEquipo, setEsPorEquipo] = useState();
     const route = useRoute();
+    const selectOptions = [
+        { label: 'Equipos', value: 'equipos' },
+        { label: 'Participantes Libres', value: 'libres' },
+    ];
 
     //const {fechaInicio, fechaFin} = route.params;
     const fechaInicio = new Date();
@@ -57,7 +62,7 @@ const NewEventsInfo = () => {
         setEsPorEquipo(evento.target.value);
     };
 
-    
+
     const onPressBack = () => {
         evento.preventDefault();
         setDescripcion("");
@@ -87,8 +92,11 @@ const NewEventsInfo = () => {
             sponsors: sponsors,
             esPorEquipo: esPorEquipo,
         };
+
+
+
         navigation.navigate("NewEventsContactList", nuevoEvento);
-        
+
 
         setDescripcion("");
         setNombre("");
@@ -102,14 +110,14 @@ const NewEventsInfo = () => {
 
     return (
         <View style={styles.container}>
-            
-            <View style ={styles.fondoArriba}>
+
+            <View style={styles.fondoArriba}>
                 <TouchableOpacity onPress={onPressBack}>
                     <Image source={back} style={styles.back} ></Image>
                 </TouchableOpacity>
                 <Image source={ArgTeamLogo} style={styles.imgStyle}></Image>
             </View>
-            
+
 
             <Text style={styles.tituloMain}>Ingreso de características</Text>
             <View style={styles.containerForm}>
@@ -168,21 +176,40 @@ const NewEventsInfo = () => {
                     placeholderTextColor={styles.placeholderStyle.color}
                     style={styles.eachForm}
                     onChange={edicionOnchangeHandler}
-                />  
-                <TextInput
+                />
+                {/*<TextInput
                     value={esPorEquipo}
                     setValue={setEsPorEquipo}
                     placeholder="Equipo o participantes libres"
                     placeholderTextColor={styles.placeholderStyle.color}
                     style={styles.eachForm}
                     onChange={equipoOnchangeHandler}
-                />  
+                /> */}
+                { /* 
+                
+                <SelectDropdown
+                    data={equipoOptions}
+                    onSelect={(selectedItem, index) => {
+                        setEsPorEquipo(selectedItem.value);
+                    }}
+                    buttonTextAfterSelection={(selectedItem, index) => {
+                        return selectedItem.label;
+                    }}
+                    rowTextForSelection={(item, index) => {
+                        return item.label;
+                    }}
+                    defaultButtonText="Selecciona una opción"
+                />
+                
+                */}
+
+
 
             </View>
-                <TouchableOpacity style={styles.button} onPress={buttonOnsubmitHandler}>
-                    <Text style={styles.textButton}>Siguiente</Text>
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity style={styles.button} onPress={buttonOnsubmitHandler}>
+                <Text style={styles.textButton}>Siguiente</Text>
+            </TouchableOpacity>
+        </View>
     );
 };
 
@@ -206,7 +233,7 @@ const styles = StyleSheet.create({
         borderRadius: 15, fontSize: 15, fontWeight: '700', alignItems: "center",
         flex: "center",
     },
-    
+
     nombrePag:
     {
         backgroundColor: '#1A4B8E',
@@ -233,37 +260,37 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         fontWeight: 600,
 
-    },placeholderStyle:{
-        color:'#1a4b8e',
-        fontWeight:300
+    }, placeholderStyle: {
+        color: '#1a4b8e',
+        fontWeight: 300
     },
     button: {
         backgroundColor: '#E742EB', margin: 10, padding: 10, borderRadius: 15, width: '35%', alignContent: 'center', alignItems: 'center',
     },
-    textButton:{
-        color:'white'
-        
+    textButton: {
+        color: 'white'
+
     },
     back: {
-        width: 30 ,
-        height:20,
+        width: 30,
+        height: 20,
         position: 'absolute',
-        marginLeft:10, 
-        
-    },textArriba:{
-        color:'white',
-        fontSize:23,  alignContent:'center', width:'70%', marginLeft:'23%',
+        marginLeft: 10,
+
+    }, textArriba: {
+        color: 'white',
+        fontSize: 23, alignContent: 'center', width: '70%', marginLeft: '23%',
     },
     fondoArriba: {
         width: "100%",
-        height:'10%',
+        height: '10%',
         backgroundColor: "#1A4B8E",
         alignItems: "center",
         flexDirection: "row",
-        
+
     },
     imgStyle: {
-        marginTop: 30, alignContent:'center',
+        marginTop: 30, alignContent: 'center',
         marginBottom: 20,
         resizeMode: "contain",
         width: '100%',
