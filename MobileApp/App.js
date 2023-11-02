@@ -46,12 +46,7 @@ export default function App() {
           headerShown: false,
         }}
       >
-        <Stack.Screen
-          name="SpecificEvent"
-          component={SpecificEvent}
-          initialParams={listaEventos}
-          options={{ title: "Detalle evento específico" }}
-        />
+        
         <Stack.Screen
           name="LogIn"
           component={LogInScreen}
@@ -59,6 +54,13 @@ export default function App() {
           initialParams={listaEvendonsSent}
           options={{ title: "Inicio De Sesion" }}
         />
+        <Stack.Screen
+          name="SpecificEvent"
+          component={SpecificEvent}
+          initialParams={listaEventos}
+          options={{ title: "Detalle evento específico" }}
+        />
+        
         
         <Stack.Screen
           name="NewEventsInfo"
