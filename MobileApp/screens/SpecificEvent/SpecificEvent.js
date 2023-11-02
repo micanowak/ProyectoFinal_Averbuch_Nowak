@@ -21,8 +21,13 @@ const SpecificEvent = (props) => {
         navigation.navigate("Home");
     }
     const [listaContactos, setListaContactos] = useState([]);
-    const idEvento = props.route.params.evento ? props.route.params.evento.ID : null;
-    const esPorEquipo = props.route.params.evento ? props.route.params.evento.esPorEquipo : false;
+
+    const evento = props.route.params.evento || {};
+    const idEvento = evento.ID || null;
+    const esPorEquipo = evento.esPorEquipo || false;
+
+
+
     const baseURL = "http://localhost:3000/getProfByEvent/" + idEvento;
 
     if (props.route.params.evento) {
@@ -31,14 +36,16 @@ const SpecificEvent = (props) => {
     
     useEffect(() => {
         axios.get(baseURL).then((response) => {
-            /*response.data.forEach(element => {
-                console.log(element);
-            });*/
-            console.log(response);
-            setListaContactos(response.data);
-            console.log(listaContactos);
+            if (Array.isArray(response.data)) {
+                setListaContactos(response.data);
+            } else {
+                console.error("La respuesta no es un array:", response.data);
+            }
+        }).catch((error) => {
+            console.error("Error al obtener los contactos:", error);
         });
     }, []);
+    
     
     return(
         
@@ -49,15 +56,16 @@ const SpecificEvent = (props) => {
                 style={styles.imgStyle}
             ></Image></View>
             <Text style={styles.nombreEvento}>{/*{props.route.params.evento.nombre}*/}</Text>
-            <Text style={styles.desc}>{props.route.params.evento.descripcion} </Text> 
+            <Text style={styles.desc}>{evento.descripcion || ''}</Text>
             <View style={styles.divDataEvent}>
                 <View style = {styles.containerCadaFecha}>
                     <Text style={styles.titleCard}>Fecha Inicio</Text>
-                    <Text style={styles.textStyle}>{props.route.params.evento.fechaInicio}</Text> 
+                    <Text style={styles.textStyle}>{evento.fechaInicio || ''}</Text>
                 </View>
                 <View style = {styles.containerCadaFecha}>
                     <Text style={styles.titleCardFinal}> Fecha Final</Text>
-                    <Text style={styles.textStyle} >{props.route.params.evento.fechaFin}</Text>
+                    <Text style={styles.textStyle}>{evento.fechaFin || ''}</Text>
+
                 </View>
             </View>
             <Text style = {styles.tituloContactos}>Contactos</Text>
