@@ -3,19 +3,20 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 //import icon from '../../assets/simboloMayor.png';
 import { useNavigation } from '@react-navigation/native';
 
-const Card = (props) => {
+const Card = ({evento}) => {
     const navigation = useNavigation();
     
     const masInfoOnPressHandler = (e) => {
-        navigation.navigate("SpecificEvent", { evento: props.evento });
+        console.log(evento);
+        navigation.navigate("SpecificEvent", {EvEnto: evento});
     }
     
     return (
         <View style={styles.container}>
-            <Text style={styles.titleCard}>{props.evento.nombre}</Text>
-            <Text style={styles.textStyle}>{props.evento.fechaInicio}</Text>
-            <Text style={styles.textStyle}>{props.evento.fechaFin}</Text>
-            <Text style={styles.textStyle}>{props.evento.lugar}</Text>
+            <Text style={styles.titleCard}>{evento.nombre}</Text>
+            <Text style={styles.textStyle}>{evento.fechaInicio}</Text>
+            <Text style={styles.textStyle}>{evento.fechaFin}</Text>
+            <Text style={styles.textStyle}>{evento.lugar}</Text>
             <TouchableOpacity style={styles.butonStyle} onPress={masInfoOnPressHandler}>
                 <Text style = {styles.masInfo}>Más info</Text>
             </TouchableOpacity>

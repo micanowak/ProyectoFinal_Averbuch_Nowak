@@ -19,7 +19,7 @@ import { useNavigation } from '@react-navigation/native';
 //buscar SWITCH para la flechita
 
 
-const HomeScreen = (sendlistaEventos) => {
+const HomeScreen = ({sendlistaEventos}) => {
     const { height } = useWindowDimensions();
     const navigation = useNavigation();
     const [eventoCreado, setEventoCreado] = useState({});
@@ -40,7 +40,6 @@ const HomeScreen = (sendlistaEventos) => {
                 console.log(element);
             });*/
             setListaEventos(response.data);
-            console.log(listaEventos);
             sendlistaEventos(listaEventos);
         });
     }, []);
