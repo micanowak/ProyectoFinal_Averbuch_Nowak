@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
         
     },
     button: {
-        backgroundColor: '#E742EB', margin: 10, padding: 10, borderRadius: 15, width: '35%', alignContent: 'center', alignItems: 'center',
+        backgroundColor: '#E742EB', margin: 10, padding: 10, borderRadius: 15, width: '35%', alignContent: 'center', alignItems: 'center', marginHorizontal:'32.5%'
     },
     textButton:{
         color:'white'

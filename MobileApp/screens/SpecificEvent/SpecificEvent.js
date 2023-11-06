@@ -81,7 +81,7 @@ const SpecificEvent = () => {
             </View>
             <View style={styles.contactos}>
                 {esPorEquipo === true ? (
-                    <Text>es por equipo</Text>
+                    <Text >es por equipo</Text>
                 ) : (
                     <Text>no es por equipo</Text>
                 )}

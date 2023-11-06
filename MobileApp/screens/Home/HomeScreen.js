@@ -46,13 +46,12 @@ const HomeScreen = ({ sendlistaEventos }) => {
             <>
                 {listaEventos.map((element) => <Card evento={element}/>)}
             </>
-            <Button
-                title="Agregar evento"
-                name="Agregar evento"
-                style={styles.buttonStyle}
-                onPress={buttonAgregarOnPressHandler}
-            />
-            <Text onPress={spoilerToShow}>Calendario (spoiler)</Text>
+            <TouchableOpacity style={styles.buttonStyle}
+                onPress={buttonAgregarOnPressHandler}>
+                
+                <Text style={{color:'white'}}>Agregar evento</Text>
+                </TouchableOpacity>
+            {/*<Text onPress={spoilerToShow}>Calendario (spoiler)</Text>*/}
         </View> 
     );
 };
@@ -71,15 +70,15 @@ const styles = StyleSheet.create({
         flex: "center",
     },
     buttonStyle: {
-        width: '70%',
-        height: '10%',
-        backgroundColor: '#E741EB',
+        width: '35%',
+        height: '4%',
+        backgroundColor: 'rgb(26, 75, 142)',
         color: '#1A4B8E',
         padding: 10,
         textAlign: "center",
         marginTop: 50,
         borderRadius: 5,
-        flex: "contain"
+        flex: "contain", margin: '20%',
     },
     imgStyle: {
         marginTop: 30,
@@ -88,6 +87,7 @@ const styles = StyleSheet.create({
         width: 150,
         height: 50,
     },
+    
 });
 
 export default HomeScreen;
