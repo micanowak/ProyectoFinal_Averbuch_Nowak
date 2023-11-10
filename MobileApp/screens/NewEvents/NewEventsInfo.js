@@ -26,11 +26,11 @@ const NewEventsInfo = () => {
     const [gastronomia, setGastronomia] = useState('');
     const [hospedaje, setHospedaje] = useState('');
     const [descripcion, setDescripcion] = useState("");
-    const [esPorEquipo, setEsPorEquipo] = useState();
+    const [hayParticipantesLibres, setHayParticipantesLibres] = useState();
     const route = useRoute();
     const selectOptions = [
-        { label: 'Equipos', value: 'equipos' },
-        { label: 'Participantes Libres', value: 'libres' },
+        { label: 'Equipos', value: 0 },
+        { label: 'Participantes Libres', value: 1 },
     ];
 
     //const {fechaInicio, fechaFin} = route.params;
@@ -59,7 +59,7 @@ const NewEventsInfo = () => {
         setGastronomia(evento.target.value);
     };
     const equipoOnchangeHandler = (evento) => {
-        setEsPorEquipo(evento.target.value);
+        setHayParticipantesLibres(evento.target.value);
     };
 
 
@@ -90,7 +90,7 @@ const NewEventsInfo = () => {
             gastronomia: gastronomia,
             numEdicionEvento: edicion,
             sponsors: sponsors,
-            esPorEquipo: esPorEquipo,
+            hayParticipantesLibres: hayParticipantesLibres,
         };
 
 
@@ -105,7 +105,7 @@ const NewEventsInfo = () => {
         setSponsors('');
         setHospedaje("");
         setLugar("");
-        setEsPorEquipo();
+        setHayParticipantesLibres();
     };
 
     return (
@@ -177,20 +177,10 @@ const NewEventsInfo = () => {
                     style={styles.eachForm}
                     onChange={edicionOnchangeHandler}
                 />
-                {/*<TextInput
-                    value={esPorEquipo}
-                    setValue={setEsPorEquipo}
-                    placeholder="Equipo o participantes libres"
-                    placeholderTextColor={styles.placeholderStyle.color}
-                    style={styles.eachForm}
-                    onChange={equipoOnchangeHandler}
-                /> */}
-                { /* 
-                
                 <SelectDropdown
-                    data={equipoOptions}
+                    data={selectOptions}
                     onSelect={(selectedItem, index) => {
-                        setEsPorEquipo(selectedItem.value);
+                        setHayParticipantesLibres(selectedItem.value);
                     }}
                     buttonTextAfterSelection={(selectedItem, index) => {
                         return selectedItem.label;
@@ -200,6 +190,15 @@ const NewEventsInfo = () => {
                     }}
                     defaultButtonText="Selecciona una opción"
                 />
+                {/*<TextInput
+                    value={esPorEquipo}
+                    setValue={setEsPorEquipo}
+                    placeholder="Equipo o participantes libres"
+                    placeholderTextColor={styles.placeholderStyle.color}
+                    style={styles.eachForm}
+                    onChange={equipoOnchangeHandler}
+                /> */}
+                { /* 
                 
                 */}
 

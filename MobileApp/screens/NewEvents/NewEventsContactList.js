@@ -26,7 +26,7 @@ const NewEventsContactList = () => {
     const [listaContactosSeleccionados, setListaContactosSeleccionados] = useState([]);
     //const nombre = " d ";
 
-    const { nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, edicion, sponsors } = route.params;
+    const { nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, edicion, sponsors, hayParticipantesLibres } = route.params;
 
     useEffect(() => {
 
@@ -39,7 +39,8 @@ const NewEventsContactList = () => {
             hospedaje: hospedaje,
             gastronomia: gastronomia,
             numEdicionEvento: edicion,
-            sponsors: sponsors
+            sponsors: sponsors,
+            hayParticipantesLibres: hayParticipantesLibres
         }
 
         setEventoNuevo(NewEventtt);
@@ -94,9 +95,9 @@ const NewEventsContactList = () => {
                 <Text style={styles.textButton}>Guardar</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.button} onPress={onPressNewContact}>
-                <Text style={styles.textButton}>Nuevo contacto</Text>
-            </TouchableOpacity>
+            {/*<TouchableOpacity style={styles.button} onPress={onPressNewContact}>
+                <Text style={styles.textButton}>Nuevo contacto (se va de la pantalla)</Text>
+            </TouchableOpacity>*/}
         </View>
 
     );

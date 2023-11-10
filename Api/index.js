@@ -33,7 +33,8 @@ app.get('/getIdEvent', async (req, res) => {
         hospedaje: req.body.hospedaje,
         gastronomia: req.body.gastronomia,
         numEdicionEvento: req.body.edicion,
-        sponsors: req.body.sponsors
+        sponsors: req.body.sponsors,
+        hayParticipantesLibres: req.body.hayParticipantesLibres
     };
     const id = await PF_ArgTeam_Services.getIdEvent(Evento)
     res.status(200).send(id);

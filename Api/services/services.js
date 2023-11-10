@@ -63,7 +63,8 @@ export class PF_ArgTeam_Services {
                 .input('pGas', Evento.gastronomia)
                 .input('pEdi', Evento.numEdicionEvento)
                 .input('pSpon', Evento.sponsors)
-                .query('SELECT top 1 ID FROM Evento WHERE nombre = @pNom, lugar = @pLug, fechaInicio = @pFechIn, fechaFin = @pFechFin, descripcion = @pDesc, hospedaje = @pHosp, gastronomia = @pGas, numEdicionEvento = @pEdi, sponsors = @pSpon');
+                .input('phay', Evento.hayParticipantesLibres)
+                .query('SELECT top 1 ID FROM Evento WHERE nombre = @pNom, lugar = @pLug, fechaInicio = @pFechIn, fechaFin = @pFechFin, descripcion = @pDesc, hospedaje = @pHosp, gastronomia = @pGas, numEdicionEvento = @pEdi, sponsors = @pSpon, hayParticipantesLibres = @phay');
             returnEntity = result.recordsets[0];
         } catch (error) {
             console.log(error);
@@ -102,7 +103,8 @@ export class PF_ArgTeam_Services {
                 .input('pGas', Evento.gastronomia)
                 .input('pEdi', Evento.numEdicionEvento)
                 .input('pSpon', Evento.sponsors)
-                .query('INSERT INTO Evento (nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, numEdicionEvento, sponsors) OUTPUT INSERTED.* VALUES (@pNom, @pLug, @pFechIn, @pFechFin, @pDesc, @pHosp, @pGas, @pEdi, @pSpon)');
+                .input('phay', Evento.hayParticipantesLibres)
+                .query('INSERT INTO Evento (nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, numEdicionEvento, sponsors, hayParticipantesLibres) OUTPUT INSERTED.* VALUES (@pNom, @pLug, @pFechIn, @pFechFin, @pDesc, @pHosp, @pGas, @pEdi, @pSpon, @phay)');
             
             returnEntity = result.recordset[0];
         } catch (error) {

@@ -23,7 +23,6 @@ const SpecificEvent = () => {
     const [listaContactos, setListaContactos] = useState([]);
     const { EvEnto } = route.params;
 
-    // Check if evento is defined
     if (!EvEnto) {
         return (
             <View style={styles.container}>
@@ -36,7 +35,6 @@ const SpecificEvent = () => {
     console.log(EvEnto);
 
     const idEvento = EvEnto.ID || null;
-    const esPorEquipo = EvEnto.esPorEquipo || false;
 
     const baseURL = "http://localhost:3000/getProfByEvent/" + idEvento;
 
@@ -54,6 +52,13 @@ const SpecificEvent = () => {
                 console.error("Error al obtener los contactos:", error);
             });
     }, []);
+
+    const buttonOnAddPartiHandler = () =>{
+        
+    }
+    const buttonOnAddTeamHandler = () =>{
+        
+    }
 
     return (
         <View style={styles.container}>
@@ -80,10 +85,14 @@ const SpecificEvent = () => {
                 ))}
             </View>
             <View style={styles.contactos}>
-                {esPorEquipo === true ? (
-                    <Text >es por equipo</Text>
+                {EvEnto.hayParticipantesLibres === true ? (
+                    <TouchableOpacity style={styles.button} onPress={buttonOnAddPartiHandler}>
+                        <Text style={styles.textButton}>Agregar Participante</Text>
+                    </TouchableOpacity>
                 ) : (
-                    <Text>no es por equipo</Text>
+                    <TouchableOpacity style={styles.button} onPress={buttonOnAddTeamHandler}>
+                        <Text style={styles.textButton}>Agregar Equipo</Text>
+                    </TouchableOpacity>
                 )}
             </View>
         </View>
@@ -157,6 +166,13 @@ const styles = StyleSheet.create({
         resizeMode: "contain",
         width: 150,
         height: 50,
+    },
+    button: {
+        backgroundColor: '#E742EB', margin: 10, padding: 10, borderRadius: 15, width: '35%', alignContent: 'center', alignItems: 'center',
+    },
+    textButton: {
+        color: 'white'
+
     },
     nombreEvento: {
         backgroundColor: '#1A4B8E',
