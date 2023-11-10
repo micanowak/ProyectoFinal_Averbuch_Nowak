@@ -40,12 +40,42 @@ app.get('/getIdEvent', async (req, res) => {
     res.status(200).send(id);
 })
 
+app.post('/insertPerXEquipo', async (req, res) => {
+    console.log("en post, req:", req.body)
+    const Persona = {
+        nombre : req.body.nombre,
+        apellido : req.body.apellido,
+        DNI : req.body.DNI,
+        IdEquipo : req.body.IdEquipo
+    }
+    try {
+        await PF_ArgTeam_Services.insertPerXEquipo(Persona)
+        res.status(200).json({ message: 'creada' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Fallo el insert' });
+    }
+})
+
 app.post('/insertProfEvento', async (req, res) => {
     console.log("en post, req:", req.body)
     let idContacto = req.body.idContacto;
     let idEvento = req.body.idEvento;
     try {
         await PF_ArgTeam_Services.insertProfXEvento(idContacto, idEvento)
+        res.status(200).json({ message: 'creada' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Fallo el insert' });
+    }
+})
+
+app.post('/insertInscriptoEvento', async (req, res) => {
+    console.log("en post, req:", req.body)
+    let idInscripto = req.body.idInscripto;
+    let idEvento = req.body.idEvento;
+    try {
+        await PF_ArgTeam_Services.insertInscXEvento(idInscripto, idEvento)
         res.status(200).json({ message: 'creada' });
     } catch (error) {
         console.error(error);
@@ -73,6 +103,43 @@ app.post('/logInUsuario', async (req, res) => {
 
     } catch (error) {
         console.error("error", error);
+    }
+})
+
+app.post('/AgregarParticipante', async (req, res) => {
+    console.log("en post, req:", req)
+    const Persona = {
+        nombre : req.body.nombre,
+        apellido : req.body.apellido,
+        DNI : req.body.DNI
+    }
+
+    try {
+        const results = await PF_ArgTeam_Services.insertParticipante(Persona)
+        res.status(200).send(results);
+        console.log(results);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Fallo el insert' });
+    }
+})
+
+app.post('/AgregarEquipo', async (req, res) => {
+    console.log("en post, req:", req)
+    const Equipo = {
+        nombre : req.body.nombre,
+        nombreContactoReferencia : req.body.nombreContactoReferencia,
+        apellidoContactoReferencia : req.body.apellidoContactoReferencia,
+        celularContactoReferencia : req.body.celularContactoReferencia
+    }
+
+    try {
+        const results = await PF_ArgTeam_Services.insertEquipo(Equipo)
+        res.status(200).send(results);
+        console.log(results);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Fallo el insert' });
     }
 })
 

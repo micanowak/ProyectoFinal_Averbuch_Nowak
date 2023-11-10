@@ -72,6 +72,22 @@ export class PF_ArgTeam_Services {
         return returnEntity;
     }
 
+    static insertInscXEvento = async (idInscripto, idEvento) => {
+        let returnEntity = null;
+        console.log('Estoy en: PersonajeServices.insert(inscEvento)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pIdIn', idInscripto)
+                .input('pIdEv', idEvento)
+                .query('INSERT INTO Inscriptos_X_Evento (fkIdInscripto, fkEvento) VALUES (@pIdIn, @pIdEv)');
+            returnEntity = result.recordsets[0];
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
+
     static insertProfXEvento = async (idContacto, idEvento) => {
         let returnEntity = null;
         console.log('Estoy en: PersonajeServices.insert(profevento)');
@@ -82,6 +98,62 @@ export class PF_ArgTeam_Services {
                 .input('pIdEv', idEvento)
                 .query('INSERT INTO Profesional_X_Evento (fkProfesional, fkEvento) VALUES (@pIdProf, @pIdEv)');
             returnEntity = result.recordsets[0];
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
+
+    static insertParticipante = async (Persona) => {
+        let returnEntity = null;
+        console.log('Estoy en: PF_ArgTeam_Services.insertParti(Persona)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pNom', Persona.nombre)
+                .input('pApe', Persona.apellido)
+                .input('pDni', Persona.DNI)
+                .query('INSERT INTO Participante (nombre, apellido, DNI) OUTPUT INSERTED.* VALUES (@pNom, @pApe, @pDni)');
+            
+            returnEntity = result.recordset[0];
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
+
+    static insertPerXEquipo = async (Persona) => {
+        let returnEntity = null;
+        console.log('Estoy en: PF_ArgTeam_Services.insertPerEquipo(Persona)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pNom', Equipo.nombre)
+                .input('pApe', Equipo.apellido)
+                .input('pDNI', Equipo.DNI)
+                .input('pIdE', Equipo.IdEquipo)
+                .query('INSERT INTO Equipo (nombre, apellido, DNI, fkIdEquipo) OUTPUT INSERTED.* VALUES (@pNom, @pApe, @pDNI, @pIdE)');
+            
+            returnEntity = result.recordset[0];
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
+
+    static insertEquipo = async (Equipo) => {
+        let returnEntity = null;
+        console.log('Estoy en: PF_ArgTeam_Services.insertEquipo(Equipo)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pNom', Equipo.nombre)
+                .input('pNomCon', Equipo.nombreContactoReferencia)
+                .input('pApe', Equipo.apellidoContactoReferencia)
+                .input('pCel', Equipo.celularContactoReferencia)
+                .query('INSERT INTO Equipo (nombre, nombreContactoReferencia, apellidoContactoReferencia, celularContactoReferencia) OUTPUT INSERTED.* VALUES (@pNom, @pNomCon, @pApe, @pCel)');
+            
+            returnEntity = result.recordset[0];
         } catch (error) {
             console.log(error);
         }
