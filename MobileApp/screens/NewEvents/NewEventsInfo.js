@@ -179,6 +179,9 @@ const NewEventsInfo = () => {
                 />
                 <SelectDropdown
                     data={selectOptions}
+                    buttonStyle={styles.dropdown}
+                    buttonTextStyle={styles.textDropdown}
+                    rowStyle={styles.rowDropdown}
                     onSelect={(selectedItem, index) => {
                         setHayParticipantesLibres(selectedItem.value);
                     }}
@@ -188,22 +191,8 @@ const NewEventsInfo = () => {
                     rowTextForSelection={(item, index) => {
                         return item.label;
                     }}
-                    defaultButtonText="Selecciona una opción"
+                    defaultButtonText="Selecciona una opción "
                 />
-                {/*<TextInput
-                    value={esPorEquipo}
-                    setValue={setEsPorEquipo}
-                    placeholder="Equipo o participantes libres"
-                    placeholderTextColor={styles.placeholderStyle.color}
-                    style={styles.eachForm}
-                    onChange={equipoOnchangeHandler}
-                /> */}
-                { /* 
-                
-                */}
-
-
-
             </View>
             <TouchableOpacity style={styles.button} onPress={buttonOnsubmitHandler}>
                 <Text style={styles.textButton}>Siguiente</Text>
@@ -297,8 +286,26 @@ const styles = StyleSheet.create({
     },
     textButton: {
         color: 'white'
-
-    }
+    },
+    dropdown:{
+        backgroundColor: 'transparent',
+        borderColor: '#E742EB',
+        borderRadius: 15,
+        borderWidth: 2,
+        paddingLeft: 10,
+        padding: 5,
+        marginRight: 5,
+        marginBottom: 20,
+        width:'100%',
+        height:'auto'
+    },
+    textDropdown:{
+        color:'#1a4b8e',
+        fontSize:'14px',
+        fontWeight: 600,
+        textAlign: 'justify'
+    },
+    
 });
 
 export default NewEventsInfo;

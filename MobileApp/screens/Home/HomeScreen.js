@@ -44,7 +44,7 @@ const HomeScreen = ({ sendlistaEventos }) => {
                 />
             </View>
             <>
-                {listaEventos.map((element) => <Card evento={element}/>)}
+                {listaEventos.map((element) => (<Card key={element.id} evento={element}/>))}
             </>
             <TouchableOpacity style={styles.buttonStyle}
                 onPress={buttonAgregarOnPressHandler}>
@@ -60,8 +60,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#cfcfcf",
         alignItems: "center",
-        flex: "center",
-        flex: 6,
+        justifyContent: "center", 
     },
     fondoLogo: {
         width:'100%',
