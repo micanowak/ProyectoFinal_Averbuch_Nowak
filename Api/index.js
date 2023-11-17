@@ -70,12 +70,25 @@ app.post('/insertProfEvento', async (req, res) => {
     }
 })
 
-app.post('/insertInscriptoEvento', async (req, res) => {
+app.post('/insertInscriptoEventoEquipos', async (req, res) => {
+    console.log("en post, req:", req.body)
+    let idEquipo = req.body.idEquipo;
+    let idEvento = req.body.idEvento;
+    try {
+        await PF_ArgTeam_Services.insertInscXEventoEquipos(idEquipo, idEvento)
+        res.status(200).json({ message: 'creada' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Fallo el insert' });
+    }
+})
+
+app.post('/insertInscriptoEventoLibre', async (req, res) => {
     console.log("en post, req:", req.body)
     let idInscripto = req.body.idInscripto;
     let idEvento = req.body.idEvento;
     try {
-        await PF_ArgTeam_Services.insertInscXEvento(idInscripto, idEvento)
+        await PF_ArgTeam_Services.insertInscXEventoLibre(idInscripto, idEvento)
         res.status(200).json({ message: 'creada' });
     } catch (error) {
         console.error(error);

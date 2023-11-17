@@ -72,15 +72,31 @@ export class PF_ArgTeam_Services {
         return returnEntity;
     }
 
-    static insertInscXEvento = async (idInscripto, idEvento) => {
+    static insertInscXEventoLibre = async (idInscripto, idEvento) => {
         let returnEntity = null;
-        console.log('Estoy en: PersonajeServices.insert(inscEvento)');
+        console.log('Estoy en: PersonajeServices.insert(inscEventoLibre)');
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
                 .input('pIdIn', idInscripto)
                 .input('pIdEv', idEvento)
-                .query('INSERT INTO Inscriptos_X_Evento (fkIdInscripto, fkEvento) VALUES (@pIdIn, @pIdEv)');
+                .query('INSERT INTO Inscriptos_X_EventoLibre (fkIdInscripto, fkEvento) VALUES (@pIdIn, @pIdEv)');
+            returnEntity = result.recordsets[0];
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
+
+    static insertInscXEventoEquipos = async (idEquipo, idEvento) => {
+        let returnEntity = null;
+        console.log('Estoy en: PersonajeServices.insert(inscEventoEquipos)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pIdIn', idEquipo)
+                .input('pIdEv', idEvento)
+                .query('INSERT INTO Inscriptos_X_EventoEquipos (fkIdEquipo, fkIdEvento) VALUES (@pIdIn, @pIdEv)');
             returnEntity = result.recordsets[0];
         } catch (error) {
             console.log(error);
@@ -128,11 +144,11 @@ export class PF_ArgTeam_Services {
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
-                .input('pNom', Equipo.nombre)
-                .input('pApe', Equipo.apellido)
-                .input('pDNI', Equipo.DNI)
-                .input('pIdE', Equipo.IdEquipo)
-                .query('INSERT INTO Equipo (nombre, apellido, DNI, fkIdEquipo) OUTPUT INSERTED.* VALUES (@pNom, @pApe, @pDNI, @pIdE)');
+                .input('pNom', Persona.nombre)
+                .input('pApe', Persona.apellido)
+                .input('pDNI', Persona.DNI)
+                .input('pIdE', Persona.IdEquipo)
+                .query('INSERT INTO Persona_X_Equipo (nombre, apellido, DNI, fkIdEquipo) OUTPUT INSERTED.* VALUES (@pNom, @pApe, @pDNI, @pIdE)');
             
             returnEntity = result.recordset[0];
         } catch (error) {
