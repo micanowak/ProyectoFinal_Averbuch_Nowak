@@ -6,6 +6,7 @@ import {
     Image,
     useWindowDimensions,
     Button,
+    TouchableOpacity
 } from "react-native";
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import DataEvent from "../../components/DataEvent/DataEvent.js";
@@ -54,10 +55,10 @@ const SpecificEvent = () => {
     }, []);
 
     const buttonOnAddPartiHandler = () =>{
-        
+        navigation.navigate("AgregarParticipanteLibre", {idEvento, EvEnto});
     }
     const buttonOnAddTeamHandler = () =>{
-        
+        navigation.navigate("AgregarEquipo", {idEvento, EvEnto});
     }
 
     return (

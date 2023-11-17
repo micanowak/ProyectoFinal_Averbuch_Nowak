@@ -4,11 +4,11 @@ import phoneIcon from "../../assets/images/phoneIcon.png";
 import mailIcon from "../../assets/images/mailIcon.png";
 import axios from "axios";
 
-const Contact = () => {
+const Contact = ({Contacto}) => {
 
     return(
         <View style={styles.container}>
-            <Text style={styles.titleCard}>MJ</Text>
+            <Text style={styles.titleCard}>{Contacto.nombre}</Text>
             <View style = {styles.containerPics}>
                 <Image source={phoneIcon} style={styles.imgStyle}></Image> 
                 <Image source={mailIcon} style={styles.imgStyle}></Image>

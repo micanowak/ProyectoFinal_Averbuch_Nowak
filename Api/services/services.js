@@ -80,7 +80,7 @@ export class PF_ArgTeam_Services {
             let result = await pool.request()
                 .input('pIdIn', idInscripto)
                 .input('pIdEv', idEvento)
-                .query('INSERT INTO Inscriptos_X_EventoLibre (fkIdInscripto, fkEvento) VALUES (@pIdIn, @pIdEv)');
+                .query('INSERT INTO Inscriptos_X_EventoLibre (fkIdInscripto, fkEvento) OUTPUT INSERTED.* VALUES (@pIdIn, @pIdEv)');
             returnEntity = result.recordsets[0];
         } catch (error) {
             console.log(error);
@@ -96,7 +96,7 @@ export class PF_ArgTeam_Services {
             let result = await pool.request()
                 .input('pIdIn', idEquipo)
                 .input('pIdEv', idEvento)
-                .query('INSERT INTO Inscriptos_X_EventoEquipos (fkIdEquipo, fkIdEvento) VALUES (@pIdIn, @pIdEv)');
+                .query('INSERT INTO Inscriptos_X_EventoEquipos (fkIdEquipo, fkIdEvento) OUTPUT INSERTED.* VALUES (@pIdIn, @pIdEv)');
             returnEntity = result.recordsets[0];
         } catch (error) {
             console.log(error);
