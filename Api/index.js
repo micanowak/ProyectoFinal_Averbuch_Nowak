@@ -18,6 +18,25 @@ app.get('/getEvents', async (req, res) => {
     res.status(200).send(Evento);
 })
 
+app.get('/getTeamByIdEvento/:id', async (req, res) => {
+    console.log(req.params.id);
+    const id = req.params.id;
+    const ListaEquipos = await PF_ArgTeam_Services.getTeamById(id)
+    res.status(200).send(ListaEquipos);
+})
+app.get('/getPartiByIdEvento/:id', async (req, res) => {
+    console.log(req.params.id);
+    const id = req.params.id;
+    const ListaParticipantes = await PF_ArgTeam_Services.getPartiById(id)
+    res.status(200).send(ListaParticipantes);
+})
+app.get('/getPerXEquipo/:id', async (req, res) => {
+    console.log(req.params.id);
+    const id = req.params.id;
+    const ListaParticipantesEquipo = await PF_ArgTeam_Services.getPerEquipo(id)
+    res.status(200).send(ListaParticipantesEquipo);
+})
+
 app.get('/getContactList', async (req, res) => {
     const ListaContactos = await PF_ArgTeam_Services.getContactList()
     res.status(200).send(ListaContactos);
@@ -40,7 +59,7 @@ app.get('/getIdEvent', async (req, res) => {
     res.status(200).send(id);
 })
 
-app.post('/insertPerXEquipo', async (req, res) => {
+app.post('/AgregarParticipanteEquipo', async (req, res) => {
     console.log("en post, req:", req.body)
     const Persona = {
         nombre : req.body.nombre,
