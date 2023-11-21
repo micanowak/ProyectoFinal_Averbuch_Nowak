@@ -144,10 +144,10 @@ export class PF_ArgTeam_Services {
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
+                .input('pIdE', sql.Int, Persona.fkIdEquipo)
                 .input('pNom', Persona.nombre)
                 .input('pApe', Persona.apellido)
                 .input('pDNI', Persona.DNI)
-                .input('pIdE', sql.Int, Persona.IdEquipo)
                 .query('INSERT INTO Persona_X_Equipo (nombre, apellido, DNI, fkIdEquipo) OUTPUT INSERTED.* VALUES (@pNom, @pApe, @pDNI, @pIdE)');
 
             returnEntity = result.recordset[0];

@@ -62,10 +62,10 @@ app.get('/getIdEvent', async (req, res) => {
 app.post('/AgregarParticipanteEquipo', async (req, res) => {
     console.log("en post, req:", req.body)
     const Persona = {
+        fkIdEquipo : req.body.ID,
         nombre : req.body.nombre,
         apellido : req.body.apellido,
-        DNI : req.body.DNI,
-        IdEquipo : req.body.IdEquipo
+        DNI : req.body.DNI
     }
     try {
         await PF_ArgTeam_Services.insertPerXEquipo(Persona)

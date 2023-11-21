@@ -23,6 +23,7 @@ const AgregarParticipanteEquipo = () => {
     const [apellido, setApellido] = useState("");
     const [DNI, setDNI] = useState(0);
     const { id } = route.params;
+    console.log(id);
 
     const nombreOnchangeHandler = (Contacto) => {
         setNombre(Contacto.target.value);
@@ -40,10 +41,10 @@ const AgregarParticipanteEquipo = () => {
         console.log(id);
         console.log(nombre, apellido, DNI, id);
         const Persona = {
+            ID: id,
             nombre: nombre,
             apellido: apellido,
-            DNI: DNI,
-            IdEquipo: id
+            DNI: DNI
         };
 
         axios

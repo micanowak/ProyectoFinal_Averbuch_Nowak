@@ -9,6 +9,7 @@ const CardEquipo = ({Equipo}) => {
     const navigation = useNavigation();
     const id = Equipo.ID;
     const [listaParticipantes, setListaParticipantes] = useState([]);
+    console.log(Equipo.ID);
     const baseURL = "http://localhost:3000/getPerXEquipo/" + id;
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const CardEquipo = ({Equipo}) => {
     
     const AddPartiOnPressHandler = (e) => {
         console.log(Equipo);
-        navigation.navigate("AgregarParticipanteEquipo", id);
+        navigation.navigate("AgregarParticipanteEquipo", {id : id});
     }
     
     return (
