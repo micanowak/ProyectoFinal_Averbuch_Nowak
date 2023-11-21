@@ -21,6 +21,9 @@ import Calendar from "./screens/Calendar/Calendar";
 import ContactList from "./screens/ContactsList/ContactList";
 import AgregarEquipo from "./screens/AgregarInscriptos/AgregarEquipo.js";
 import AgregarParticipanteLibre from "./screens/AgregarInscriptos/AgregarParticipanteLibre.js";
+import MostrarEquipos from "./screens/MostrarInscriptos/MostrarEquipos";
+import MostrarParticipantes from "./screens/MostrarInscriptos/MostrarParticipantes";
+import AgregarParticipanteEquipo from "./screens/AgregarInscriptos/AgregarParticipanteEquipo";
 
 export default function App() {
   const [listaEventos, setListaEventos] = useState([]);
@@ -79,9 +82,24 @@ export default function App() {
           options={{ title: "Fecha nuevo evento" }}
         />
         <Stack.Screen
+          name="MostrarParticipantes"
+          component={MostrarParticipantes}
+          options={{ title: "Mostrar Participantes" }}
+        />
+        <Stack.Screen
+          name="MostrarEquipos"
+          component={MostrarEquipos}
+          options={{ title: "Mostrar Equipos" }}
+        />
+        <Stack.Screen
           name="AgregarEquipo"
           component={AgregarEquipo}
           options={{ title: "Agregar Equipo" }}
+        />
+        <Stack.Screen
+          name="AgregarParticipanteEquipo"
+          component={AgregarParticipanteEquipo}
+          options={{ title: "Agregar Participante Equipo" }}
         />
         <Stack.Screen
           name="AgregarParticipanteLibre"

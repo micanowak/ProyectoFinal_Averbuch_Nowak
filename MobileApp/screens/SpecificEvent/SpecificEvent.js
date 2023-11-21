@@ -60,6 +60,12 @@ const SpecificEvent = () => {
     const buttonOnAddTeamHandler = () =>{
         navigation.navigate("AgregarEquipo", {idEvento, EvEnto});
     }
+    const buttonOnMostrarEquiHandler = () =>{
+        navigation.navigate("MostrarEquipos", {idEvento, EvEnto});
+    }
+    const buttonOnMostrarPartiHandler = () =>{
+        navigation.navigate("MostrarParticipantes", {idEvento, EvEnto});
+    }
 
     return (
         <View style={styles.container}>
@@ -87,13 +93,24 @@ const SpecificEvent = () => {
             </View>
             <View style={styles.contactos}>
                 {EvEnto.hayParticipantesLibres === true ? (
+                    <View>
                     <TouchableOpacity style={styles.button} onPress={buttonOnAddPartiHandler}>
                         <Text style={styles.textButton}>Agregar Participante</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={buttonOnMostrarPartiHandler}>
+                        <Text style={styles.textButton}>Mostrar Participantes</Text>
+                    </TouchableOpacity>
+                    </View>
+                    
                 ) : (
+                    <View>
                     <TouchableOpacity style={styles.button} onPress={buttonOnAddTeamHandler}>
                         <Text style={styles.textButton}>Agregar Equipo</Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={buttonOnMostrarEquiHandler}>
+                        <Text style={styles.textButton}>Mostrar Equipos</Text>
+                    </TouchableOpacity>
+                    </View>
                 )}
             </View>
         </View>

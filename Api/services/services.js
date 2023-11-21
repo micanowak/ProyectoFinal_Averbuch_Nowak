@@ -130,7 +130,7 @@ export class PF_ArgTeam_Services {
                 .input('pApe', Persona.apellido)
                 .input('pDni', Persona.DNI)
                 .query('INSERT INTO Participante (nombre, apellido, DNI) OUTPUT INSERTED.* VALUES (@pNom, @pApe, @pDni)');
-            
+
             returnEntity = result.recordset[0];
         } catch (error) {
             console.log(error);
@@ -147,9 +147,9 @@ export class PF_ArgTeam_Services {
                 .input('pNom', Persona.nombre)
                 .input('pApe', Persona.apellido)
                 .input('pDNI', Persona.DNI)
-                .input('pIdE', Persona.IdEquipo)
+                .input('pIdE', sql.Int, Persona.IdEquipo)
                 .query('INSERT INTO Persona_X_Equipo (nombre, apellido, DNI, fkIdEquipo) OUTPUT INSERTED.* VALUES (@pNom, @pApe, @pDNI, @pIdE)');
-            
+
             returnEntity = result.recordset[0];
         } catch (error) {
             console.log(error);
@@ -168,7 +168,7 @@ export class PF_ArgTeam_Services {
                 .input('pApe', Equipo.apellidoContactoReferencia)
                 .input('pCel', Equipo.celularContactoReferencia)
                 .query('INSERT INTO Equipo (nombre, nombreContactoReferencia, apellidoContactoReferencia, celularContactoReferencia) OUTPUT INSERTED.* VALUES (@pNom, @pNomCon, @pApe, @pCel)');
-            
+
             returnEntity = result.recordset[0];
         } catch (error) {
             console.log(error);
@@ -193,7 +193,7 @@ export class PF_ArgTeam_Services {
                 .input('pSpon', Evento.sponsors)
                 .input('phay', Evento.hayParticipantesLibres)
                 .query('INSERT INTO Evento (nombre, lugar, fechaInicio, fechaFin, descripcion, hospedaje, gastronomia, numEdicionEvento, sponsors, hayParticipantesLibres) OUTPUT INSERTED.* VALUES (@pNom, @pLug, @pFechIn, @pFechFin, @pDesc, @pHosp, @pGas, @pEdi, @pSpon, @phay)');
-            
+
             returnEntity = result.recordset[0];
         } catch (error) {
             console.log(error);
@@ -210,6 +210,54 @@ export class PF_ArgTeam_Services {
             let result = await pool.request()
                 .input('pId', sql.Int, id)
                 .query('SELECT Profesionales.* FROM Profesionales INNER JOIN Profesional_X_Evento ON fkProfesional= Profesionales.ID  INNER JOIN Evento ON fkEvento = Evento.ID WHERE fkEvento = @pId');
+            returnEntity = result.recordsets[0];
+            console.log(returnEntity);
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
+
+    static getPartiById = async (id) => {
+        let returnEntity = null;
+        console.log('Estoy en: PF_ArgTeam_Services.getPartiById(id)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pId', sql.Int, id)
+                .query('SELECT Participante.* FROM Participante INNER JOIN Inscriptos_X_EventoLibre ON fkIdInscripto= Participante.ID  INNER JOIN Evento ON fkEvento = Evento.ID WHERE fkEvento = @pId');
+            returnEntity = result.recordsets[0];
+            console.log(returnEntity);
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
+
+    static getTeamById = async (id) => {
+        let returnEntity = null;
+        console.log('Estoy en: PF_ArgTeam_Services.getTeamById(id)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pId', sql.Int, id)
+                .query('SELECT Equipo.* FROM Equipo INNER JOIN Inscriptos_X_EventoEquipos ON fkIdEquipo = Equipo.ID  INNER JOIN Evento ON fkIdEvento = Evento.ID WHERE fkIdEvento = @pId');
+            returnEntity = result.recordsets[0];
+            console.log(returnEntity);
+        } catch (error) {
+            console.log(error);
+        }
+        return returnEntity;
+    }
+
+    static getPerEquipo = async (id) => {
+        let returnEntity = null;
+        console.log('Estoy en: PF_ArgTeam_Services.getPerEquipo(id)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pId', sql.Int, id)
+                .query('SELECT Persona_X_Equipo.* FROM Persona_X_Equipo INNER JOIN Equipo ON fkIdEquipo = Equipo.ID WHERE fkIdEquipo = @pId');
             returnEntity = result.recordsets[0];
             console.log(returnEntity);
         } catch (error) {
