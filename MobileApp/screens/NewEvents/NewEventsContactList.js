@@ -68,11 +68,6 @@ const NewEventsContactList = () => {
 
     }
 
-    const onPressNewContact = (evento) => {
-        evento.preventDefault();
-        navigation.navigate("NewContact");
-    }
-
     const listaHandle = (lista) => {
         setListaContactosSeleccionados(lista);
     }
@@ -94,10 +89,7 @@ const NewEventsContactList = () => {
             <TouchableOpacity style={styles.mainButton} onPress={buttonOnPressHandler}>
                 <Text style={styles.textButton}>Guardar</Text>
             </TouchableOpacity>
-
-            {/*<TouchableOpacity style={styles.button} onPress={onPressNewContact}>
-                <Text style={styles.textButton}>Nuevo contacto (se va de la pantalla)</Text>
-            </TouchableOpacity>*/}
+            {/* HAY QUE HACER UN CARTEL QUE AVISE QUE PARA AGREGAR NUEVOS CONTACTOS SE HACE DESDE SPECIFIC EVENT */}
         </View>
 
     );

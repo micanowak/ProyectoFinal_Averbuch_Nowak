@@ -10,20 +10,23 @@ import {
 } from "react-native";
 //import DatePicker from "react-native-datepicker"
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
 import back from "../../assets/images/backArrow.png"
 
 const NewContact = () => {
-
+    const route = useRoute();
     const baseURL = "http://localhost:3000/insertContacto";
+    const baseURL2 = "http://localhost:3000/insertProfEvento";
     const navigation = useNavigation();
     const { height } = useWindowDimensions();
     const [mail, setMail] = useState("");
     const [nombre, setNombre] = useState("");
     const [celular, setCelular] = useState(0);
+    const [idContacto, setIdContacto] = useState(0);
     const [rol, setRol] = useState('');
     const [apellido, setApellido] = useState('');
+    const {idEvento, EvEnto} = route.params;
 
     const nombreOnchangeHandler = (Contacto) => {
         setNombre(Contacto.target.value);
@@ -59,7 +62,8 @@ const NewContact = () => {
                 (response) => {
                     if (response.status === 200) {
                         //navigation.navigate("Home");
-                        console.log(response);
+                        console.log(response.data);
+                        setIdContacto(response.data.ID);
                     }
                 },
                 (res) => {
@@ -72,6 +76,22 @@ const NewContact = () => {
         setCelular(0);
         setMail('');
         setRol('');
+
+        if(idEvento!== null && EvEnto!== null){
+            axios
+            .post(baseURL2, {idContacto,idEvento})
+            .then(
+                (response) => {
+                    if (response.status === 200) {
+                        navigation.navigate("SpecificEvent", {EvEnto:EvEnto});
+                        console.log(response.data);
+                    }
+                },
+                (res) => {
+                    setError(res.response.data);
+                }
+            );
+        }
 
     };
 

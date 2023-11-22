@@ -6,7 +6,7 @@ import {
     Image,
     useWindowDimensions,
     Button,
-    TouchableOpacity                                                                                      
+    TouchableOpacity
 } from "react-native";
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import Card from "../../components/Card/Card.js";
@@ -16,7 +16,7 @@ import { useNavigation } from '@react-navigation/native';
 const HomeScreen = ({ sendlistaEventos }) => {
     const { height } = useWindowDimensions();
     const navigation = useNavigation();
-    const [listaEventos, setListaEventos] = useState([]); 
+    const [listaEventos, setListaEventos] = useState([]);
     const baseURL = "http://localhost:3000/getEvents";
 
     const buttonAgregarOnPressHandler = () => {
@@ -31,8 +31,8 @@ const HomeScreen = ({ sendlistaEventos }) => {
         });
     }, []);
 
-    const spoilerToShow = () => {
-        navigation.navigate("NewEventsDate");
+    const buttonContactListOnPressHandler = () => {
+        navigation.navigate("ContactList");
     }
 
     return (
@@ -44,15 +44,20 @@ const HomeScreen = ({ sendlistaEventos }) => {
                 />
             </View>
             <>
-                {listaEventos.map((element) => (<Card key={element.id} evento={element}/>))}
+                {listaEventos.map((element) => (<Card key={element.id} evento={element} />))}
             </>
             <TouchableOpacity style={styles.buttonStyle}
                 onPress={buttonAgregarOnPressHandler}>
-                
-                <Text style={{color:'white'}}>Agregar evento</Text>
-                </TouchableOpacity>
+
+                <Text style={{ color: 'white' }}>Agregar evento</Text>
+            </TouchableOpacity>
             {/*<Text onPress={spoilerToShow}>Calendario (spoiler)</Text>*/}
-        </View> 
+            <TouchableOpacity style={styles.buttonStyle}
+                onPress={buttonContactListOnPressHandler}>
+
+                <Text style={{ color: 'white' }}>Ver Lista Contactos</Text> {/* esto quedaría mucho mejor en un nav */}
+            </TouchableOpacity>
+        </View>
     );
 };
 
@@ -60,11 +65,11 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#cfcfcf",
         alignItems: "center",
-        justifyContent: "center", 
+        justifyContent: "center",
     },
     fondoLogo: {
-        width:'100%',
-        backgroundColor:'#1A4B8E',
+        width: '100%',
+        backgroundColor: '#1A4B8E',
         alignItems: "center",
         flex: "center",
     },
@@ -86,7 +91,7 @@ const styles = StyleSheet.create({
         width: 150,
         height: 50,
     },
-    
+
 });
 
 export default HomeScreen;

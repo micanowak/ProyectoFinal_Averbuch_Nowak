@@ -196,8 +196,8 @@ app.get('/getProfByEvent/:id', async (req, res) => {
 app.post('/insertContacto', async (req, res) => {
     console.log("en post, req:", req)
     try {
-        await PF_ArgTeam_Services.insertContacto(req.body)
-        res.status(200).json({ message: 'Contacto creado' });
+        const results = await PF_ArgTeam_Services.insertContacto(req.body)
+        res.status(200).send(results);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Fallo el insert' });

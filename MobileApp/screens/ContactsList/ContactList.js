@@ -14,18 +14,31 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
 import Contacts from "../../components/Contacts/ContactV2.js"
 import back from "../../assets/images/backArrow.png"
-import backPage from "../Home/HomeScreen.js"
+
 
 const ContactList = () => {
     const navigation = useNavigation();
     const router = useRoute();
-    const [eventoNuevo, setEventoNuevo] = useState({});
+    const baseURL = "http://localhost:3000/getContactList";
+    const [listaContactos, setListaContactos] = useState([]);
+
+    useEffect(() => {
+        axios.get(baseURL).then((response) => {
+            setListaContactos(response.data);
+            console.log(listaContactos);
+        });
+    }, []);
 
     
-    const onPressBack = () => {
+    const onPressBack = (evento) => {
         evento.preventDefault();
-        navigation.navigate(backPage);
+        navigation.navigate("Home");
 
+    }
+
+    const onPressNewContact = (evento) =>{
+        evento.preventDefault();
+        navigation.navigate("NewContact", {idEvento:null, EvEnto:null});
     }
 
 
@@ -35,17 +48,17 @@ const ContactList = () => {
                 <TouchableOpacity onAccessibilityTap={onPressBack}>
                     <Image source={back} style={styles.back} ></Image>
                 </TouchableOpacity>
-                <Text style={styles.textArriba} >Lista de contactos</Text>
+                <Text style={styles.textArriba} >Lista de Profesionales</Text>
             </View>
             
             <View style={styles.contactos}>
 
-                <Contacts></Contacts>
-                <Contacts></Contacts>
-                <Contacts></Contacts>
+                {listaContactos.map((element) => (<Text>{element.nombre}</Text>))}
 
             </View>
-            <Text style={styles.plus}>+</Text>
+            <TouchableOpacity style={styles.button} onPress={onPressNewContact}>
+                <Text style={styles.textButton}>Nuevo contacto</Text>
+            </TouchableOpacity>
 
 
         </View>

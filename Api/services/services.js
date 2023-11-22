@@ -278,7 +278,7 @@ export class PF_ArgTeam_Services {
                 .input('pMail', Contacto.mail)
                 .input('pRol', Contacto.rol)
                 .input('pCel', Contacto.celular)
-                .query('INSERT INTO Profesionales (nombre, apellido, mail, rol, celular) VALUES (@pNom, @pApe, @pMail, @pRol, @pCel)');
+                .query('INSERT INTO Profesionales (nombre, apellido, mail, rol, celular) OUTPUT INSERTED.*  VALUES (@pNom, @pApe, @pMail, @pRol, @pCel)');
             returnEntity = result.recordsets[0];
         } catch (error) {
             console.log(error);

@@ -54,17 +54,20 @@ const SpecificEvent = () => {
             });
     }, []);
 
-    const buttonOnAddPartiHandler = () =>{
-        navigation.navigate("AgregarParticipanteLibre", {idEvento, EvEnto});
+    const buttonOnAddPartiHandler = () => {
+        navigation.navigate("AgregarParticipanteLibre", { idEvento, EvEnto });
     }
-    const buttonOnAddTeamHandler = () =>{
-        navigation.navigate("AgregarEquipo", {idEvento, EvEnto});
+    const buttonOnAddTeamHandler = () => {
+        navigation.navigate("AgregarEquipo", { idEvento, EvEnto });
     }
-    const buttonOnMostrarEquiHandler = () =>{
-        navigation.navigate("MostrarEquipos", {idEvento, EvEnto});
+    const buttonOnMostrarEquiHandler = () => {
+        navigation.navigate("MostrarEquipos", { idEvento, EvEnto });
     }
-    const buttonOnMostrarPartiHandler = () =>{
-        navigation.navigate("MostrarParticipantes", {idEvento, EvEnto});
+    const buttonOnMostrarPartiHandler = () => {
+        navigation.navigate("MostrarParticipantes", { idEvento, EvEnto });
+    }
+    const buttonOnAgregarContactHandler = () => {
+        navigation.navigate("NewContact", { idEvento: idEvento, EvEnto:EvEnto });
     }
 
     return (
@@ -94,24 +97,27 @@ const SpecificEvent = () => {
             <View style={styles.contactos}>
                 {EvEnto.hayParticipantesLibres === true ? (
                     <View>
-                    <TouchableOpacity style={styles.button} onPress={buttonOnAddPartiHandler}>
-                        <Text style={styles.textButton}>Agregar Participante</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.button} onPress={buttonOnMostrarPartiHandler}>
-                        <Text style={styles.textButton}>Mostrar Participantes</Text>
-                    </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={buttonOnAddPartiHandler}>
+                            <Text style={styles.textButton}>Agregar Participante</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={buttonOnMostrarPartiHandler}>
+                            <Text style={styles.textButton}>Mostrar Participantes</Text>
+                        </TouchableOpacity>
                     </View>
-                    
+
                 ) : (
                     <View>
-                    <TouchableOpacity style={styles.button} onPress={buttonOnAddTeamHandler}>
-                        <Text style={styles.textButton}>Agregar Equipo</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.button} onPress={buttonOnMostrarEquiHandler}>
-                        <Text style={styles.textButton}>Mostrar Equipos</Text>
-                    </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={buttonOnAddTeamHandler}>
+                            <Text style={styles.textButton}>Agregar Equipo</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={buttonOnMostrarEquiHandler}>
+                            <Text style={styles.textButton}>Mostrar Equipos</Text>
+                        </TouchableOpacity>
                     </View>
                 )}
+                <TouchableOpacity style={styles.button} onPress={buttonOnAgregarContactHandler}>
+                    <Text style={styles.textButton}>Agregar Contacto</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
