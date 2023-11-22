@@ -30,7 +30,7 @@ const ContactList = () => {
     }, []);
 
     
-    const onPressBack = (evento) => {
+    const onPressBack = () => {
         evento.preventDefault();
         navigation.navigate("Home");
 
@@ -45,7 +45,7 @@ const ContactList = () => {
     return (
         <View style={styles.container}>
             <View style={styles.fondoArriba}>
-                <TouchableOpacity onAccessibilityTap={onPressBack}>
+                <TouchableOpacity onAccessibilityTap={onPressBack}> {/* No funciona */}
                     <Image source={back} style={styles.back} ></Image>
                 </TouchableOpacity>
                 <Text style={styles.textArriba} >Lista de Profesionales</Text>

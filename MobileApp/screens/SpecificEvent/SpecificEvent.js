@@ -67,7 +67,7 @@ const SpecificEvent = () => {
         navigation.navigate("MostrarParticipantes", { idEvento, EvEnto });
     }
     const buttonOnAgregarContactHandler = () => {
-        navigation.navigate("NewContact", { idEvento: idEvento, EvEnto:EvEnto });
+        navigation.navigate("NewContact", { idEvento: EvEnto.ID, EvEnto:EvEnto });
     }
 
     return (

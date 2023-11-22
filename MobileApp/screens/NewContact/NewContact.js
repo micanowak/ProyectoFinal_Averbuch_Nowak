@@ -62,8 +62,28 @@ const NewContact = () => {
                 (response) => {
                     if (response.status === 200) {
                         //navigation.navigate("Home");
-                        console.log(response.data);
-                        setIdContacto(response.data.ID);
+                        console.log(response.data[0].ID);
+                        let idCon = response.data[0].ID;
+                        if(idEvento && EvEnto){
+                            console.log(idCon);
+                            const ids = {idContacto:idCon, idEvento:idEvento}; 
+                            axios
+                            .post(baseURL2, ids)
+                            .then(
+                                (response) => {
+                                    if (response.status === 200) {
+                                        console.log(response.data);
+                                    }
+                                },
+                                (res) => {
+                                    setError(res.response.data);
+                                }
+                            );
+                            navigation.navigate("Home");
+                        } else {
+                            navigation.navigate("ContactList");
+                        }
+                        
                     }
                 },
                 (res) => {
@@ -77,26 +97,15 @@ const NewContact = () => {
         setMail('');
         setRol('');
 
-        if(idEvento!== null && EvEnto!== null){
-            axios
-            .post(baseURL2, {idContacto,idEvento})
-            .then(
-                (response) => {
-                    if (response.status === 200) {
-                        navigation.navigate("SpecificEvent", {EvEnto:EvEnto});
-                        console.log(response.data);
-                    }
-                },
-                (res) => {
-                    setError(res.response.data);
-                }
-            );
-        }
-
     };
 
     const onPressBack = () => {
-        navigation.navigate("Home")
+        if(idEvento && EvEnto){
+            navigation.navigate("SpecificEvent", {EvEnto:EvEnto})  
+        } else{
+            navigation.navigate("ContactList")
+        }
+        
     }
     return (
         <View style={styles.container}>
