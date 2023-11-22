@@ -30,7 +30,7 @@ const MostrarParticipantes = () => {
     }, []);
 
     const onPressBack = () => {
-        navigation.navigate("SpecificEvent", EvEnto);
+        navigation.navigate("SpecificEvent", {EvEnto: EvEnto});
     }
 
     return (

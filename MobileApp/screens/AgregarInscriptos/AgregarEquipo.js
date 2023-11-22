@@ -40,7 +40,7 @@ const AgregarEquipo = () => {
     };
 
     const onPressBack = () =>{
-        navigation.navigate("SpecificEvent", EvEnto);
+        navigation.navigate("SpecificEvent", {EvEnto: EvEnto});
     }
 
     const buttonOnsubmitHandler = (contactoooo) => {

@@ -21,6 +21,7 @@ const MostrarEquipos = () => {
     const { height } = useWindowDimensions();
     const [listaEquipos, setListaEquipos] = useState([]);
     const { idEvento, EvEnto } = route.params;
+    console.log(idEvento, EvEnto);
     const baseURL = "http://localhost:3000/getTeamByIdEvento/" + idEvento;
 
     useEffect(() => {
@@ -31,7 +32,7 @@ const MostrarEquipos = () => {
     }, []);
 
     const onPressBack = () => {
-        navigation.navigate("SpecificEvent", EvEnto);
+        navigation.navigate("SpecificEvent", {EvEnto: EvEnto});
     }
 
     return (

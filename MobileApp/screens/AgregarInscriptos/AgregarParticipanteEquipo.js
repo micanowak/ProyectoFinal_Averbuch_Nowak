@@ -53,7 +53,7 @@ const AgregarParticipanteEquipo = () => {
                 (response) => {
                     if (response.status === 200) {
                         console.log(response);
-                        navigation.navigate("Home");
+                        navigation.navigate("SpecificEvent", {EvEnto: EvEnto});
                     }
                 },
                 (res) => {

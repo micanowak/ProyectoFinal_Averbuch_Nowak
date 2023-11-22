@@ -36,7 +36,7 @@ const AgregarParticipanteLibre = () => {
     };
 
     const onPressBack = () =>{
-        navigation.navigate("SpecificEvent", EvEnto);
+        navigation.navigate("SpecificEvent", {EvEnto: EvEnto});
     }
 
     const buttonOnsubmitHandler = (contactoooo) => {
@@ -62,7 +62,7 @@ const AgregarParticipanteLibre = () => {
                                 (response) => {
                                     if (response.status === 200) {
 
-                                        navigation.navigate("Home");
+                                        navigation.navigate("SpecificEvent", {EvEnto: EvEnto});
                                         console.log(response);
                                     }
                                 },
@@ -71,7 +71,7 @@ const AgregarParticipanteLibre = () => {
                                 }
                             );
 
-                        navigation.navigate("Home");
+                        navigation.navigate("SpecificEvent", {EvEnto: EvEnto});
                         console.log(response);
                     }
                 },
