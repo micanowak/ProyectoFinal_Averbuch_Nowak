@@ -20,6 +20,37 @@ export class PF_ArgTeam_Services {
         return returnEntity;
     }
 
+    static deleteProfById = async (id) => {
+        let rowsAffected = 0;
+        console.log('Estoy en: PFArgTeam.deleteProfBy(id)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pId', sql.Int, id)
+                .query('DELETE FROM Profesionales WHERE id = @pId');
+            rowsAffected = result.rowsAffected;
+        } catch (error) {
+            console.log(error)
+        }
+        return rowsAffected;
+    }
+
+    static deleteProfOfEventById = async (id, idE) => {
+        let rowsAffected = 0;
+        console.log('Estoy en: PFArgTeam.deleteProfOfEventBy(id)');
+        try {
+            let pool = await sql.connect(config);
+            let result = await pool.request()
+                .input('pId', sql.Int, id)
+                .input('pIdE', sql.Int, idE)
+                .query('DELETE FROM Profesional_X_Evento WHERE fkProfesional = @pId && fkEvento = @pIdE');
+            rowsAffected = result.rowsAffected;
+        } catch (error) {
+            console.log(error)
+        }
+        return rowsAffected;
+    }
+
     static getEvents = async () => {
         let returnEntity = null;
         console.log('Estoy en: PF_ArgTeam_Services.getEvents()');

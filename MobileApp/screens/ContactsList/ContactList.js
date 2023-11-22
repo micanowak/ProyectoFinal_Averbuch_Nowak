@@ -12,7 +12,7 @@ import {
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png"
 import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
-import Contacts from "../../components/Contacts/ContactV2.js"
+import Contact from "../../components/Contacts/Contacts.js"
 import back from "../../assets/images/backArrow.png"
 
 
@@ -31,7 +31,6 @@ const ContactList = () => {
 
     
     const onPressBack = () => {
-        evento.preventDefault();
         navigation.navigate("Home");
 
     }
@@ -50,10 +49,12 @@ const ContactList = () => {
                 </TouchableOpacity>
                 <Text style={styles.textArriba} >Lista de Profesionales</Text>
             </View>
+
+            <Text onPress={onPressBack}>Volver</Text>
             
             <View style={styles.contactos}>
 
-                {listaContactos.map((element) => (<Text>{element.nombre}</Text>))}
+                {listaContactos.map((element) => (<Contact Contacto={element} Evento={null}/>))}
 
             </View>
             <TouchableOpacity style={styles.button} onPress={onPressNewContact}>

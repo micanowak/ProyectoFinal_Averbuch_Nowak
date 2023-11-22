@@ -102,6 +102,30 @@ app.post('/insertInscriptoEventoEquipos', async (req, res) => {
     }
 })
 
+app.delete('/deleteProfesional/:id', async (req, res) => {
+    try {
+        await PF_ArgTeam_Services.deleteProfById(req.params.id);
+        res.status(200).json({ message: 'Eliminado'});
+    } catch(error) {
+        console.log(error);
+        res.status(500).json({ error: 'Fallo el delete' });
+
+    }
+})
+
+app.delete('/deleteProfesionalFromEvent', async (req, res) => {
+    const id = req.params.id;
+    const idE = req.params.idE;
+    try {
+        await PF_ArgTeam_Services.deleteProfOfEventById(id, idE);
+        res.status(200).json({ message: 'Eliminado'});
+    } catch(error) {
+        console.log(error);
+        res.status(500).json({ error: 'Fallo el delete' });
+
+    }
+})
+
 app.post('/insertInscriptoEventoLibre', async (req, res) => {
     console.log("en post, req:", req.body)
     let idInscripto = req.body.idInscripto;

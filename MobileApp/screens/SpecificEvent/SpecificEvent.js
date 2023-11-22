@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import DataEvent from "../../components/DataEvent/DataEvent.js";
-import Contacts from "../../components/Contacts/Contacts.js";
+import Contact from "../../components/Contacts/Contacts.js";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
 
@@ -91,7 +91,7 @@ const SpecificEvent = () => {
             <Text style={styles.tituloContactos}>Contactos</Text>
             <View style={styles.contactos}>
                 {listaContactos.map((element) => (
-                    <Contacts Contacto={element} />
+                    <Contact Contacto={element} Evento={EvEnto.ID} />
                 ))}
             </View>
             <View style={styles.contactos}>
