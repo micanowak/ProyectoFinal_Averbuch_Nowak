@@ -4,7 +4,7 @@ import phoneIcon from "../../assets/images/phoneIcon.png";
 import mailIcon from "../../assets/images/mailIcon.png";
 import axios from "axios";
 
-const Contact = ({ Contacto, Evento }) => {
+const Contact = ({ Contacto, Evento, eliminarHandler }) => {
 
     const baseURL = "http://localhost:3000/deleteProfesionalFromEvent";
     const baseURL2 = "http://localhost:3000/deleteProfesional/" + Contacto.ID;
@@ -20,6 +20,7 @@ const Contact = ({ Contacto, Evento }) => {
                 .then((response) => {
                     console.log({ id: Contacto.ID, idE: Evento });
                     console.log(response.data);
+                    eliminarHandler();
                 })
                 .catch((error) => {
                     console.error("Error al eliminar el personaje:", error);
@@ -29,6 +30,7 @@ const Contact = ({ Contacto, Evento }) => {
                 .delete(baseURL2)
                 .then((response) => {
                     console.log(response.data);
+                    eliminarHandler();
                 })
                 .catch((error) => {
                     console.error("Error al eliminar el personaje:", error);
