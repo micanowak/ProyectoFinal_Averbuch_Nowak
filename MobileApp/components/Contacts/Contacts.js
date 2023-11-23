@@ -10,10 +10,15 @@ const Contact = ({ Contacto, Evento }) => {
     const baseURL2 = "http://localhost:3000/deleteProfesional/" + Contacto.ID;
 
     const eliminarOnPressHandler = () => {
+
+        const ids= { id: Contacto.ID, idE: Evento };
+        console.log(ids);
+
         if (Evento!= null) {
             axios
-                .delete(baseURL, { id: Contacto.ID, idE: Evento })
+                .delete(baseURL, {data:ids})
                 .then((response) => {
+                    console.log({ id: Contacto.ID, idE: Evento });
                     console.log(response.data);
                 })
                 .catch((error) => {

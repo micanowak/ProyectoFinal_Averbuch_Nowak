@@ -35,15 +35,15 @@ export class PF_ArgTeam_Services {
         return rowsAffected;
     }
 
-    static deleteProfOfEventById = async (id, idE) => {
+    static deleteProfOfEventById = async (ids) => {
         let rowsAffected = 0;
         console.log('Estoy en: PFArgTeam.deleteProfOfEventBy(id)');
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
-                .input('pId', sql.Int, id)
-                .input('pIdE', sql.Int, idE)
-                .query('DELETE FROM Profesional_X_Evento WHERE fkProfesional = @pId && fkEvento = @pIdE');
+                .input('pId', sql.Int, ids.id)
+                .input('pIdE', sql.Int, ids.idE)
+                .query('DELETE FROM Profesional_X_Evento WHERE fkProfesional = @pId and fkEvento = @pIdE');
             rowsAffected = result.rowsAffected;
         } catch (error) {
             console.log(error)

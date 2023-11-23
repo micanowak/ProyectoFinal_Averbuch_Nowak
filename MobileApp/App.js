@@ -24,6 +24,7 @@ import AgregarParticipanteLibre from "./screens/AgregarInscriptos/AgregarPartici
 import MostrarEquipos from "./screens/MostrarInscriptos/MostrarEquipos";
 import MostrarParticipantes from "./screens/MostrarInscriptos/MostrarParticipantes";
 import AgregarParticipanteEquipo from "./screens/AgregarInscriptos/AgregarParticipanteEquipo";
+import AddContact from "./screens/NewContact/AddContact.js"
 
 export default function App() {
   const [listaEventos, setListaEventos] = useState([]);
@@ -85,6 +86,11 @@ export default function App() {
           name="MostrarParticipantes"
           component={MostrarParticipantes}
           options={{ title: "Mostrar Participantes" }}
+        />
+        <Stack.Screen
+          name="AddContact"
+          component={AddContact}
+          options={{ title: "Add Contact" }}
         />
         <Stack.Screen
           name="MostrarEquipos"

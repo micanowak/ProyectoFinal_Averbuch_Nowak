@@ -114,8 +114,9 @@ app.delete('/deleteProfesional/:id', async (req, res) => {
 })
 
 app.delete('/deleteProfesionalFromEvent', async (req, res) => {
-    const id = req.params.id;
-    const idE = req.params.idE;
+    const id = req.body.id;
+    const idE = req.body.idE;
+    console.log(req);
     try {
         await PF_ArgTeam_Services.deleteProfOfEventById(id, idE);
         res.status(200).json({ message: 'Eliminado'});
