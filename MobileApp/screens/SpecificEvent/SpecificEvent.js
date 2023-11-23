@@ -72,12 +72,16 @@ const SpecificEvent = () => {
 
     return (
         <View style={styles.container}>
-            <Text onPress={onpressVolver}> Volver!</Text>
             <View style={styles.fondoLogo}>
                 <Image source={ArgTeamLogo} style={styles.imgStyle}></Image>
             </View>
+            
+            <Text onPress={onpressVolver}> Volver!</Text>
+
+
             <Text style={styles.nombreEvento}>{EvEnto.nombre}</Text>
             <Text style={styles.desc}>{EvEnto.descripcion || ""}</Text>
+            
             <View style={styles.divDataEvent}>
                 <View style={styles.containerCadaFecha}>
                     <Text style={styles.titleCard}>Fecha Inicio</Text>
@@ -88,8 +92,9 @@ const SpecificEvent = () => {
                     <Text style={styles.textStyle}>{EvEnto.fechaFin || ""}</Text>
                 </View>
             </View>
+            
             <Text style={styles.tituloContactos}>Contactos</Text>
-            <View style={styles.contactos}>
+            <View style={styles.contactosContainer}>
                 {listaContactos.map((element) => (
                     <Contact Contacto={element} Evento={EvEnto.ID} />
                 ))}
@@ -133,8 +138,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderColor: '#1A4B8E',
         borderWidth: 1,
-        width: '50%',
-        height: '30%',
+        width: '60%',
+        height: '40%',
         borderRadius: 15,
         margin: 3, flex: 'center', alignItems: 'center'
     },
@@ -161,11 +166,10 @@ const styles = StyleSheet.create({
         fontSize: 15,
         paddingTop: 8,
     },
-    contactos: {
-        width: '100%',
-        flexDirection: "row", alignItems: "center",
-        flex: 1, justifyContent: 'flex-start', maxHeight: '10%'    //IMPORTanteeeeee  
-
+    contactosContainer: {
+        width:'80%',
+        flexDirection: "column", alignItems: "center",
+        flex: 1, justifyContent: 'flex-start',
     },
     divDataEvent: {
         width: '100%',
@@ -183,10 +187,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#1A4B8E',
         alignItems: "center",
         flex: "center",
+        height:'10%',
     },
     imgStyle: {
-        marginTop: 30,
-        marginBottom: 20,
+        marginTop: '5%',
+        marginBottom: '5%',
         resizeMode: "contain",
         width: 150,
         height: 50,
@@ -199,21 +204,20 @@ const styles = StyleSheet.create({
 
     },
     nombreEvento: {
-        backgroundColor: '#1A4B8E',
+        backgroundColor: '#1a4b8e',
         color: 'white', marginLeft: 30, marginRight: 30,
         padding: 20, marginTop: 10,
         borderRadius: 15, fontSize: 15, fontWeight: '700', alignItems: "center",
         flex: "center",
     },
     desc: {
-        width: '80%',
+        width: '70%',
         maxHeight: '15%',
         textAlign: 'left',
         rowGap: 1,
         color: '#1A4B8E',
         fontSize: 15,
-        padding: 10, margin: 10
-
+        padding: 10, marginHorizontal: '15%',
     },
 
     textStyle: {

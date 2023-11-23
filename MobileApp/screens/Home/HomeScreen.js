@@ -46,52 +46,60 @@ const HomeScreen = ({ sendlistaEventos }) => {
             <>
                 {listaEventos.map((element) => (<Card key={element.id} evento={element} />))}
             </>
-            <TouchableOpacity style={styles.buttonStyle}
+            <View style={styles.containerButton}>
+                <TouchableOpacity style={styles.buttonStyle}
                 onPress={buttonAgregarOnPressHandler}>
-
-                <Text style={{ color: 'white' }}>Agregar evento</Text>
-            </TouchableOpacity>
-            {/*<Text onPress={spoilerToShow}>Calendario (spoiler)</Text>*/}
-            <TouchableOpacity style={styles.buttonStyle}
+                    <Text style={{ color: 'white' }}>Agregar evento</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.buttonStyle}
                 onPress={buttonContactListOnPressHandler}>
-
-                <Text style={{ color: 'white' }}>Ver Lista Contactos</Text> {/* esto quedaría mucho mejor en un nav */}
-            </TouchableOpacity>
+                    <Text style={{ color: 'white' }}>Ver Lista Contactos</Text> {/* esto quedaría mucho mejor en un nav */}
+                </TouchableOpacity>
+            </View>
+            
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "#cfcfcf",
+        backgroundColor: "#1A4B8E",
         alignItems: "center",
-        justifyContent: "center",
+        width:'100%'
     },
     fondoLogo: {
         width: '100%',
         backgroundColor: '#1A4B8E',
         alignItems: "center",
         flex: "center",
+        height:'10%',
     },
+
     buttonStyle: {
-        width: '35%',
-        height: '4%',
+        width: '80%',
+        height: '30%',
         backgroundColor: 'rgb(26, 75, 142)',
-        color: '#1A4B8E',
+        color: '#cfcfcf',
         padding: 10,
         textAlign: "center",
-        marginTop: 50,
+        marginTop: 15,
         borderRadius: 5,
-        flex: "contain", margin: '20%',
+        flex: "contain", marginLeft: '20%',marginRight: '20%',   display: 'flex', display:'inline-table'
+
     },
     imgStyle: {
-        marginTop: 30,
-        marginBottom: 20,
+        marginTop: '5%',
+        marginBottom: '5%',
         resizeMode: "contain",
         width: 150,
         height: 50,
     },
-
+    containerButton:{
+        width:'80%',
+        display:'flex',
+        alignItems:'center',
+        marginTop:'10%'
+    }
 });
 
 export default HomeScreen;

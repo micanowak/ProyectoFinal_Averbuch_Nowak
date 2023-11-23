@@ -6,7 +6,6 @@ import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import DataEventSmall from "../../components/DataEvent/DataEventSmall.js";
 import { useNavigation } from '@react-navigation/native';
 import DatePicker from 'react-native-date-picker';
-import back from "../../assets/images/backArrow.png";
 
 const NewEventsDate = () => {
     const { height } = useWindowDimensions();
@@ -40,9 +39,7 @@ const NewEventsDate = () => {
     return (
         <View style={styles.container}>
             <View style ={styles.fondoArriba}>
-                <TouchableOpacity onPress={onPressBack}>
-                    <Image source={back} style={styles.back} ></Image>
-                </TouchableOpacity>
+                
                 <Image source={ArgTeamLogo} style={styles.imgStyle}></Image>
             </View>
 

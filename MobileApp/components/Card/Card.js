@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         borderBottomWidth:2,
         borderRightWidth:2,
         width:'80%',
-        height:'15%',
+        height:'18%',
        // alignItems: 'center',
         borderRadius:15,
         marginTop:20,
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         borderRadius:10
     },
     masInfo:{
-        color:'white', paddingTop:4,
+        color:'white', paddingTop:4, width:'100%'
     },
     iconStyle: {
         resizeMode: 'contain',

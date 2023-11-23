@@ -12,7 +12,6 @@ import {
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
-import back from "../../assets/images/backArrow.png"
 
 const AgregarEquipo = () => {
     const route = useRoute();
@@ -95,7 +94,7 @@ const AgregarEquipo = () => {
     return (
         <View style={styles.container}>
 
-            <View style={styles.fondoArriba}>
+            <View style={styles.fondoLogo}>
                 <Image source={ArgTeamLogo} style={styles.imgStyle}></Image>
 
             </View>
@@ -147,10 +146,11 @@ const styles = StyleSheet.create({
         flex: 6,
     },
     fondoLogo: {
-        width: "100%",
-        backgroundColor: "#1A4B8E",
+        width: '100%',
+        backgroundColor: '#1A4B8E',
         alignItems: "center",
         flex: "center",
+        height:'10%',
     },
     tituloMain: {
         backgroundColor: '#1A4B8E',
@@ -202,14 +202,7 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 23, alignContent: 'center', width: '70%', marginLeft: '23%',
     },
-    fondoArriba: {
-        width: "100%",
-        height: '10%',
-        backgroundColor: "#1A4B8E",
-        alignItems: "center",
-        flexDirection: "row",
-
-    },
+    
     imgStyle: {
         marginTop: 30, alignContent: 'center',
         marginBottom: 20,

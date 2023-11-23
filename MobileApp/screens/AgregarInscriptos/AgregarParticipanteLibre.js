@@ -12,7 +12,6 @@ import {
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
-import back from "../../assets/images/backArrow.png"
 
 const AgregarParticipanteLibre = () => {
     const route = useRoute();

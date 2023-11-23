@@ -13,7 +13,6 @@ import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png"
 import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
 import ContactV2 from "../../components/Contacts/ContactV2.js"
-import back from "../../assets/images/backArrow.png"
 import Search from "../../components/Search/Search.js"
 
 const NewEventsContactList = () => {
@@ -75,9 +74,7 @@ const NewEventsContactList = () => {
     return (
         <View style={styles.container}>
             <View style={styles.fondoArriba}>
-                <TouchableOpacity onAccessibilityTap={onPressBack}>
-                    <Image source={back} style={styles.back} ></Image>
-                </TouchableOpacity>
+            
                 <Text style={styles.textArriba} >Seleccionar Contactos</Text>
             </View>
             <Search style={styles.search} listaContactosSeleccionados={listaHandle}></Search>

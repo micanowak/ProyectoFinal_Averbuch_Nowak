@@ -13,7 +13,6 @@ import {
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
-import back from "../../assets/images/backArrow.png"
 import SelectDropdown from 'react-native-select-dropdown';
 
 const NewEventsInfo = () => {
@@ -112,9 +111,7 @@ const NewEventsInfo = () => {
         <View style={styles.container}>
 
             <View style={styles.fondoArriba}>
-                <TouchableOpacity onPress={onPressBack}>
-                    <Image source={back} style={styles.back} ></Image>
-                </TouchableOpacity>
+                
                 <Image source={ArgTeamLogo} style={styles.imgStyle}></Image>
             </View>
 
