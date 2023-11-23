@@ -10,7 +10,7 @@ import {
     TouchableOpacity,
 } from "react-native";
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png"
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute, useIsFocused } from "@react-navigation/native";
 import axios from "axios";
 import Contact from "../../components/Contacts/Contacts.js"
 import back from "../../assets/images/backArrow.png"
@@ -21,23 +21,30 @@ const ContactList = () => {
     const router = useRoute();
     const baseURL = "http://localhost:3000/getContactList";
     const [listaContactos, setListaContactos] = useState([]);
+    const isFocused = useIsFocused();
 
-    useEffect(() => {
+    const getContacts = () => {
         axios.get(baseURL).then((response) => {
             setListaContactos(response.data);
             console.log(listaContactos);
         });
-    }, []);
+    }
 
-    
+    useEffect(() => {
+        if (isFocused) {
+            getContacts();
+        }
+    }, [isFocused]);
+
+
     const onPressBack = () => {
         navigation.navigate("Home");
 
     }
 
-    const onPressNewContact = (evento) =>{
+    const onPressNewContact = (evento) => {
         evento.preventDefault();
-        navigation.navigate("NewContact", {idEvento:null, EvEnto:null});
+        navigation.navigate("NewContact", { idEvento: null, EvEnto: null });
     }
 
 
@@ -51,10 +58,10 @@ const ContactList = () => {
             </View>
 
             <Text onPress={onPressBack}>Volver</Text>
-            
+
             <View style={styles.contactos}>
 
-                {listaContactos.map((element) => (<Contact Contacto={element} Evento={null}/>))}
+                {listaContactos.map((element) => (<Contact Contacto={element} Evento={null} eliminarHandler={getContacts}/>))}
 
             </View>
             <TouchableOpacity style={styles.button} onPress={onPressNewContact}>
@@ -77,7 +84,7 @@ const styles = StyleSheet.create({
     }, tituloContactos: {
         color: '#1A4B8E', fontWeight: '500', fontSize: 16, textAlign: 'left', margin: 10, alignContent: 'center', marginTop: 40
     }, contactos: {
-        width: '80%', flex: 2, marginTop:20, marginBottom:10,
+        width: '80%', flex: 2, marginTop: 20, marginBottom: 10,
         flexDirection: "column", alignItems: "center",
         flex: 1, justifyContent: 'flex-start', maxHeight: '25%'    //IMPORTanteeeeee  
 

@@ -11,10 +11,11 @@ import {
 import ArgTeamLogo from "../../assets/images/ArgTeamLogo.png";
 import DataEvent from "../../components/DataEvent/DataEvent.js";
 import Contact from "../../components/Contacts/Contacts.js";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useIsFocused, useNavigation, useRoute } from "@react-navigation/native";
 import axios from "axios";
 
 const SpecificEvent = () => {
+    const isFocused = useIsFocused();
     const { height } = useWindowDimensions();
     const navigation = useNavigation();
     const route = useRoute();
@@ -39,7 +40,7 @@ const SpecificEvent = () => {
 
     const baseURL = "http://localhost:3000/getProfByEvent/" + idEvento;
 
-    useEffect(() => {
+    const getContacts = () => {
         axios
             .get(baseURL)
             .then((response) => {
@@ -52,7 +53,15 @@ const SpecificEvent = () => {
             .catch((error) => {
                 console.error("Error al obtener los contactos:", error);
             });
-    }, []);
+    }
+
+
+    useEffect(() => {
+        if(isFocused){ 
+            getContacts();
+        }
+        
+    }, [isFocused]);
 
     const buttonOnAddPartiHandler = () => {
         navigation.navigate("AgregarParticipanteLibre", { idEvento, EvEnto });
@@ -96,7 +105,7 @@ const SpecificEvent = () => {
             <Text style={styles.tituloContactos}>Contactos</Text>
             <View style={styles.contactosContainer}>
                 {listaContactos.map((element) => (
-                    <Contact Contacto={element} Evento={EvEnto.ID} />
+                    <Contact eliminarHandler={getContacts} Contacto={element} Evento={EvEnto.ID} />
                 ))}
             </View>
             <View style={styles.contactos}>
