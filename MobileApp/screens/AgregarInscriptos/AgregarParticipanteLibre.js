@@ -93,7 +93,7 @@ const AgregarParticipanteLibre = () => {
 
             </View>
 
-            <Text onPress={onPressBack}>volverrrr</Text>
+            <Text style = {styles.volver} onPress={onPressBack}>Volver!</Text>
             <Text style={styles.tituloMain}>Nuevo Participante</Text>
             <View style={styles.containerForm}>
                 <TextInput
@@ -131,6 +131,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flex: "center",
         flex: 6,
+    },volver:{
+        color:'#1a4b8e', textAlign:'center', margin:5,
     },
     fondoLogo: {
         width: "100%",

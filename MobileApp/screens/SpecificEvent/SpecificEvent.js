@@ -85,7 +85,7 @@ const SpecificEvent = () => {
                 <Image source={ArgTeamLogo} style={styles.imgStyle}></Image>
             </View>
             
-            <Text onPress={onpressVolver}> Volver!</Text>
+            
 
 
             <Text style={styles.nombreEvento}>{EvEnto.nombre}</Text>
@@ -110,7 +110,7 @@ const SpecificEvent = () => {
             </View>
             <View style={styles.contactos}>
                 {EvEnto.hayParticipantesLibres === true ? (
-                    <View>
+                    <View style={styles.containerButtons} >
                         <TouchableOpacity style={styles.button} onPress={buttonOnAddPartiHandler}>
                             <Text style={styles.textButton}>Agregar Participante</Text>
                         </TouchableOpacity>
@@ -120,7 +120,7 @@ const SpecificEvent = () => {
                     </View>
 
                 ) : (
-                    <View>
+                    <View style={styles.containerButtons}>
                         <TouchableOpacity style={styles.button} onPress={buttonOnAddTeamHandler}>
                             <Text style={styles.textButton}>Agregar Equipo</Text>
                         </TouchableOpacity>
@@ -129,10 +129,14 @@ const SpecificEvent = () => {
                         </TouchableOpacity>
                     </View>
                 )}
-                <TouchableOpacity style={styles.button} onPress={buttonOnAgregarContactHandler}>
-                    <Text style={styles.textButton}>Agregar Contacto</Text>
-                </TouchableOpacity>
+                <View style={styles.containerButtons}>
+                    <TouchableOpacity style={styles.button} onPress={buttonOnAgregarContactHandler}>
+                        <Text style={styles.textButton}>Agregar Contacto</Text>
+                    </TouchableOpacity>
+                </View>
+                
             </View>
+            <Text style = {styles.volver} onPress={onpressVolver}> Volver!</Text>
         </View>
     );
 };
@@ -142,7 +146,12 @@ const styles = StyleSheet.create({
         backgroundColor: "#cfcfcf",
 
         flex: 6,
+    },volver:{
+        color:'#1a4b8e', textAlign:'center'
+    },containerButtons:{
+        width:'100%', display:'flex', alignItems:'center'
     },
+
     containerCadaFecha: {
         backgroundColor: 'white',
         borderColor: '#1A4B8E',
@@ -176,9 +185,8 @@ const styles = StyleSheet.create({
         paddingTop: 8,
     },
     contactosContainer: {
-        width:'80%',
         flexDirection: "column", alignItems: "center",
-        flex: 1, justifyContent: 'flex-start',
+        flex: 1, justifyContent: 'center',
     },
     divDataEvent: {
         width: '100%',

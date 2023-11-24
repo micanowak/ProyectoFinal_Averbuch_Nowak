@@ -1,5 +1,5 @@
 import react, { useEffect, useState } from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import phoneIcon from "../../assets/images/phoneIcon.png";
 import mailIcon from "../../assets/images/mailIcon.png";
 import axios from "axios";
@@ -42,7 +42,9 @@ const Contact = ({ Contacto, Evento, eliminarHandler }) => {
         <View style={styles.container}>
             <Text style={styles.titleCard}>{Contacto.nombre}</Text>
             <Text style={styles.titleCardRol}>{Contacto.rol}</Text>
-            <Text style={styles.titleCardEliminar} onPress={eliminarOnPressHandler}>Eliminar</Text>
+            <TouchableOpacity>
+                <Text style={styles.titleCardEliminar} onPress={eliminarOnPressHandler}>Eliminar</Text>
+            </TouchableOpacity>
             {/*<View style={styles.containerPics}>
                 <Image source={phoneIcon} style={styles.imgStyle}></Image>
                 <Image source={mailIcon} style={styles.imgStyle}></Image>
@@ -56,44 +58,41 @@ const styles = StyleSheet.create({
         borderRightColor: '#1A4B8E',
         borderRightWidth: 3,
         flexDirection: 'row',
-        width: '100%',
+        width: '90%',
         height: '50%',
         borderRadius: 15, margin:10,
-        marginLeft: '25%', display:'flex',  alignItems: 'center', flex: 1,
+        /*marginLeft: '25%',*/ display:'flex',  alignItems: 'center', flex: 1,
         justifyContent: 'center', 
     },
     titleCard: {
-        width: '90%',
-        height: '80%',
-        marginLeft: 15,
-        textAlign: 'center',
+        height: '40%',
+        marginLeft: 0,/*marginTop:'10%',*/
+        textAlign: 'left',
         rowGap: 1,
         fontWeight: 'bold',
         color: '#1A4B8E',
         fontSize: 12,
-        display:'flex', marginTop:'10%',
-        fontSize:'15'
+        display:'flex', 
+        fontSize:'15',  alignItems:'center'
     },  
     titleCardRol: {
-        width: '90%',
-        height: '80%',
-        marginLeft: 15,
-        textAlign: 'center',
+        height: '40%',
+        marginLeft: 15,/*marginTop:'10%',*/
+        textAlign: 'left',
         rowGap: 1,
         color: '#1A4B8E',
         fontSize: 12,
-        display:'flex', marginTop:'10%',
-        fontSize:'15'
+        display:'flex', 
+        fontSize:'15', alignItems:'center'
     },
     titleCardEliminar: {
-        width: '90%',
-        height: '80%',
-        marginLeft: 15,
+        height: '40%',
+        marginLeft: 25,
         textAlign: 'center',
         rowGap: 1,
         color: '#e741eb',
         fontSize: 12,
-        display:'flex', marginTop:'10%',
+        display:'flex',  /*marginTop:'10%',*/
         fontSize:'15'
     },
     /*containerPics: {

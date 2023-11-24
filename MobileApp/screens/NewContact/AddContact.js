@@ -39,9 +39,7 @@ const AddContact = () => {
     return (
         <View style={styles.container}>
             <View style={styles.fondoArriba}>
-                <TouchableOpacity onAccessibilityTap={onPressBack}>
-                    <Image source={back} style={styles.back} ></Image>
-                </TouchableOpacity>
+                
                 <Text style={styles.textArriba} >Seleccionar Contactos</Text>
             </View>
             <Search style={styles.search} listaContactosSeleccionados={listaHandle}></Search>
@@ -53,6 +51,7 @@ const AddContact = () => {
             <TouchableOpacity style={styles.mainButton} onPress={buttonOnPressHandler}>
                 <Text style={styles.textButton}>Guardar</Text>
             </TouchableOpacity>
+            <Text style={styles.volver} onPress={buttonOnPressHandler}>Volver!</Text>
             {/* HAY QUE HACER UN CARTEL QUE AVISE QUE PARA AGREGAR NUEVOS CONTACTOS SE HACE DESDE SPECIFIC EVENT */}
         </View>
 
@@ -66,7 +65,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flex: "center",
         flex: 6,
-    }, tituloContactos: {
+    },
+    volver:{
+        color:'#1a4b8e', textAlign:'center', margin:5,
+    },tituloContactos: {
         color: '#1A4B8E', fontWeight: '500', fontSize: 16, textAlign: 'left', margin: 10, alignContent: 'center', marginTop: 40
     }, contactos: {
         width: '80%', flex: 2,

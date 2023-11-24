@@ -51,13 +51,10 @@ const ContactList = () => {
     return (
         <View style={styles.container}>
             <View style={styles.fondoArriba}>
-                <TouchableOpacity onAccessibilityTap={onPressBack}> {/* No funciona */}
-                    <Image source={back} style={styles.back} ></Image>
-                </TouchableOpacity>
+                
                 <Text style={styles.textArriba} >Lista de Profesionales</Text>
             </View>
 
-            <Text onPress={onPressBack}>Volver</Text>
 
             <View style={styles.contactos}>
 
@@ -68,7 +65,7 @@ const ContactList = () => {
                 <Text style={styles.textButton}>Nuevo contacto</Text>
             </TouchableOpacity>
 
-
+            <Text style={styles.volver} onPress={onPressBack}>Volver!</Text>
         </View>
 
     );
@@ -81,15 +78,17 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flex: "center",
         flex: 6,
-    }, tituloContactos: {
-        color: '#1A4B8E', fontWeight: '500', fontSize: 16, textAlign: 'left', margin: 10, alignContent: 'center', marginTop: 40
+    },volver:{
+        color:'#1a4b8e', textAlign:'center', margin:5,
+    } , tituloContactos: {
+        color: '#1A4B8E', fontWeight: '500', fontSize: 16, textAlign: 'left',  alignContent: 'center', marginTop: 40
     }, contactos: {
-        width: '80%', flex: 2, marginTop: 20, marginBottom: 10,
-        flexDirection: "column", alignItems: "center",
-        flex: 1, justifyContent: 'flex-start', maxHeight: '25%'    //IMPORTanteeeeee  
+        width: '80%', flex: 1, marginTop: 20, marginBottom: 10, display:'flex',
+        flexDirection: "column", alignItems: "center", 
+        flex: 1, /*justifyContent: 'flex-start',marginLeft:'10%',*/ maxHeight: '50%'    //IMPORTanteeeeee  
 
     }, button: {
-        backgroundColor: 'rgb(26, 75, 142)', marginTop: 60, padding: 10, borderRadius: 15, width: '50%', height: '5%', alignContent: 'center', alignItems: 'center',
+        backgroundColor: '#e741eb', marginTop: 60, padding: 10, borderRadius: 15, width: '50%', height: '5%', alignContent: 'center', alignItems: 'center',
     }, textButton: {
         color: 'white', fontSize: '110%',
     }, fondoArriba: {
