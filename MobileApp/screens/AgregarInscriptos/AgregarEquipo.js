@@ -99,7 +99,7 @@ const AgregarEquipo = () => {
 
             </View>
 
-            <Text onPress={onPressBack}>volverrrr</Text>
+            
             <Text style={styles.tituloMain}>Nuevo Equipo</Text>
             <View style={styles.containerForm}>
                 <TextInput
@@ -134,6 +134,7 @@ const AgregarEquipo = () => {
             <TouchableOpacity style={styles.button} onPress={buttonOnsubmitHandler}>
                 <Text style={styles.textButton}>Guardar</Text>
             </TouchableOpacity>
+            <Text style={styles.volver} onPress={onPressBack}>Volver!</Text>
         </View>
     );
 };
@@ -144,6 +145,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flex: "center",
         flex: 6,
+    },volver:{
+        color:'#1a4b8e', textAlign:'center', margin:5,
     },
     fondoLogo: {
         width: '100%',

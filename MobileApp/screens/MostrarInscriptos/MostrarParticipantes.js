@@ -42,8 +42,13 @@ const MostrarParticipantes = () => {
                 />
             </View>
             <>
-                <Text onPress={onPressBack}>volverrrr</Text>
-                {listaParticipantes.map((element) => (<Text>{element.nombre}</Text>))}
+                <Text style={styles.nombreEvento}>Participantes</Text>
+
+                {listaParticipantes.map((element) => (
+                    (<Text style = {styles.nomParti} >{element.nombre}</Text>) 
+                ) )}                
+                <Text  style={styles.volver}  onPress={onPressBack}>Volver!</Text>
+
             </>
         </View>
     );
@@ -53,13 +58,23 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#cfcfcf",
         alignItems: "center",
-        justifyContent: "center",
+        width:'100%', height:'100%'
+    },nombreEvento: {
+        backgroundColor: '#1a4b8e',
+        color: 'white', marginLeft: 30, marginRight: 30,
+        padding: 20, marginTop: 10,
+        borderRadius: 15, fontSize: 15, fontWeight: '700', alignItems: "center",
+        flex: "center",
+    },nomParti:{
+        color:'#1A4B8E', fontSize:'16', fontWeight:'bold', margin:10
     },
     fondoLogo: {
         width: '100%',
         backgroundColor: '#1A4B8E',
         alignItems: "center",
         flex: "center",
+    },volver:{
+        color:'#1a4b8e', textAlign:'center', margin:5,
     },
     buttonStyle: {
         width: '35%',

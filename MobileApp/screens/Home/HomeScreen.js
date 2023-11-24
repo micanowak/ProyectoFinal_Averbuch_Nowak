@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     buttonStyle: {
         width: '80%',
         height: '30%',
-        backgroundColor: 'rgb(26, 75, 142)',
+        backgroundColor: '#845FD3',
         color: '#cfcfcf',
         padding: 10,
         textAlign: "center",

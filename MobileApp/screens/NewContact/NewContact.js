@@ -114,7 +114,6 @@ const NewContact = () => {
                 
             </View>
 
-<Text onPress={onPressBack}>volverrrr</Text>
             <Text style={styles.tituloMain}>Ingreso de características</Text>
             <View style={styles.containerForm}>
                 <TextInput
@@ -156,6 +155,7 @@ const NewContact = () => {
             <TouchableOpacity style={styles.button} onPress={buttonOnsubmitHandler}>
                 <Text style={styles.textButton}>Guardar</Text>
             </TouchableOpacity>
+<Text style = {styles.volver} onPress={onPressBack}>Volver!</Text>
         </View>
     );
 };
@@ -166,6 +166,8 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flex: "center",
         flex: 6,
+    },volver:{
+        color:'#1a4b8e', textAlign:'center', margin:5,
     },
     fondoLogo: {
         width: "100%",

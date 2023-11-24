@@ -27,9 +27,15 @@ const CardEquipo = ({Equipo}) => {
     return (
         <View style={styles.container}>
             <Text style={styles.titleCard}>{Equipo.nombre}</Text>
-            <Text style={styles.textStyle}>{Equipo.nombreContactoReferencia}</Text>
-            <Text style={styles.textStyle}>{Equipo.apellidoContactoReferencia}</Text>
-            {listaParticipantes.map((element) => (<Text>{element.nombre}</Text>))}
+            <View style={styles.divRef}>
+                <Text style={styles.placeHolderTrucho}>Referente:</Text>
+                <Text style={styles.textStyle}>{Equipo.nombreContactoReferencia}</Text>
+                <Text style={styles.textStyle}>{Equipo.apellidoContactoReferencia}</Text>
+            </View>
+            <View style={styles.divPartic}>
+            <Text style={styles.placeHolderTrucho}>Participantes:</Text>
+            {listaParticipantes.map((element) => (<Text style={styles.textStyleParti}>{element.nombre}</Text> ))}
+            </View>
             <TouchableOpacity style={styles.butonStyle} onPress={AddPartiOnPressHandler}>
                 <Text style = {styles.masInfo}>Agregar Participante</Text>
             </TouchableOpacity>
@@ -44,18 +50,27 @@ const styles = StyleSheet.create({
         borderBottomWidth:2,
         borderRightWidth:2,
         width:'80%',
-        height:'15%',
-       // alignItems: 'center',
+        
+        alignItems: 'center',
         borderRadius:15,
-        marginTop:20,
+        marginTop:'5%', marginBottom:'5%',
         backgroundColor:'white',
-    },
+    },divPartic:{
+        display:'flex', 
+        width: '100%'
+    },placeHolderTrucho:{
+        color:'gray',     width: '35%',
+        marginLeft: '10%',
+    },divRef:{
+        width:'100%',
+        display:'flex', flexWrap: 'wrap', flexDirection:'row'
+    }, 
     butonStyle:{
         backgroundColor: '#E741EB',
         width:'100% ',
         height:30,
         textAlign: 'center',
-        borderRadius:10
+        borderRadius:10, marginTop:10, 
     },
     masInfo:{
         color:'white', paddingTop:4,
@@ -67,9 +82,9 @@ const styles = StyleSheet.create({
         alignItems:'right'
     },
     titleCard: {
-        width:'90%',
-        height:'50%',
-        textAlign:'left',
+        width:'100%',
+        display:'flex', justifyContent:'center'
+        ,
         rowGap:1,
         fontWeight: 'bold',
         color: '#1A4B8E',
@@ -78,13 +93,19 @@ const styles = StyleSheet.create({
 
     },
     textStyle:{
-        height:'25%',
-        width:'50%',
+        height:'40%',
+        width:'25%',
         color: '#1A4B8E',
         fontSize:12,
-        paddingLeft:10,
+        paddingLeft:10, fontSize:'15px',
 
-    },
+    },textStyleParti:{
+        height:'40%',
+        width:'30%', marginHorizontal:'35%', justifyContent:'center', textAlign:'center',
+        color: '#1A4B8E',
+        fontSize:12,
+        paddingLeft:10, fontSize:'15px',
+    }
 });
 
 export default CardEquipo;

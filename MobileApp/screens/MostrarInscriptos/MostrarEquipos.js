@@ -44,9 +44,9 @@ const MostrarEquipos = () => {
                 />
             </View>
             <>
-                <Text onPress={onPressBack}>volverrrr</Text>
                 {listaEquipos.map((element) => (<CardEquipo Equipo = {element}/>))}
-            </>
+                <Text style={styles.volver} onPress={onPressBack}>Volver!</Text>
+</>
         </View>
     );
 };
@@ -55,13 +55,16 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: "#cfcfcf",
         alignItems: "center",
-        justifyContent: "center",
+        width:'100%', height:'100%'
+    },volver:{
+        color:'#1a4b8e', textAlign:'center', margin:5,
     },
     fondoLogo: {
         width: '100%',
         backgroundColor: '#1A4B8E',
         alignItems: "center",
         flex: "center",
+        height:'10%',
     },
     buttonStyle: {
         width: '35%',
@@ -75,8 +78,8 @@ const styles = StyleSheet.create({
         flex: "contain", margin: '20%',
     },
     imgStyle: {
-        marginTop: 30,
-        marginBottom: 20,
+        marginTop: '5%',
+        marginBottom: '5%',
         resizeMode: "contain",
         width: 150,
         height: 50,

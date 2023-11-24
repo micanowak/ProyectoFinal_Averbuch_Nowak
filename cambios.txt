@@ -1,14 +1,14 @@
 home:
-- el boton ver lista conractos está muy abajo LISTO
+- el boton ver lista conractos está muy abajo 
+- LOS BOTONES D EABAJO CAMBIAR COLOR
 
-specific event: 
+specific event: LISTOOO
 - arreglar que los contactos no entran si son +3 LISTO
 - emprolijar los botones de abajo
 - hacer algo con el volver
 
-agregar participante:
+agregar participante: LISTO
 - el volver
-
 
 mostrar participantes: 
 - poner de alguna manera linda los participantes
@@ -23,7 +23,7 @@ está como el orto
 en todos los news: 
 - sacar las flechitas
 
-contactos:
+contactos: LISTO
 - el titulo centrarlo
 - sacar la flecha
 - emprolijar todos los contactos

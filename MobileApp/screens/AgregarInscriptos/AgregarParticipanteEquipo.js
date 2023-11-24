@@ -33,7 +33,9 @@ const AgregarParticipanteEquipo = () => {
     const CelOnchangeHandler = (Contacto) => {
         setDNI(Contacto.target.value);
     };
-
+    const onPressBack = () => {
+        navigation.navigate("SpecificEvent", {EvEnto: EvEnto});
+    }
     const buttonOnsubmitHandler = (contactoooo) => {
         contactoooo.preventDefault();
         console.log("enviando...");
@@ -101,6 +103,7 @@ const AgregarParticipanteEquipo = () => {
             <TouchableOpacity style={styles.button} onPress={buttonOnsubmitHandler}>
                 <Text style={styles.textButton}>Guardar</Text>
             </TouchableOpacity>
+            <Text style={styles.volver} onPress={onPressBack}>Volver!</Text>
         </View>
     );
 };
@@ -111,7 +114,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flex: "center",
         flex: 6,
-    },
+    },volver:{
+        color:'#1a4b8e', textAlign:'center', margin:5,
+    }
+,
     fondoLogo: {
         width: "100%",
         backgroundColor: "#1A4B8E",

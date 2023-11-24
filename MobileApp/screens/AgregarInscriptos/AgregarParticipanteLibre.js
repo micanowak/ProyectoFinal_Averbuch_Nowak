@@ -93,7 +93,7 @@ const AgregarParticipanteLibre = () => {
 
             </View>
 
-            <Text style = {styles.volver} onPress={onPressBack}>Volver!</Text>
+        
             <Text style={styles.tituloMain}>Nuevo Participante</Text>
             <View style={styles.containerForm}>
                 <TextInput
@@ -120,7 +120,8 @@ const AgregarParticipanteLibre = () => {
             </View>
             <TouchableOpacity style={styles.button} onPress={buttonOnsubmitHandler}>
                 <Text style={styles.textButton}>Guardar</Text>
-            </TouchableOpacity>
+            </TouchableOpacity>    
+            <Text style = {styles.volver} onPress={onPressBack}>Volver!</Text>
         </View>
     );
 };
